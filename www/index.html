@@ -19,9 +19,9 @@
         <div class="header">
             <nav>
                 <img src="img/logokabum.png" alt="logoKabum" id="logoKabum">
-                <button class="buttonSelected">HOME</button>
-                <button class="button">CADASTRAR</button>
-                <button class="button">LISTAGEM</button>
+                <button class="button btNav selected">HOME</button>
+                <button class="button btNav">CADASTRAR</button>
+                <button class="button btNav">LISTAGEM</button>
             </nav>
             <div class="loginCliente">
                 <p>
@@ -30,60 +30,54 @@
                 <p>
                     Acessos
                 </p>
-                <button class="buttonLoginCliente">SAIR</button>
+                <button class="button btSairLogin">SAIR</button>
             </div>
 
         </div>
         <div class="main">
-            <form class="formLogin">
-                <div class="formLoginEntrar">
+            <div class="conteudo">
+                <form class="form">
                     <p>ENTRAR NO CRUD</p>
-                    <label for="login">Login :
+
+                    <label for="login">Login
                         <input type="text" id="login" required>
                     </label>
 
-
-                    <label for="senha">Senha :
+                    <label for="senha">Senha
                         <input type="password" id="senha" required>
                     </label>
 
+                    <button type="button" class="button btForm">ENTRAR</button>
+                    <br>
+                    <p>AINDA NÃO É CADASTRADO?</p>
 
-                    <button type="button" id="formLoginEntrarButton">ENTRAR</button>
-                </div>
-                <div class="formLoginCadastrar">
-                    <p>Ainda não é cadastrado?</p>
+                    <button type="button" class="button btForm">CADASTRE-SE JÁ!</button>
+                </form>
+            </div>
 
-
-                    <button type="button" id="formLoginCadastrarButton">CADASTRE-SE JÁ!</button>
-                </div>
-            </form>
-            <form class="formCadastrese">
-                <div class="formLoginEntrar">
-
-                    <label for="nomeCadastrese"> Nome :
-                        <input type="text" id="nomeCadastrese" required>
+            <div class="conteudo">
+                <form class="form">
+                    <p>CADASTRE-SE</p>
+                    <label for="nomeCadastrese">Nome
+                        <input type="text" id="" required>
                     </label>
 
-
-                    <label for="emailCadastrese">E-mail :
-                        <input type="email" id="emailCadastrese" required>
+                    <label for="emailCadastrese">E-mai
+                        <input type="email" id="" required>
                     </label>
 
-                    <label for="senhaCadastrese">Senha :
-                        <input type="password" id="senhaCadastrese" required>
+                    <label for="senhaCadastrese">Senha
+                        <input type="password" id="" required>
                     </label>
 
-                    <label for="ConfirmaSenhaCadastrese">Confirmar senha :
-                        <input type="password" id="ConfirmaSenhaCadastrese" required>
+                    <label for="ConfirmaSenhaCadastrese">Confirmar senha
+                        <input type="password" id="" required>
                     </label>
 
-
-                    <button type="button" id="formLoginEntrarButton">CADASTRAR</button>
-                    <button type="button" id="formLoginEntrarButton">VOLTAR</button>
-                </div>
-
-            </form>
-
+                    <button type="button" class="button btForm">CADASTRAR</button>
+                    <button type="button" class="button btForm btVoltar">VOLTAR</button>
+                </form>
+            </div>
         </div>
         <div class="footer">
 

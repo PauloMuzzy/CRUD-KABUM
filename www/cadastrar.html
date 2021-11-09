@@ -19,9 +19,9 @@
         <div class="item header">
             <nav>
                 <img src="img/logokabum.png" alt="logoKabum" id="logoKabum">
-                <button class="button">HOME</button>
-                <button class="buttonSelected">CADASTRAR</button>
-                <button class="button">LISTAGEM</button>
+                <button class="button btNav">HOME</button>
+                <button class="button btNav selected">CADASTRAR</button>
+                <button class="button btNav">LISTAGEM</button>
             </nav>
             <div class="loginCliente">
                 <p>
@@ -30,33 +30,29 @@
                 <p>
                     Acessos
                 </p>
-                <button class="buttonLoginCliente">SAIR</button>
+                <button class="button btSairLogin">SAIR</button>
             </div>
         </div>
         <div class="main">
+            <div class="conteudo cadastrar">
+                <form class="form">
+                    <p>CADASTRAR CLIENTE</p>
+                    <label for="nome">Nome<input type="text" id="nome" name="nome"></label>
 
-            <form class="formCadastrarCliente">
-                <p>CADASTRAR CLIENTE</p>
-                <div class="camposForm">
-                    <label for="nome">NOME :<input type="text" id="nome" name="nome"></label>
+                    <label for="cpf">CPF<input type="text" id="cpf" name="cpf"></label>
 
-                    <label for="cpf">CPF :<input type="text" id="cpf" name="cpf"></label>
+                    <label for="rg">RG<input type="text" id="rg" name="rg"></label>
 
-                    <label for="rg">RG :<input type="text" id="rg" name="rg"></label>
+                    <label for="Email">E-mail<input type="email" id="email" name="email"></label>
 
-                    <label for="Email">E-MAIL :<input type="email" id="email" name="email"></label>
+                    <label for="telefone1">Telefone 1<input type="text" id="telefone1" name="telefone1"></label>
 
-                    <label for="telefone1">TELEFONE 1 :<input type="text" id="telefone1" name="telefone1"></label>
+                    <label for="telefone2">Telefone 2<input type="text" id="telefone2" name="telefone2"></label>
 
-                    <label for="telefone2">TELEFONE 2 :<input type="text" id="telefone2" name="telefone2"></label>
-
-                    <label for="dataNasc">DATA DE NASCIMENTO :<input type="date" id="dataNasc" name="dataNasc"></label>
-                </div>
-
-                <div class="buttonForm">
-                    <button type="submit" />CADASTRAR
-                </div>
-            </form>
+                    <label for="dataNasc">Data de Nascimento<input type="date" id="dataNasc" name="dataNasc"></label>
+                    <button class="button btForm" type="submit" />CADASTRAR
+                </form>
+            </div>
 
         </div>
         <div class="item footer">
