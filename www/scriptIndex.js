@@ -2,19 +2,18 @@ $(document).ready(function () {
 
     //Troca Div ENTRAR/CADASTRAR
     $(document).ready(function () {
-        $("#teste2").hide();
-        $("#trocaDiv").click(function () {
-            $("#teste2").show(150);
-            $("#teste1").hide(150);
+        $("#formCadastrese").hide();
+        $("#trocaDiv1").click(function () {
+            $("#formCadastrese").show(150);
+            $("#formLogin").hide(150);
         });
 
-        $('.aparecerDiv').click(function () {
-            $("#teste1").show(150);
-            $("#teste2").hide(150);
+        $("#trocaDiv2").click(function () {
+            $("#formLogin").show(150);
+            $("#formCadastrese").hide(150);
         });
     });
 
-    /*
     //Mascaras
     $('#cpf').mask('999.999.999-99');
 
@@ -29,59 +28,21 @@ $(document).ready(function () {
     $('#rg').mask('99.999.999-A' || '99.999.999-99', mascaraRg);
     $('#telefone1').mask('(99)99999-9999');
     $('#telefone2').mask('(99)99999-9999');
-    */
 
-    //Submit 
+    //Submit Login
     $("#formLogin").on("submit", function (e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formProps = Object.fromEntries(formData);
-        console.log(formProps);
+        console.log(Object);
     });
+
+    $("#formCadastrese").on("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const formProps = Object.fromEntries(formData);
+        console.log(Object);
+    });
+
 });
 
-/* function enviaForm(url, body) {
-    console.log("body=", body);
-    console.log(typeof (body));
-}
-
-function cadastraForm() {
-    let url = "";
-    let nome = document.getElementById("nome").value;
-    let cpf = document.getElementById("cpf").value;
-    let rg = document.getElementById("rg").value;
-    let email = document.getElementById("email").value;
-    let telefone1 = document.getElementById("telefone1").value;
-    let telefone2 = document.getElementById("telefone2").value;
-    let dataNasc = document.getElementById("dataNasc").value;
-
-    console.log(nome);
-    console.log(cpf);
-    console.log(rg);
-    console.log(telefone1);
-    console.log(telefone2);
-    console.log(dataNasc);
-
-    body = {
-        "nome": nome,
-        "cpf": cpf,
-        "rg": rg,
-        "email": email,
-        "telefone1": telefone1,
-        "telefone2": telefone2,
-        "dataNasc": dataNasc
-    }
-
-    enviaForm(url, body);
-
-    $.ajax({
-        url: "api.php",
-        method: "post",
-        data: body,
-        sucess: function () {
-            console.log("oi");
-        }
-    });
-
-};
-*/
