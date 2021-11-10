@@ -1,5 +1,19 @@
 $(document).ready(function () {
 
+    //Troca Div ENTRAR/CADASTRAR
+    $(document).ready(function () {
+        $("#teste2").hide();
+        $("#trocaDiv").click(function () {
+            $("#teste2").show(150);
+            $("#teste1").hide(150);
+        });
+
+        $('.aparecerDiv').click(function () {
+            $("#teste1").show(150);
+            $("#teste2").hide(150);
+        });
+    });
+
     //Mascaras
     $('#cpf').mask('999.999.999-99');
 
@@ -83,8 +97,5 @@ function cadastraForm() {
             console.log("oi");
         }
     });
-
-    // teste commit
-    // teste commit 2
 
 };

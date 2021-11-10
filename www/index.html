@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 
 <body>
 
@@ -32,47 +33,48 @@
         </nav>
 
         <div class="main">
-            <div class="conteudo">
+            <div class="conteudo" id="teste1">
                 <form class="form">
                     <p>ENTRAR NO CRUD</p>
 
                     <label for="login">Login
-                        <input type="text" id="login" required>
+                        <input type="text">
                     </label>
 
                     <label for="senha">Senha
-                        <input type="password" id="senha" required>
+                        <input type="password">
                     </label>
 
                     <button type="button" class="button btForm">ENTRAR</button>
                     <br>
                     <p>AINDA NÃO É CADASTRADO?</p>
 
-                    <button type="button" class="button btForm">CADASTRE-SE JÁ!</button>
+                    <button type="button" id="trocaDiv" class="button btForm trocaDiv">CADASTRE-SE
+                        JÁ!</button>
                 </form>
             </div>
 
-            <div class="conteudo">
+            <div class="conteudo" id="teste2">
                 <form class="form">
                     <p>CADASTRE-SE</p>
                     <label for="nomeCadastrese">Nome
-                        <input type="text" id="" required>
+                        <input type="text">
                     </label>
 
                     <label for="emailCadastrese">E-mai
-                        <input type="email" id="" required>
+                        <input type="email">
                     </label>
 
                     <label for="senhaCadastrese">Senha
-                        <input type="password" id="" required>
+                        <input type="password">
                     </label>
 
                     <label for="ConfirmaSenhaCadastrese">Confirmar senha
-                        <input type="password" id="" required>
+                        <input type="password">
                     </label>
 
                     <button type="button" class="button btForm">CADASTRAR</button>
-                    <button type="button" class="button btForm btVoltar">VOLTAR</button>
+                    <button type="button" class="button btForm btVoltar aparecerDiv" id="aparecerDiv">VOLTAR</button>
                 </form>
             </div>
         </div>
@@ -94,6 +96,7 @@
             </div>
         </div>
     </section>
+
 
 </body>
 
