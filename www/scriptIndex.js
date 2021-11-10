@@ -14,6 +14,7 @@ $(document).ready(function () {
         });
     });
 
+    /*
     //Mascaras
     $('#cpf').mask('999.999.999-99');
 
@@ -28,34 +29,18 @@ $(document).ready(function () {
     $('#rg').mask('99.999.999-A' || '99.999.999-99', mascaraRg);
     $('#telefone1').mask('(99)99999-9999');
     $('#telefone2').mask('(99)99999-9999');
+    */
 
-    //Evento on submit
-    /** $("#form").on("submit", function (e) {
+    //Submit 
+    $("#formLogin").on("submit", function (e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formProps = Object.fromEntries(formData);
         console.log(formProps);
-
-
-    $("#form").on("submit", function (e) {
-
-        var nomeForm = document.getElementById("nome").value;
-        e.preventDefault(e);
-        nomeForm.innerHTML = nomeForm;
-        document.getElementById("teste").append(nomeForm);
-
-        var x = document.getElementsByTagName("input");
-
-        console.log(typeof (x));
-        console.log(Object.values());
-
-    })
-    **/
-
+    });
 });
 
-
-function enviaForm(url, body) {
+/* function enviaForm(url, body) {
     console.log("body=", body);
     console.log(typeof (body));
 }
@@ -99,3 +84,4 @@ function cadastraForm() {
     });
 
 };
+*/
