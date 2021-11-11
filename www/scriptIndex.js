@@ -28,50 +28,40 @@ $(document).ready(function () {
         $('#telefone1').mask('(99)99999-9999');
         $('#telefone2').mask('(99)99999-9999');
     */
+    $(".loginCliente").hide();
+
+    var chaveLogado = 0;
 
     //Submit Login
+
     $("#formLogin").on("submit", function (e) {
-        //e.preventDefault();
+        e.preventDefault();
         const formData = new FormData(e.target);
         const formProps = Object.fromEntries(formData)
         localStorage.setItem("login", document.querySelector("#loginLogin").value);
         localStorage.setItem("senha", document.querySelector("#loginSenha").value);
+        const pegarLogin = localStorage.getItem("login");
+        const pegarSenha = localStorage.getItem("senha");
+
+        if (pegarLogin == "paulo muzzy" && pegarSenha == "123123") {
+            console.log("LOGADO");
+            var chaveLogado = "1";
+            localStorage.setItem("estaLogado", chaveLogado);
+            console.log("aqui s");
+        } else {
+            console.log("DESLOGADO");
+            var chaveLogado = "0";
+            localStorage.setItem("estaLogado", chaveLogado);
+            console.log("aqui n");
+        }
+
+        if (chaveLogado != "1") {
+            $(".loginCliente").hide();
+        } else {
+            $(".loginCliente").show();
+        }
+
     });
-
-
-    /*
-    $("#formCadastrese").on("submit", function () {
-        preventDefault();
-        const formData = new FormData(e.target);
-        const formProps = Object.fromEntries(formData);
-
-    });
-    */
-
-    //let testeLS = document.querySelector("#loginLogin").value = localStorage.getItem("loginLogin");
-
-    /*
-    if (logado == 1) {
-        console.log("deu");
-        $(".loginCliente").show();
-
-    } else {
-        $(".loginCliente").hide();
-    }
-
-    */
-
-    const pegarLogin = localStorage.getItem("login");
-    const pegarSenha = localStorage.getItem("senha");
-
-    console.log(pegarLogin);
-    console.log(pegarSenha);
-
-    if (pegarLogin == "paulo muzzy" && pegarSenha == "123123") {
-        console.log("login ok");
-
-    } else {
-        console.log("DESLOGADO");
-    }
 
 });
+

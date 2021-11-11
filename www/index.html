@@ -21,7 +21,9 @@
         <div class="header">
             <img src="img/logokabum.png" alt="logoKabum" id="logoKabum">
             <div class="loginCliente" id=loginCliente">
-                <p>Olá, cliente!</p>
+                <p>Olá, </p>
+                <div id="nomeCliente"></div>
+                <p>.</p>
                 <button class="button btSairLogin">SAIR</button>
             </div>
         </div>
@@ -44,7 +46,9 @@
                     <label for="senha">Senha
                         <input type="password" id="loginSenha">
                     </label>
-
+                    <div class="erroLogin">
+                        <p style="color: red; font-size: 13px;"></p>
+                    </div>
                     <button type="submit" class="button btForm btEntrar">ENTRAR</button>
                     <br>
                     <p>AINDA NÃO É CADASTRADO?</p>
