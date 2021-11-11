@@ -1,18 +1,17 @@
 $(document).ready(function () {
 
     //Troca Div ENTRAR/CADASTRAR
-    $(document).ready(function () {
-        $("#formCadastrese").hide();
-        $("#trocaDiv1").click(function () {
-            $("#formCadastrese").show(150);
-            $("#formLogin").hide(150);
-        });
-
-        $("#trocaDiv2").click(function () {
-            $("#formLogin").show(150);
-            $("#formCadastrese").hide(150);
-        });
+    $("#formCadastrese").hide();
+    $("#trocaDiv1").click(function () {
+        $("#formCadastrese").show(150);
+        $("#formLogin").hide(150);
     });
+
+    $("#trocaDiv2").click(function () {
+        $("#formLogin").show(150);
+        $("#formCadastrese").hide(150);
+    });
+
 
     //Mascaras
     $('#cpf').mask('999.999.999-99');

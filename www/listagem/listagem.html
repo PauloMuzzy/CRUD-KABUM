@@ -7,19 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LISTAGEM</title>
     <link rel="stylesheet" type="text/css" href="../stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="listageem.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="listagem.css" media="screen" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scriptIndex.js"></script>
+    <script type="text/javascript" src="listagem.js"></script>
+
 </head>
 
 <body>
 
     <section class="container">
+
         <div class="header">
-            <img src="img/logokabum.png" alt="logoKabum" id="logoKabum">
-            <div class="loginCliente">
+            <img src="../img/logokabum.png" alt="logoKabum" id="logoKabum">
+            <div class="loginCliente" id=loginCliente">
                 <p>Olá, cliente!</p>
                 <button class="button btSairLogin">SAIR</button>
             </div>
@@ -31,8 +36,13 @@
             <a href="listagem.html"><button class="button btNav selected">LISTAGEM</button></a>
         </nav>
 
+
         <div class="main">
-            <div>
+            <div class="msgSemAcessoListagem">
+                <p>OPS! você não tem acesso á LISTAGEM :(</p>
+                <button type="button" class="button semAcessoListagem">VOLTAR</button>
+            </div>
+            <div class="acessoListagem">
                 <table class="tabela">
                     <tr class="tbIndice">
                         <td class="colunaId">ID</td>
