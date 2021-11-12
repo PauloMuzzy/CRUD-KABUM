@@ -1,42 +1,41 @@
 $(document).ready(function () {
 
     function verificaLogin() {
-        var pegarLogin = localStorage.getItem("login");
-        var pegarSenha = localStorage.getItem("senha");
+        var pegarLogin = localStorage.getItem("login")
+        var pegarSenha = localStorage.getItem("senha")
 
         $("#loginCliente").hide();
         // validação sem back-end
         if (pegarLogin == "paulo muzzy" && pegarSenha == "123123") {
-            // console.log("LOGADO");
-            var chaveLogado = "1";
-            localStorage.setItem("estaLogado", chaveLogado);
+            // console.log("LOGADO")
+            var chaveLogado = "1"
+            localStorage.setItem("estaLogado", chaveLogado)
             let saudacao = "Olá, " + pegarLogin
-            $("div.nomeCliente").html(saudacao);
-            $("#loginCliente").show();
+            $("div.nomeCliente").html(saudacao)
+            $("#loginCliente").show()
 
         } else {
             // console.log("DESLOGADO");
-            var chaveLogado = "0";
-            localStorage.setItem("estaLogado", chaveLogado);
+            var chaveLogado = "0"
+            localStorage.setItem("estaLogado", chaveLogado)
             $("#loginCliente").hide()
-        };
-    };
+        }
+    }
 
-    $(".erroLogin").hide();
-    verificaLogin();
-
+    $(".erroLogin").hide()
+    verificaLogin()
 
     //Troca Div ENTRAR/CADASTRAR
-    $("#formCadastrese").hide();
+    $("#formCadastrese").hide()
     $("#trocaDiv1").click(function () {
-        $("#formCadastrese").show(150);
-        $("#formLogin").hide(150);
-    });
+        $("#formCadastrese").show(150)
+        $("#formLogin").hide(150)
+    })
 
     $("#trocaDiv2").click(function () {
         $("#formLogin").show(150);
-        $("#formCadastrese").hide(150);
-    });
+        $("#formCadastrese").hide(150)
+    })
 
     /*
     //Mascaras
@@ -59,25 +58,32 @@ $(document).ready(function () {
     //Submit Login (ENTRAR)
 
     $("#formLogin").on("submit", function (e) {
-        e.preventDefault();
-        const formData = new FormData(e.target);
+        e.preventDefault()
+        const formData = new FormData(e.target)
         const formProps = Object.fromEntries(formData)
-        localStorage.setItem("login", document.querySelector("#loginLogin").value);
-        localStorage.setItem("senha", document.querySelector("#loginSenha").value);
-        verificaLogin();
+        localStorage.setItem("login", document.querySelector("#loginLogin").value)
+        localStorage.setItem("senha", document.querySelector("#loginSenha").value)
+        verificaLogin()
 
         var pegaChaveEstaLogado = localStorage.getItem("estaLogado");
         if (pegaChaveEstaLogado == "0") {
-            $(".erroLogin").show();
+            $(".erroLogin").show()
         }
-    });
+    })
 
     // DESLOGAR CRUD
     $("#btSairLogin").on("click", function () {
         localStorage.clear()
         verificaLogin();
-    });
+    })
 
-});
+    //Submit Cadastr-se
+    $("#formCadastrese").on("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const formProps = Object.fromEntries(formData)
+        console.log(formProps)
+    })
 
+})
 
