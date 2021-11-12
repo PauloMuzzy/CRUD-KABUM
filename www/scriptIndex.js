@@ -1,26 +1,30 @@
 $(document).ready(function () {
 
     function verificaLogin() {
-
         var pegarLogin = localStorage.getItem("login");
         var pegarSenha = localStorage.getItem("senha");
 
         $("#loginCliente").hide();
         // validação sem back-end
         if (pegarLogin == "paulo muzzy" && pegarSenha == "123123") {
-            console.log("LOGADO");
+            // console.log("LOGADO");
             var chaveLogado = "1";
             localStorage.setItem("estaLogado", chaveLogado);
+            let saudacao = "Olá, " + pegarLogin
+            $("div.nomeCliente").html(saudacao);
             $("#loginCliente").show();
+
         } else {
-            console.log("DESLOGADO");
+            // console.log("DESLOGADO");
             var chaveLogado = "0";
             localStorage.setItem("estaLogado", chaveLogado);
-            $("#loginCliente").hide();
+            $("#loginCliente").hide()
         };
     };
 
+    $(".erroLogin").hide();
     verificaLogin();
+
 
     //Troca Div ENTRAR/CADASTRAR
     $("#formCadastrese").hide();
@@ -51,7 +55,6 @@ $(document).ready(function () {
     $('#telefone2').mask('(99)99999-9999');
     */
 
-    // var chaveLogado = 0;
 
     //Submit Login (ENTRAR)
 
@@ -62,6 +65,11 @@ $(document).ready(function () {
         localStorage.setItem("login", document.querySelector("#loginLogin").value);
         localStorage.setItem("senha", document.querySelector("#loginSenha").value);
         verificaLogin();
+
+        var pegaChaveEstaLogado = localStorage.getItem("estaLogado");
+        if (pegaChaveEstaLogado == "0") {
+            $(".erroLogin").show();
+        }
     });
 
     // DESLOGAR CRUD
@@ -69,4 +77,7 @@ $(document).ready(function () {
         localStorage.clear()
         verificaLogin();
     });
+
 });
+
+
