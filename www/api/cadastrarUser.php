@@ -1,22 +1,38 @@
 <?php
+
 if ($_POST["acao"] == "inserir") {
 
-    include("conexao.php");
+    $myArray = $_POST['dados'];
 
-    try {
-        $pdo = new PDO('mysql:host=localhost;dbname=meuBancoDeDados', $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $nome = $myArray[0];
+    $email = $myArray[1];
+    $login = $myArray[2];
+    $senha = $myArray[3];
+    $typeuser = "0";
+    $attcreat = "1";
+    $attread = "0";
+    $attupdate = "0";
+    $attdelet = "0";
 
-        $stmt = $pdo->prepare('INSERT INTO Users (nome) VALUES(:nome)');
-        $stmt->execute(array(
-            ':nome' => 'Ricardo Arrigoni'
-        ));
+    $servername = "db";
+    $database = "Logon";
+    $username = "root";
+    $password = "root";
 
-        echo $stmt->rowCount();
-    } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
+    include('conexao.php');
+
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
     }
-    var_dump($_POST["dados"]);
-} else {
-    echo "qlqr coisa";
-};
+
+    echo "Connected successfully";
+
+    $sql = "INSERT INTO usuarios (nome, email, login, senha, typeuser, attcreat, attread, attupdate, attdelet) 
+    VALUES ('$nome', '$email', '$login', '$senha', '$typeuser', '$attcreat', '$attread', '$attupdate', '$attdelet')";
+    if (mysqli_query($conn, $sql)) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    mysqli_close($conn);
+}
