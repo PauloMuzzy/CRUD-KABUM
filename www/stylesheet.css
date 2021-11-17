@@ -30,7 +30,7 @@ a{
     font-weight: 600;
 }
 
-.btn-group{
+.btn-group {
 width: 50% !important;
 }
 
@@ -52,7 +52,7 @@ width: 50% !important;
     display: flex;
     flex-direction: row;
     background-image: linear-gradient(to bottom right, #032A89, #597fca);
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .menu {
@@ -208,4 +208,14 @@ p {
 .form-label {
     margin: 0px !important;
     font-weight: 600;
+}
+
+.logado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: auto;
+    margin: 2px;
+    justify-content: space-evenly;
 }
