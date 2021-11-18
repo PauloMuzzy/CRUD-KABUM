@@ -26,11 +26,11 @@
         <div class="header">
             <img src="img/logokabum.png" alt="logoKabum" id="logoKabum">
             <div class="logado">
-                <p>Olá! joãozinho</p>
+                <div class="nomeLogado"></div>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-danger" id="btnLogadoAcessos">SAIR</button>
-                    <button class="btn btn-secondary" id="btnLoadoSair">ACESSOS</button>
-                </div>1
+                    <button class="btn btn-danger" id="btnLoadoSair">SAIR</button>
+                    <button class="btn btn-secondary" id="btnLogadoAcessos">ACESSOS</button>
+                </div>
             </div>
         </div>
 
@@ -43,70 +43,101 @@
         </nav>
 
         <div class="main">
-            <div class="card">
-                <div class="card-header">
-                    ENTRAR
-                </div>
-                <div class="card-body">
-                    <form class="formLogar" method="POST" action="" id="formLogar">
-                        <div class="mb-1">
-                            <label for="loginEntrar" class="form-label">Login</label>
-                            <input type="nomeCadastrese" class="form-control" id="loginLogar">
-                        </div>
-                        <div class="mb-1">
-                            <label for="senhaEntrar" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senhaLogar">
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-success" type="submit" id="btnEntrar">ENTRAR</button>
-                        </div>
-                        <div class="alert alert-danger d-flex align-items-center" role="alert">
-                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                                <use xlink:href="#exclamation-triangle-fill" />
-                            </svg>
-                            <div>
-                                Usuário o senha incorreto!
+            <div class="cardLogar">
+                <div class="card">
+                    <div class="card-header">
+                        ENTRAR
+                    </div>
+                    <div class="card-body">
+                        <form class="formLogar" method="POST" id="formLogar">
+                            <div class="mb-1">
+                                <label for="loginEntrar" class="form-label">Login</label>
+                                <input type="nomeCadastrese" class="form-control" id="loginLogar" required>
                             </div>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <p>Ainda não é cadastrado?</p>
-                            <button class="btn btn-primary" type="button" id="btnCadastrese">CADASTRE-SE</button>
-                        </div>
-                    </form>
+                            <div class="mb-1">
+                                <label for="senhaEntrar" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senhaLogar" required>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success" type="submit" id="btnEntrar">ENTRAR</button>
+                            </div>
+                            <div class="alertaSenhaIncorretaHide">
+                                <div class="alertaSenhaIncorreta">
+                                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                            aria-label="Danger:">
+                                            <use xlink:href="#exclamation-triangle-fill" />
+                                        </svg>
+                                        <div>
+                                            Usuário ou senha incorreto!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alertaSenhaCorreta">
+                                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                            aria-label="Danger:">
+                                            <use xlink:href="#exclamation-triangle-fill" />
+                                        </svg>
+                                        <div>
+                                            Login feito!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <p>Ainda não é cadastrado?</p>
+                                <button class="btn btn-primary" type="button" id="btnCadastrese">CADASTRE-SE</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="card-header">
-                    CADASTRE-SE
-                </div>
-                <div class="card-body">
-                    <form class="formCadastrese" method="POST" action="" id="formCadastrese">
-                        <div class="mb-1">
-                            <label for="nomeCadastrese" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="nomeCadastrese" value="">
-                        </div>
-                        <div class="mb-1">
-                            <label for="emailCadastrese" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="emailCadastrese" value="">
-                        </div>
-                        <div class="mb-1">
-                            <label for="loginCadastrese" class="form-label">Login</label>
-                            <input type="text" class="form-control" id="loginCadastrese" value="">
-                        </div>
-                        <div class="mb-1">
-                            <label for="senhaCadastrese" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="senhaCadastrese" value="">
-                        </div>
-                        <!-- <div class="mb-1">
-                            <label for="confimarSenhaCadastrese" class="form-label">Confirmar Senha</label>
-                            <input type="password" class="form-control" id="confimarSenhaCadastrese" value="">
-                        </div> -->
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-success" type="submit" id="btnCadastrar">CADASTRAR</button>
-                            <button class="btn btn-danger" type="button" id="btnVoltar">VOLTAR</button>
-                        </div>
-                    </form>
+            <diV class="cardCadastrese">
+                <div class="card">
+                    <div class="card-header">
+                        CADASTRE-SE
+                    </div>
+                    <div class="card-body">
+                        <form class="formCadastrese" method="POST" action="" id="formCadastrese">
+                            <div class="mb-1">
+                                <label for="nomeCadastrese" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nomeCadastrese" value="" required>
+                            </div>
+                            <div class="mb-1">
+                                <label for="emailCadastrese" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="emailCadastrese" value="" required>
+                            </div>
+                            <div class="mb-1">
+                                <label for="loginCadastrese" class="form-label">Login</label>
+                                <input type="text" class="form-control" id="loginCadastrese" value="" required>
+                            </div>
+                            <div class="mb-1">
+                                <label for="senhaCadastrese" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senhaCadastrese" value="" required>
+                            </div>
+                            <div class="mb-1">
+                                <label for="confimarSenhaCadastrese" class="form-label">Confirmar Senha</label>
+                                <input type="password" class="form-control" id="confimarSenhaCadastrese" value=""
+                                    required>
+                            </div>
+                            <div class="alertaSenhasDiferentes">
+                                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                        aria-label="Danger:">
+                                        <use xlink:href="#exclamation-triangle-fill" />
+                                    </svg>
+                                    <div>
+                                        As senhas não coincidem!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success" type="submit" id="btnCadastrar">CADASTRAR</button>
+                                <button class="btn btn-danger" type="button" id="btnVoltar">VOLTAR</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
