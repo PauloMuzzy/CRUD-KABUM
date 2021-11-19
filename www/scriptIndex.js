@@ -20,7 +20,6 @@ $(document).ready(function () {
     // SUBMIT LOGAR
     $(".formLogar").on("submit", function (e) {
         e.preventDefault()
-        console.log("oi")
         const loginLogar = document.getElementById("loginLogar").value
         const senhaLogar = document.getElementById("senhaLogar").value
 
@@ -31,25 +30,28 @@ $(document).ready(function () {
             url: "/api/logar.php",
             data: { dados: arraySendPostLogar, acao: "logar" },
             success: function (res) {
-
-                const resultadoRes = res.resultado
-                const loginRes = res.login
-                const nomeRes = res.nome
-
-                $('.alertaSenhaIncorreta').hide()
-                $('.alertaSenhaCorreta').hide()
-
-                if (resultadoRes == "1") {
-                    localStorage.setItem("logado", resultadoRes)
-                    localStorage.setItem("login", loginRes)
-                    $('.alertaSenhaCorreta').show(150)
-                    $('.logado').show()
-                    const saudacao = "Olá, " + nomeRes + "."
-                    $(".nomeLogado").html(saudacao);
-
-                } else {
-                    $('.alertaSenhaIncorreta').show(150)
-                }
+                console.log(res)
+                /*
+                
+                                const resultadoRes = res.resultado
+                                const loginRes = res.login
+                                const nomeRes = res.nome
+                
+                                $('.alertaSenhaIncorreta').hide()
+                                $('.alertaSenhaCorreta').hide()
+                
+                                if (resultadoRes == "1") {
+                                    localStorage.setItem("logado", resultadoRes)
+                                    localStorage.setItem("login", loginRes)
+                                    $('.alertaSenhaCorreta').show(150)
+                                    $('.logado').show()
+                                    const saudacao = "Olá, " + nomeRes + "."
+                                    $(".nomeLogado").html(saudacao);
+                
+                                } else {
+                                    $('.alertaSenhaIncorreta').show(150)
+                                }
+                 */
             }
         })
     })
