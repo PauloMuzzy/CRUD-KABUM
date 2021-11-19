@@ -18,20 +18,25 @@
 
 <body>
 
-    <section class="container">
+    <div class="container-fluid">
 
         <div class="header">
-            <img src="../img/logokabum.png" alt="logoKabum" id="logoKabum">
-            <div class="loginCliente" id=loginCliente">
-                <p>Olá, cliente!</p>
-                <button class="button btSairLogin">SAIR</button>
+            <img src="img/logokabum.png" alt="logoKabum" id="logoKabum">
+            <div class="logado">
+                <div class="nomeLogado"></div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-danger" id="btnLoadoSair">SAIR</button>
+                    <button class="btn btn-secondary" id="btnLogadoAcessos">ACESSOS</button>
+                </div>
             </div>
         </div>
 
         <nav class="menu">
-            <a href="../index.html"><button class="button btNav">HOME</button></a>
-            <a href="cadastrar.html"><button class=" button btNav selected">CADASTRAR</button></a>
-            <a href="../listagem/listagem.html"><button class="button btNav">LISTAGEM</button></a>
+            <div class="btn-group" id="btnNav">
+                <button class="btn btn-warning btnNav selected">HOME</button>
+                <button class="btn btn-warning btnNav">CADASTRAR</button>
+                <button class="btn btn-warning btnNav">LISTAGEM</button>
+            </div>
         </nav>
 
 
@@ -74,7 +79,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
 </body>
 

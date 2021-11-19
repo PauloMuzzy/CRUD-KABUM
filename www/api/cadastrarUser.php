@@ -2,9 +2,13 @@
 
 include('conexao.php');
 
+print("deu bom");
+
 if ($_POST["acao"] == "inserir") {
 
     $myArray = $_POST['dados'];
+
+    print("deu bom2");
 
     $nome = $myArray[0];
     $email = $myArray[1];
@@ -19,18 +23,23 @@ if ($_POST["acao"] == "inserir") {
     $attupdate = "0";
     $attdelet = "0";
 
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+    try {
+        $stmt = $pdo->prepare('INSERT INTO usuarios (nome ,email ,login ,senha ,typeuser ,attcreat ,attread ,attupdate ,attdelet) 
+        VALUES (? ,? ,? ,? ,? ,? ,? ,? ,? )');
+        $stmt->bindParam(1, $nome);
+        $stmt->bindParam(2, $email);
+        $stmt->bindParam(3, $login);
+        $stmt->bindParam(4, $hashsenha);
+        $stmt->bindParam(5, $typeuser);
+        $stmt->bindParam(6, $attcreat);
+        $stmt->bindParam(7, $attread);
+        $stmt->bindParam(8, $attupdate);
+        $stmt->bindParam(9, $attdelet);
 
-    echo "Connected successfully";
+        $stmt->execute();
 
-    $sql = "INSERT INTO usuarios (nome, email, login, senha, typeuser, attcreat, attread, attupdate, attdelet) 
-    VALUES ('$nome', '$email', '$login', '$hashsenha', '$typeuser', '$attcreat', '$attread', '$attupdate', '$attdelet')";
-    if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo $stmt->rowCount();
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
     }
-    mysqli_close($conn);
 }

@@ -11,6 +11,12 @@ if ($_POST["acao"] == "logar") {
     $usuarioLogin = $arrayLoginSenha[0];
     $usuarioSenha = $arrayLoginSenha[1];
 
+    /*   
+    $stmt = $pdo->query('SELECT senha FROM usuarios WHERE login = $usuarioLogin ');
+    while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    echo "Nome: {$linha['nome']} - Usuário: {$linha['usuario']}<br />";
+    */
+
     $resultSenhaLogar = "SELECT senha FROM usuarios WHERE login = '$usuarioLogin'";
     $resultadoSenhaLogar = mysqli_query($conn, $resultSenhaLogar);
 

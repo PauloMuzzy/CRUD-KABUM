@@ -20,6 +20,7 @@ $(document).ready(function () {
     // SUBMIT LOGAR
     $(".formLogar").on("submit", function (e) {
         e.preventDefault()
+        console.log("oi")
         const loginLogar = document.getElementById("loginLogar").value
         const senhaLogar = document.getElementById("senhaLogar").value
 
@@ -68,6 +69,7 @@ $(document).ready(function () {
     // SUBMIT CADASTRE-SE
     $(".formCadastrese").on("submit", function (e) {
         e.preventDefault()
+        console.log("oi")
         var nomeCadastrese = document.getElementById("nomeCadastrese").value
         var emailCadastrese = document.getElementById("emailCadastrese").value
         var loginCadastrese = document.getElementById("loginCadastrese").value

@@ -1,8 +1,7 @@
 <?php
 
-$servername = "db";
-$database = "Logon";
 $username = "root";
 $password = "root";
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+$pdo = new PDO('mysql:host=db;dbname=Logon', $username, $password);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
