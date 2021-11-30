@@ -4,19 +4,3 @@
     box-sizing: border-box;
     font-family: Poppins;
 }
-
-.msgSemAcessoListagem {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    background-color: whitesmoke;
-    opacity: 90%;
-    border-radius: 5px;
-    gap: 20px;
-}
-
-.semAcessoListagem {
-    background-color: rgb(224, 43, 43);
-}

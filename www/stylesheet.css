@@ -5,228 +5,262 @@
     font-family: Poppins;
 }
 
-.container-fluid{
+.container{
     display: flex;
     flex-direction: column;
-    padding: 0px !important;
-    margin: 0px !important;
-    height: 100vh !important;
+    width: 100%;
+    height: 100vh;
 }
-
-
-a{
-    text-decoration: none;
-    color:  white;   
-}
-
-.button{
-    background: #FD841F;
-    height: 40px;
-    width: 150px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    border-radius: 5px;
-    font-weight: 600;
-}
-
-.btn-group {
-width: 50% !important;
-}
-
-.btnNav {
-    background-color:#FF6500 !important ;
-    border-color: #FF6500 !important ;
-    color: white !important;
-    font-weight: 600 !important;
-}
-
-.selected {
-    background-color: #FF5101 !important;
-}
-
-/* HEADER - GERAIS */
 
 .header{
     height: 15%;
     display: flex;
+    background-color: #1860B1;
     flex-direction: row;
-    background-image: linear-gradient(to bottom right, #032A89, #597fca);
     justify-content: center;
-}
-
-.menu {
-    background-color: #FF6500;
-}
-
-nav{
-    background-color: #FF6500;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 75px;
+    gap: 40px;
 }
 
-#logoKabum{
-    width: auto;
-    height: 100%;
-}
-
-/* FOOTER - GERAIS */
-
-.footer{
-    width: 100%;
-    height: 15%;
-    background-color: #2E393B;
+.usuarioLogado{
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: center;
-}
-
-.iconRedeSocial{
-    width: 25px;
-}
-
-.iconFooter{
-    display: flex;
-    align-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.iconsFooter-block{
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    height: 100%;
-    gap: 10px;  
+    width: 10%;
 }
 
-/* MAIN - GERAIS */
+.logoKabum{
+    width: 200px;
+}
+
+.conteudo{
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.menu{
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#FA6501;
+    gap: 15px;
+}
 
 .main{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
-    background-repeat: no-repeat;
-    background-size: 200px;
-    background-position: left;
-    background-position: fixed;
-    background-position-x: 2%;
-    justify-content: center;
-    align-items: center;
-    background-image: url("./img/kabum3.jpg");
-    background-size: 100%;
+    padding: 10px;
+    background-color: whitesmoke;
 }
 
-
-/* MAIN - LISTAGEM */
-
-
-.conteudo{
+.main form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: whitesmoke;
-    border: 1px solid black;
-    border-radius: 5px;
-    opacity: 96%;
-    gap: 30px;
-}
-
-.tabela {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 15px;
-    background-color: whitesmoke;
-    opacity: 90%;
-    border-radius: 5px;
-}
-
-td {
-    border: 1px solid black;
-    text-align: center;
-    height: 30px;
+    background: white;
+    margin: 5px;
     padding: 5px;
+    border: 1px solid grey;
+    min-width: 22%;
+    max-height: 90%;
+    opacity: 95%;
+    padding-bottom: 10px;
 }
 
-tr {
+h2{
+    border: 1px;
+    padding: 0 8px;
+    width: 100%;
+    background: #FA6501;
+    color: white;
+    font-weight: 500;
+    text-align: left;
+}
+
+.main form input {
+    font-size: 15px;
+    border:solid 1px black;
+    text-align: center;
+    width: 50%;
+    height: 30px;
+    margin-bottom: 7px;
+}
+
+.main form label {
+    padding-bottom: 0px;
+    text-align: left;
+}
+
+.divNavMain {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 12%;
+    align-items: stretch;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.navMain{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border: 1px solid grey;
+    margin: 5px;
+    padding: 5px;
+    opacity: 95%;
+    padding-bottom: 10px;
+    gap: 10px;
+}
+
+td{
     border: 1px solid black;
+    width: 120px;
     text-align: center;
 }
 
-.tbIndice{
-    font-weight: 550;
+thead td {
+    background-color: #FA6501;
 }
 
-.tbEditar {
-    height: 100%;
-    width: 100%;
-    padding: 3px;
+tbody td {
+    background-color: whitesmoke;
 }
 
-.tbExcluir {
-    height: 100%;
-    width: 100%;
-    padding: 3px;
-    background-color: rgb(224, 43, 43);;
+thead{
+width: 100%;
 }
 
-.colunaBt {
-    border: transparent;
-}
-
-.card-header {
+.alerta {
+    background-color: red;
+    color:white;
+    opacity: 60%;
     text-align: center;
+    font-size: 15px;
+    padding-bottom: 4px;
+}
+
+.saudacao{
+    color: white;
+    font-size: 12px;
+}
+
+.footer{
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #114D8E;
+}
+
+table button {
+    width: 50%;
+}
+
+.logoKabum{
+    width: 200px;
+}
+
+.imgFooter{
+    width: 25px;
+}
+
+/* ---------------- BOTÕES ---------------- */
+
+.menu button {
+    background-color: #FA6501;
+    border: 0px;
+    width: 15%;
+    height: 90%;
+    color: white;
     font-weight: 600;
     font-size: 18px;
-    color: white !important;
-    background-color: #FD841F !important;
+    gap: 20px;
 }
 
-.card {
-    margin: 10px;
-    opacity: 98% !important;
-    border: 0px !important;
+.navMain button{
+    width: 100%;
+    font-weight: 400;
+    font-size: 12px;
 }
 
-.mb-1 {
-    text-align: center;
+#btnSelected {
+    background-color: #E35214;
 }
 
-p {
-    text-align: center;
-    font-size: 18px !important;
-    margin-bottom: 0px !important;
+.menu button {
+    transition: transform 200ms ease;
+    will-change: transform;
+    cursor: pointer;
 }
 
-.form-label {
-    margin: 0px !important;
+.menu button:hover {
+    transform: scale(1.05);
+    border: solid 1px;
+}
+
+.btn {
+    border: 0px;
+    width: 50%;
+    height: 30px;
+    color: white;
     font-weight: 600;
+    cursor: pointer;
 }
 
-.logado {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 30%;
-    height: auto;
-    margin: 2px;
-    justify-content: space-evenly;
+.slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+.btn {
+    transition: transform 200ms ease;
+    will-change: transform;
+  }
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+.btn-verde {
+    background: #1A8754;
 }
 
-.alertaSenhaIncorreta{
-    width:100%;
-    height:90px;
+.btn-vermelho {
+    background: #DC3545;
 }
 
-.alertaSenhaIncorretaHide{
-    width:100%;
-    height:90px;
+.btn-laranja {
+    background: #FA6501;
+}
+
+.btn-cinza {
+    background: #6c757d;
+}
+
+.btn-azul{
+    background: #2560B1;
+}
+
+.btnAlertaSenha{
+    width: 20%;
+    height: 20%;
 }
