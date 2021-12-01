@@ -123,7 +123,7 @@ $(function () {
                     const saudacao = "Olá, " + res.NOME + "."
                     $(".saudacao").html(saudacao)
                     mostrarLogado()
-                    if (res.TYPE_USER == "1") {
+                    if (res.TYPE_USER == "MASTER") {
                         $("#btnTabelaUsuarios").show()
                         $("#btnFormUpdateUsuario").show()
                     }
@@ -166,8 +166,6 @@ $(function () {
             url: "/api/usuarios.php?acao=listaUsuarios",
             success: (res) => {
 
-                console.log(res)
-
                 res.forEach(function (row) {
 
                     var tableBody = document.getElementById("tbody");
@@ -197,13 +195,11 @@ $(function () {
 
                     const idBtnUpdate = $(this).attr('data-id')
                     const urlIdBtnUpdate = "/api/usuarios.php?acao=updateUsuario&id=" + idBtnUpdate
-                    console.log(urlIdBtnUpdate)
 
                     $.ajax({
                         method: "GET",
                         url: urlIdBtnUpdate,
                         success: (res) => {
-                            console.log(res)
 
                             const insereDadosInputUpdateUsuario = () => {
 
@@ -215,7 +211,7 @@ $(function () {
 
                                 const createUpdateUsuario = res.ACESSO_CREATE
                                 $("#createUpdateUsuario").val(createUpdateUsuario);
-                                if (createUpdateUsuario == "1") {
+                                if (createUpdateUsuario == "HABILITADO") {
                                     $("#createUpdateUsuario").attr("class", "btn btn-verde")
                                 } else {
                                     $("#createUpdateUsuario").attr("class", "btn btn-cinza")
@@ -223,7 +219,7 @@ $(function () {
 
                                 const readUpdateUsuario = res.ACESSO_READ
                                 $("#readUpdateUsuario").val(readUpdateUsuario);
-                                if (readUpdateUsuario == "1") {
+                                if (readUpdateUsuario == "HABILITADO") {
                                     $("#readUpdateUsuario").attr("class", "btn btn-verde")
                                 } else {
                                     $("#readUpdateUsuario").attr("class", "btn btn-cinza")
@@ -231,7 +227,7 @@ $(function () {
 
                                 const updateUpdateUsuario = res.ACESSO_UPDATE
                                 $("#updateUpdateUsuario").val(updateUpdateUsuario);
-                                if (readUpdateUsuario == "1") {
+                                if (readUpdateUsuario == "HABILITADO") {
                                     $("#updateUpdateUsuario").attr("class", "btn btn-verde")
                                 } else {
                                     $("#updateUpdateUsuario").attr("class", "btn btn-cinza")
@@ -239,7 +235,7 @@ $(function () {
 
                                 const deleteUpdateUsuario = res.ACESSO_DELETE
                                 $("#deleteUpdateUsuario").val(deleteUpdateUsuario);
-                                if (deleteUpdateUsuario == "1") {
+                                if (deleteUpdateUsuario == "HABILITADO") {
                                     $("#deleteUpdateUsuario").attr("class", "btn btn-verde")
                                 } else {
                                     $("#deleteUpdateUsuario").attr("class", "btn btn-cinza")
@@ -249,27 +245,276 @@ $(function () {
                             insereDadosInputUpdateUsuario()
                             mostrarFormUpdateUsuario()
 
+                            const hideElementosUpdate = () => {
+                                $("#confirmaCreateUpdateUsuario").hide()
+                                $("#cancelaCreateUpdateUsuario").hide()
+                                $("#confirmaReadUpdateUsuario").hide()
+                                $("#cancelaReadUpdateUsuario").hide()
+                                $("#confirmaUpdateUpdateUsuario").hide()
+                                $("#cancelaUpdateUpdateUsuario").hide()
+                                $("#confirmaDeleteUpdateUsuario").hide()
+                                $("#cancelaDeleteUpdateUsuario").hide()
+                                $(".alertaUpdateUsuario").hide()
+                            }
+                            hideElementosUpdate()
+
+                            // UPDATE CREATE USUARIO
                             $("#createUpdateUsuario").click(() => {
+                                hideElementosUpdate()
+                                $("#confirmaCreateUpdateUsuario").show(150)
+                                $("#cancelaCreateUpdateUsuario").show(150)
 
-                                const idCreatUpdateUsuarios = document.querySelector("#createUpdateUsuario");
-                                let valorCreatUpdateUsuarios = idCreatUpdateUsuarios.value;
 
-                                if (valorCreatUpdateUsuarios == "1") {
-                                    valorCreatUpdateUsuarios = "0"
-                                } else {
-                                    valorCreatUpdateUsuarios = "1"
+                                let valueBtnCreateUpdate = document.querySelector("#createUpdateUsuario").value
+
+                                if (valueBtnCreateUpdate == "HABILITADO") {
+                                    $("#createUpdateUsuario").removeClass()
+                                    $("#createUpdateUsuario").toggleClass("btn btn-cinza-claro")
+                                    $("#createUpdateUsuario").attr("value", "DESABILITADO")
+                                } else if (valueBtnCreateUpdate == "DESABILITADO") {
+                                    $("#createUpdateUsuario").removeClass()
+                                    $("#createUpdateUsuario").toggleClass("btn btn-verde-claro")
+                                    $("#createUpdateUsuario").attr("value", "HABILITADO")
                                 }
 
-                                const objValorCreatUpdateUsuarios = { acao: "update", id: idBtnUpdate, acesso: "ACESSO_CREATE", valor: valorCreatUpdateUsuarios }
+                                $("#confirmaCreateUpdateUsuario").click(() => {
 
-                                $.ajax({
-                                    type: 'PUT',
-                                    url: '/api/usuarios.php',
-                                    data: objValorCreatUpdateUsuarios,
-                                    success: function (res) {
-                                        console.log(typeof (res))
-                                        console.log(res)
+                                    if (valueBtnCreateUpdate == "HABILITADO") {
+                                        valueBtnCreateUpdate = "DESABILITADO"
+                                    } else {
+                                        valueBtnCreateUpdate = "HABILITADO"
                                     }
+
+                                    const objCreateUpdateUsuario = { id: idBtnUpdate, acesso: "ACESSO_CREATE", valor: valueBtnCreateUpdate }
+
+                                    $.ajax({
+                                        type: 'PUT',
+                                        url: '/api/usuarios.php',
+                                        data: objCreateUpdateUsuario,
+                                        success: function (res) {
+                                            const resValue = res
+                                            if (resValue == "DESABILITADO") {
+                                                $("#createUpdateUsuario").removeClass()
+                                                $("#createUpdateUsuario").toggleClass("btn btn-cinza")
+                                                $("#createUpdateUsuario").attr("value", "DESABILITADO")
+                                            } else if (resValue == "HABILITADO") {
+                                                $("#createUpdateUsuario").removeClass()
+                                                $("#createUpdateUsuario").toggleClass("btn btn-verde")
+                                                $("#createUpdateUsuario").attr("value", "HABILITADO")
+                                            }
+                                            $("#alertaUpdateUsuarioCreate").show(150)
+                                            $("#confirmaCreateUpdateUsuario").hide()
+                                            $("#cancelaCreateUpdateUsuario").hide()
+                                        }
+                                    })
+                                })
+
+                                $("#cancelaCreateUpdateUsuario").click(() => {
+                                    if (valueBtnCreateUpdate == "DESABILITADO") {
+                                        $("#createUpdateUsuario").removeClass()
+                                        $("#createUpdateUsuario").toggleClass("btn btn-cinza")
+                                        $("#createUpdateUsuario").attr("value", "DESABILITADO")
+                                    } else if (valueBtnCreateUpdate == "HABILITADO") {
+                                        $("#createUpdateUsuario").removeClass()
+                                        $("#createUpdateUsuario").toggleClass("btn btn-verde")
+                                        $("#createUpdateUsuario").attr("value", "HABILITADO")
+                                    }
+                                    hideElementosUpdate()
+                                })
+                            })
+
+                            // UPDATE READ USUARIO
+                            $("#readUpdateUsuario").click(() => {
+                                hideElementosUpdate()
+                                $("#confirmaReadUpdateUsuario").show(150)
+                                $("#cancelaReadUpdateUsuario").show(150)
+
+
+                                let valueBtnReadUpdate = document.querySelector("#readUpdateUsuario").value
+
+                                if (valueBtnReadUpdate == "HABILITADO") {
+                                    $("#readUpdateUsuario").removeClass()
+                                    $("#readUpdateUsuario").toggleClass("btn btn-cinza-claro")
+                                    $("#readUpdateUsuario").attr("value", "DESABILITADO")
+                                } else if (valueBtnReadUpdate == "DESABILITADO") {
+                                    $("#readUpdateUsuario").removeClass()
+                                    $("#readUpdateUsuario").toggleClass("btn btn-verde-claro")
+                                    $("#readUpdateUsuario").attr("value", "HABILITADO")
+                                }
+
+                                $("#confirmaReadUpdateUsuario").click(() => {
+
+                                    if (valueBtnReadUpdate == "HABILITADO") {
+                                        valueBtnReadUpdate = "DESABILITADO"
+                                    } else {
+                                        valueBtnReadUpdate = "HABILITADO"
+                                    }
+
+                                    const objReadUpdateUsuario = { id: idBtnUpdate, acesso: "ACESSO_CREATE", valor: valueBtnReadUpdate }
+
+                                    $.ajax({
+                                        type: 'PUT',
+                                        url: '/api/usuarios.php',
+                                        data: objReadUpdateUsuario,
+                                        success: function (res) {
+                                            const resValue = res
+                                            if (resValue == "DESABILITADO") {
+                                                $("#readUpdateUsuario").removeClass()
+                                                $("#readUpdateUsuario").toggleClass("btn btn-cinza")
+                                                $("#readUpdateUsuario").attr("value", "DESABILITADO")
+                                            } else if (resValue == "HABILITADO") {
+                                                $("#readUpdateUsuario").removeClass()
+                                                $("#readUpdateUsuario").toggleClass("btn btn-verde")
+                                                $("#readUpdateUsuario").attr("value", "HABILITADO")
+                                            }
+                                            $("#alertaUpdateUsuarioRead").show(150)
+                                            $("#confirmaReadUpdateUsuario").hide()
+                                            $("#cancelaReadUpdateUsuario").hide()
+                                        }
+                                    })
+                                })
+
+                                $("#cancelaReadUpdateUsuario").click(() => {
+                                    if (valueBtnReadUpdate == "DESABILITADO") {
+                                        $("#readUpdateUsuario").removeClass()
+                                        $("#readUpdateUsuario").toggleClass("btn btn-cinza")
+                                        $("#readUpdateUsuario").attr("value", "DESABILITADO")
+                                    } else if (valueBtnReadUpdate == "HABILITADO") {
+                                        $("#readUpdateUsuario").removeClass()
+                                        $("#readUpdateUsuario").toggleClass("btn btn-verde")
+                                        $("#readUpdateUsuario").attr("value", "HABILITADO")
+                                    }
+                                    hideElementosUpdate()
+                                })
+                                // next
+
+                            })
+
+                            // UPDATE UPDATE USUARIO
+                            $("#updateUpdateUsuario").click(() => {
+                                hideElementosUpdate()
+                                $("#confirmaUpdateUpdateUsuario").show(150)
+                                $("#cancelaUpdateUpdateUsuario").show(150)
+
+                                let valueBtnUpdateUpdate = document.querySelector("#updateUpdateUsuario").value
+
+                                if (valueBtnUpdateUpdate == "HABILITADO") {
+                                    $("#updateUpdateUsuario").removeClass()
+                                    $("#updateUpdateUsuario").toggleClass("btn btn-cinza-claro")
+                                    $("#updateUpdateUsuario").attr("value", "DESABILITADO")
+                                } else if (valueBtnUpdateUpdate == "DESABILITADO") {
+                                    $("#updateUpdateUsuario").removeClass()
+                                    $("#updateUpdateUsuario").toggleClass("btn btn-verde-claro")
+                                    $("#updateUpdateUsuario").attr("value", "HABILITADO")
+                                }
+
+                                $("#confirmaUpdateUpdateUsuario").click(() => {
+
+                                    if (valueBtnUpdateUpdate == "HABILITADO") {
+                                        valueBtnUpdateUpdate = "DESABILITADO"
+                                    } else {
+                                        valueBtnUpdateUpdate = "HABILITADO"
+                                    }
+
+                                    const objUpdateUpdateUsuario = { id: idBtnUpdate, acesso: "ACESSO_CREATE", valor: valueBtnUpdateUpdate }
+
+                                    $.ajax({
+                                        type: 'PUT',
+                                        url: '/api/usuarios.php',
+                                        data: objUpdateUpdateUsuario,
+                                        success: function (res) {
+                                            const resValue = res
+                                            if (resValue == "DESABILITADO") {
+                                                $("#updateUpdateUsuario").removeClass()
+                                                $("#updateUpdateUsuario").toggleClass("btn btn-cinza")
+                                                $("#updateUpdateUsuario").attr("value", "DESABILITADO")
+                                            } else if (resValue == "HABILITADO") {
+                                                $("#updateUpdateUsuario").removeClass()
+                                                $("#updateUpdateUsuario").toggleClass("btn btn-verde")
+                                                $("#updateUpdateUsuario").attr("value", "HABILITADO")
+                                            }
+                                            $("#alertaUpdateUsuarioUpdate").show(150)
+                                            $("#confirmaUpdateUpdateUsuario").hide()
+                                            $("#cancelaUpdateUpdateUsuario").hide()
+                                        }
+                                    })
+                                })
+
+                                $("#cancelaUpdateUpdateUsuario").click(() => {
+                                    if (valueBtnUpdateUpdate == "DESABILITADO") {
+                                        $("#updateUpdateUsuario").removeClass()
+                                        $("#updateUpdateUsuario").toggleClass("btn btn-cinza")
+                                        $("#updateUpdateUsuario").attr("value", "DESABILITADO")
+                                    } else if (valueBtnUpdateUpdate == "HABILITADO") {
+                                        $("#updateUpdateUsuario").removeClass()
+                                        $("#updateUpdateUsuario").toggleClass("btn btn-verde")
+                                        $("#updateUpdateUsuario").attr("value", "HABILITADO")
+                                    }
+                                    hideElementosUpdate()
+                                })
+                            })
+
+                            // UPDATE DELETE USUARIO
+                            $("#deleteUpdateUsuario").click(() => {
+                                hideElementosUpdate()
+                                $("#confirmaDeleteUpdateUsuario").show(150)
+                                $("#cancelaDeleteUpdateUsuario").show(150)
+
+                                let valueBtnDeleteUpdate = document.querySelector("#deleteUpdateUsuario").value
+
+                                if (valueBtnDeleteUpdate == "HABILITADO") {
+                                    $("#deleteUpdateUsuario").removeClass()
+                                    $("#deleteUpdateUsuario").toggleClass("btn btn-cinza-claro")
+                                    $("#deleteUpdateUsuario").attr("value", "DESABILITADO")
+                                } else if (valueBtnDeleteUpdate == "DESABILITADO") {
+                                    $("#deleteUpdateUsuario").removeClass()
+                                    $("#deleteUpdateUsuario").toggleClass("btn btn-verde-claro")
+                                    $("#deleteUpdateUsuario").attr("value", "HABILITADO")
+                                }
+
+                                $("#confirmaDeleteUpdateUsuario").click(() => {
+
+                                    if (valueBtnDeleteUpdate == "HABILITADO") {
+                                        valueBtnDeleteUpdate = "DESABILITADO"
+                                    } else {
+                                        valueBtnDeleteUpdate = "HABILITADO"
+                                    }
+
+                                    const objDeleteUpdateUsuario = { id: idBtnUpdate, acesso: "ACESSO_CREATE", valor: valueBtnDeleteUpdate }
+
+                                    $.ajax({
+                                        type: 'PUT',
+                                        url: '/api/usuarios.php',
+                                        data: objDeleteUpdateUsuario,
+                                        success: function (res) {
+                                            const resValue = res
+                                            if (resValue == "DESABILITADO") {
+                                                $("#deleteUpdateUsuario").removeClass()
+                                                $("#deleteUpdateUsuario").toggleClass("btn btn-cinza")
+                                                $("#deleteUpdateUsuario").attr("value", "DESABILITADO")
+                                            } else if (resValue == "HABILITADO") {
+                                                $("#deleteUpdateUsuario").removeClass()
+                                                $("#deleteUpdateUsuario").toggleClass("btn btn-verde")
+                                                $("#deleteUpdateUsuario").attr("value", "HABILITADO")
+                                            }
+                                            $("#alertaUpdateUsuarioDelete").show(150)
+                                            $("#confirmaDeleteUpdateUsuario").hide()
+                                            $("#cancelaDeleteUpdateUsuario").hide()
+                                        }
+                                    })
+                                })
+
+                                $("#cancelaDeleteUpdateUsuario").click(() => {
+                                    if (valueBtnDeleteUpdate == "DESABILITADO") {
+                                        $("#deleteUpdateUsuario").removeClass()
+                                        $("#deleteUpdateUsuario").toggleClass("btn btn-cinza")
+                                        $("#deleteUpdateUsuario").attr("value", "DESABILITADO")
+                                    } else if (valueBtnUpdateUpdate == "HABILITADO") {
+                                        $("#deleteUpdateUsuario").removeClass()
+                                        $("#deleteUpdateUsuario").toggleClass("btn btn-verde")
+                                        $("#deleteUpdateUsuario").attr("value", "HABILITADO")
+                                    }
+                                    hideElementosUpdate()
                                 })
                             })
                         }

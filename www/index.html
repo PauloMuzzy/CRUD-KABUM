@@ -88,25 +88,57 @@
                 </form>
 
                 <!-- LISTAGEM DE USUÁRIO -->
-                <form class="formUpdateUsuario" method="POST">
+                <form class="formUpdateUsuario" method="POST" id="formUpdateUsuario">
                     <h2>UPDATE USUÁRIOS</h2>
+
+
                     <label for="idUpdateUsuario">ID</label>
                     <input id="idUpdateUsuario" name="idUpdateUsuario" readonly>
+
 
                     <label for="loginUpdateUsuario">LOGIN</label>
                     <input id="loginUpdateUsuario" name="loginUpdateUsuario" readonly>
 
+
                     <label for="createUpdateUsuario" class="switch">CREATE</label>
-                    <input type="button" id="createUpdateUsuario" name="createUpdateUsuario">
+                    <input type="button" id="createUpdateUsuario" name="createUpdateUsuario" class="btnUpdate">
+                    <div class="divLabelFormUpdateUsuario">
+                        <input type="button" id="confirmaCreateUpdateUsuario" class="btn btn-verde" value="CONFIRMAR">
+                        <input type="button" id="cancelaCreateUpdateUsuario" class="btn btn-vermelho" value="CANCELAR">
+                    </div>
+                    <div class="alertaUpdateUsuario" id="alertaUpdateUsuarioCreate">
+                        <p>ACESSO ALTERADO COM SUCESSO!</p>
+                    </div>
 
                     <label for="readUpdateUsuario" class="switch">READ</label>
-                    <input type="button" id="readUpdateUsuario" name="readUpdateUsuario">
+                    <input type="button" id="readUpdateUsuario" name="readUpdateUsuario" class="btnUpdate">
+                    <div class="divLabelFormUpdateUsuario">
+                        <input type="button" id="confirmaReadUpdateUsuario" class="btn btn-verde" value="CONFIRMAR">
+                        <input type="button" id="cancelaReadUpdateUsuario" class="btn btn-vermelho" value="CANCELAR">
+                    </div>
+                    <div class="alertaUpdateUsuario" id="alertaUpdateUsuarioRead">
+                        <p>ACESSO ALTERADO COM SUCESSO!</p>
+                    </div>
 
                     <label for="updateUpdateUsuario" class="switch">UPDATE</label>
-                    <input type="button" id="updateUpdateUsuario" name="updateUpdateUsuario">
+                    <input type="button" id="updateUpdateUsuario" name="updateUpdateUsuario" class="btnUpdate">
+                    <div class="divLabelFormUpdateUsuario">
+                        <input type="button" id="confirmaUpdateUpdateUsuario" class="btn btn-verde" value="CONFIRMAR">
+                        <input type="button" id="cancelaUpdateUpdateUsuario" class="btn btn-vermelho" value="CANCELAR">
+                    </div>
+                    <div class="alertaUpdateUsuario" id="alertaUpdateUsuarioUpdate">
+                        <p>ACESSO ALTERADO COM SUCESSO!</p>
+                    </div>
 
                     <label for="deleteUpdateUsuario" class="switch">DELET</label>
-                    <input type="button" id="deleteUpdateUsuario" name="deleteUpdateUsuario">
+                    <input type="button" id="deleteUpdateUsuario" name="deleteUpdateUsuario" class="btnUpdate">
+                    <div class="divLabelFormUpdateUsuario">
+                        <input type="button" id="confirmaDeleteUpdateUsuario" class="btn btn-verde" value="CONFIRMAR">
+                        <input type="button" id="cancelaDeleteUpdateUsuario" class="btn btn-vermelho" value="CANCELAR">
+                    </div>
+                    <div class="alertaUpdateUsuario" id="alertaUpdateUsuarioDelete">
+                        <p>ACESSO ALTERADO COM SUCESSO!</p>
+                    </div>
 
                     <button type="button" class="btn btn-vermelho">VOLTAR</button>
                 </form>

@@ -98,6 +98,15 @@ h2{
     text-align: left;
 }
 
+.divLabelFormUpdateUsuario{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10%;
+}
+
 .divNavMain {
     display: flex;
     flex-direction: column;
@@ -260,7 +269,36 @@ table button {
     background: #2560B1;
 }
 
+.btn-verde-claro{
+    background: #1A8754;
+    opacity: 50%;
+}
+
+.btn-cinza-claro {
+    background: #6c757d;
+    opacity: 50%;
+}
+
 .btnAlertaSenha{
     width: 20%;
     height: 20%;
+}
+
+.divLabelFormUpdateUsuario input{
+    width: 20%;
+}
+
+.alertaUpdateUsuario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1A8754;
+    opacity: 75%;
+    width: 80%;
+    height: 30%;
+}
+
+.alertaUpdateUsuario p {
+    color: white;
+    text-align: center;
 }

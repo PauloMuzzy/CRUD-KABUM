@@ -62,7 +62,7 @@ if ($_GET['acao'] == "loginLocalstorage") {
 if ($_GET['acao'] == "listaUsuarios") {
 
     try {
-        $query = $pdo->prepare('SELECT ID,NOME,LOGIN,TYPE_USER,ACESSO_CREATE,ACESSO_READ,ACESSO_UPDATE,ACESSO_DELETE,ATIVO FROM USUARIOS WHERE TYPE_USER ="0"');
+        $query = $pdo->prepare('SELECT ID,NOME,LOGIN,TYPE_USER,ACESSO_CREATE,ACESSO_READ,ACESSO_UPDATE,ACESSO_DELETE,ATIVO FROM USUARIOS WHERE TYPE_USER ="PADRAO"');
 
         $query->execute();
 
@@ -102,11 +102,11 @@ if ($_POST) {
 
     $hashsenha = password_hash($senha, PASSWORD_DEFAULT);
 
-    $type_user = "0";
-    $acesso_create = "1";
-    $acesso_read = "0";
-    $acesso_update = "0";
-    $acesso_delete = "0";
+    $type_user = "PADRAO";
+    $acesso_create = "HABILITADO";
+    $acesso_read = "DESABILITADO";
+    $acesso_update = "DESABILITADO";
+    $acesso_delete = "DESABILITADO";
     $ativo = "1";
 
     try {
@@ -133,21 +133,27 @@ if ($_POST) {
 if ($method === 'PUT') {
     parse_str(file_get_contents('php://input'), $_PUT);
 
-    $acesso = json_encode($_PUT['acesso']);
-    $valor = json_encode($_PUT['valor']);
-    $id = json_encode($_PUT['id']);
+    $acesso = ($_PUT['acesso']);
+    $valor = ($_PUT['valor']);
+    $id = ($_PUT['id']);
 
     try {
-        $query = $pdo->prepare('UPDATE USUARIOS SET ?="?" WHERE ID="?"');
+        if ($acesso == "ACESSO_CREATE") {
+            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_CREATE=? WHERE ID=?');
+        } else if ($acesso == "ACESSO_READ") {
+            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_READ=? WHERE ID=?');
+        } else if ($acesso == "ACESSO_UPDATE") {
+            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_UPDATE=? WHERE ID=?');
+        } else if ($acesso == "ACESSO_DELETE")
+            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_DELETE=? WHERE ID=?');
 
-        $query->bindParam(1, $acesso);
-        $query->bindParam(2, $valor);
-        $query->bindParam(3, $id);
+        $query->bindParam(1, $valor, PDO::PARAM_STR);
+        $query->bindParam(2, $id, PDO::PARAM_STR);
 
-        // $query->execute();
+        $query->execute();
+
+        echo json_encode($valor);
     } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }
-
-    echo json_encode($acesso);
 }
