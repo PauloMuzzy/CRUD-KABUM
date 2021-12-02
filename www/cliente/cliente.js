@@ -1,15 +1,23 @@
-let acesso = 1; // aguardando validação
+const verificaLocalstorage = () => {
 
-if (acesso == 1) {
-    $(document).ready(function () {
-        $(".msgSemAcessoListagem").hide();
-        $(".acessoListagem").show();
-    });
+    const logadoLocalstorage = localStorage.getItem("logado")
 
-} else {
-    $(document).ready(function () {
-        $(".msgSemAcessoListagem").show();
-        $(".acessoListagem").hide();
-    });
+    if (logadoLocalstorage == "1") {
+
+        const loginLocalstorage = localStorage.getItem("login")
+        const urlLoginLocalstorage = "/api/usuarios.php?acao=loginLocalstorage&login=" + loginLocalstorage
+        $.ajax({
+            method: "GET",
+            url: urlLoginLocalstorage,
+            success: function (res) {
+                const saudacao = "Olá, " + res.NOME + "."
+                $(".saudacao").html(saudacao)
+                mostrarLogado()
+                if (res.TYPE_USER == "MASTER") {
+                    $("#btnFormUpdateUsuario").show()
+                }
+            }
+        })
+    }
 }
-
+verificaLocalstorage()
