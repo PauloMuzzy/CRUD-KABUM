@@ -17,7 +17,7 @@
     display: flex;
     background-color: #1860B1;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 40px;
 }
@@ -38,8 +38,6 @@
     height: 70%;
     display: flex;
     flex-direction: row;
-    background-repeat: no-repeat;
-    background-size: auto;
 }
 
 .menu{
@@ -57,7 +55,7 @@
     align-items: center;
     flex: 1;
     padding: 10px;
-    background-color: whitesmoke;
+    background-color: #F2F3F4;
 }
 
 .main form{
@@ -68,6 +66,7 @@
     margin: 5px;
     padding: 5px;
     border: 1px solid grey;
+    border-radius: 7px;
     min-width: 22%;
     max-height: 90%;
     opacity: 95%;
@@ -274,8 +273,8 @@ table button {
     opacity: 50%;
 }
 
-.btn-cinza-claro {
-    background: #6c757d;
+.btn-vermelho-claro {
+    background: #DC3545;
     opacity: 50%;
 }
 
@@ -288,7 +287,7 @@ table button {
     width: 20%;
 }
 
-.alertaUpdateUsuario{
+#alertaSucessoUpdate{
     display: flex;
     align-items: center;
     justify-content: center;

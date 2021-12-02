@@ -30,9 +30,10 @@
 
         <div class="menu">
             <button id="btnSelected">HOME</button>
-            <button>USUARIOS</button>
-            <button>CLIENTES</button>
+            <button>CADASTRAR</button>
+            <button>LISTAGEM</button>
         </div>
+
         <!-- --------------------------------------------------------------------------------------------------------------------- -->
         <div class="conteudo">
             <div class="divNavMain">
@@ -40,50 +41,61 @@
                     <h2>MENU</h2>
                     <button class="btn btn-azul" id="btnFormLogar">FAZER LOGIN</button>
                     <button class="btn btn-azul" id="btnCadastraUsuario">CADASTRE-SE</button>
+                    <button class="btn btn-cinza" id="btnTabelaUsuarios">LISTA DE USUÁRIOS</button>
                 </div>
             </div>
-
             <div class="main">
 
-                <!-- LOGAR -->
-                <form class="formLogar" method="POST">
-                    <h2>ENTRAR NO CRUD</h2>
-                    <label for="loginLogar">Login</label>
-                    <input type="text" id="loginLogar" name="loginLogar" required />
+                <!-- LISTAGEM DE USUÁRIO -->
+                <div>
+                    <form class="formUpdateUsuario" id="formUpdateUsuario">
+                        <h2>UPDATE USUÁRIOS</h2>
 
-                    <label for="senhaLogar">Senha</label>
-                    <input type="password" id="senhaLogar" name="senhaLogar" autocomplete="on" required>
+                        <label for="idUpdateUsuario">ID</label>
+                        <input id="idUpdateUsuario" name="idUpdateUsuario" readonly>
 
-                    <button type="submit" class="btn btn-verde">ENTRAR</button>
+                        <label for="loginUpdateUsuario">LOGIN</label>
+                        <input id="loginUpdateUsuario" name="loginUpdateUsuario" readonly>
 
-                    <div class="alerta">
-                        <p>LOGIN OU SENHA INVALÁLIDOS !!!</p>
-                        <button class="btn btn-vermelho btnAlertaSenha">x</button>
-                    </div>
-                </form>
+                        <label for="createUpdateUsuario" class="switch">CREATE</label>
+                        <input type="button" id="createUpdateUsuario" name="createUpdateUsuario" class="btnUpdate">
 
-                <!-- CADASTRAR USUÁRIO -->
-                <form class="formCadastraUsuario" method="POST" id="formCadastraUsuario"">
-                    <h2>CADASTRAR USUÁRIO</h2>
-                    <label for=" nomeCadastraUsuario">Nome</label>
-                    <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" required>
+                        <label for="readUpdateUsuario" class="switch">READ</label>
+                        <input type="button" id="readUpdateUsuario" name="readUpdateUsuario" class="btnUpdate">
 
-                    <label for="loginCadastraUsuario">Login</label>
-                    <input type="text" name="loginCadastraUsuario" id="loginCadastraUsuario" required>
+                        <label for="updateUpdateUsuario" class="switch">UPDATE</label>
+                        <input type="button" id="updateUpdateUsuario" name="updateUpdateUsuario" class="btnUpdate">
 
-                    <label for="emailCadastraUsuario">E-mail</label>
-                    <input type="email" name="emailCadastraUsuario" id="emailCadastraUsuario" required>
+                        <label for="deleteUpdateUsuario" class="switch">DELET</label>
+                        <input type="button" id="deleteUpdateUsuario" name="deleteUpdateUsuario" class="btnUpdate">
 
-                    <label for=" senhaCadastraUsuario">Senha</label>
-                    <input type="password" name="senhaCadastraUsuario" id="senhaCadastraUsuario" autocomplete="off"
-                        required>
+                        <button type="button" class="btn btn-verde" id="updateUsuario">ALTERAR</button>
+                        <div id="alertaSucessoUpdate">
+                            <p>USUÁRIO CADASTRADO</p>
+                        </div>
+                        <div id="alertaFalhaUpdate">
+                            <p>OPS! HOUVE UM ERRO!</p>
+                        </div>
+                    </form>
 
-                    <label for="confirmaSenhaCadastraUsuario">Confirmar Senha</label>
-                    <input type="password" name="confirmaSenhaCadastraUsuario" id="confSenhaCadastraUsuario"
-                        autocomplete="off" required>
-                    <button type="submit" class="btn btn-verde">CADASTRAR</button>
+                    <table class="tabelaUsuarios" id="tabelaUsuarios">
+                        <thead>
+                            <td id="tdId">ID</td>
+                            <td id="tdNome">NOME</td>
+                            <td id="tdLogin">LOGIN</td>
+                            <td id="tdTypeuser">TYPEUSER</td>
+                            <td id="tdCreat">CREAT</td>
+                            <td id="tdRead">READ</td>
+                            <td id="tdUpdate">UPDATE</td>
+                            <td id="tdDelet">DELET</td>
+                            <td id="tdStatus">STATUS</td>
+                            <td id="tdAcoes">AÇÕES</td>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                    </table>
 
-                </form>
+                </div>
             </div>
         </div>
         <!-- --------------------------------------------------------------------------------------------------------------------- -->

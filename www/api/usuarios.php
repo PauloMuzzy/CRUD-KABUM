@@ -133,26 +133,22 @@ if ($_POST) {
 if ($method === 'PUT') {
     parse_str(file_get_contents('php://input'), $_PUT);
 
-    $acesso = ($_PUT['acesso']);
-    $valor = ($_PUT['valor']);
+    $create = ($_PUT['create']);
+    $read = ($_PUT['read']);
+    $update = ($_PUT['update']);
+    $delete = ($_PUT['delete']);
     $id = ($_PUT['id']);
 
     try {
-        if ($acesso == "ACESSO_CREATE") {
-            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_CREATE=? WHERE ID=?');
-        } else if ($acesso == "ACESSO_READ") {
-            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_READ=? WHERE ID=?');
-        } else if ($acesso == "ACESSO_UPDATE") {
-            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_UPDATE=? WHERE ID=?');
-        } else if ($acesso == "ACESSO_DELETE")
-            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_DELETE=? WHERE ID=?');
+        $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_CREATE=?,ACESSO_READ=?,ACESSO_UPDATE=?,ACESSO_DELETE=? WHERE ID=?');
 
-        $query->bindParam(1, $valor, PDO::PARAM_STR);
-        $query->bindParam(2, $id, PDO::PARAM_STR);
+        $query->bindParam(1, $_PUT['create'], PDO::PARAM_STR);
+        $query->bindParam(2, $_PUT['read'], PDO::PARAM_STR);
+        $query->bindParam(3, $_PUT['update'], PDO::PARAM_STR);
+        $query->bindParam(4, $_PUT['delete'], PDO::PARAM_STR);
+        $query->bindParam(5, $id, PDO::PARAM_INT);
 
         $query->execute();
-
-        echo json_encode($valor);
     } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }
