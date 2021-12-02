@@ -16,111 +16,87 @@
 </head>
 
 <body>
-    <div class="container">
 
-        <div class="header">
-            <img src="img/logokabum.png" alt="logoKabum" class="logoKabum">
-            <div class="usuarioLogado">
-                <p class="saudacao"></p>
-                <button class="btn btn-vermelho" id="btnLogadoSair">SAIR</button>
-            </div>
-        </div>
+    <header>
+        <img src="img/logokabum.png" alt="logoKabum" class="logoKabum">
+        <p class="saudacao"></p>
+        <button class="btn btn-vermelho" id="btnLogadoSair">SAIR</button>
+    </header>
 
-        <!-- --------------------------------------------------------------------------------------------------------------------- -->
+    <nav>
+        <button>HOME</button>
+        <button id="btnSelected">USUARIOS</button>
+        <button>CLIENTES</button>
+    </nav>
 
-        <div class="menu">
-            <button>HOME</button>
-            <button>CADASTRAR</button>
-            <button>LISTAGEM</button>
-        </div>
+    <aside>
+        <h2>MENU</h2>
+        <button class="btn btn-azul" id="btnFormLogar">FAZER LOGIN</button>
+        <button class="btn btn-azul" id="btnCadastraUsuario">CADASTRE-SE</button>
+    </aside>
 
-        <!-- --------------------------------------------------------------------------------------------------------------------- -->
-        <div class="conteudo">
-            <div class="divNavMain">
-                <div class="navMain">
-                    <h2>MENU</h2>
-                    <button class="btn btn-azul" id="btnFormLogar">FAZER LOGIN</button>
-                    <button class="btn btn-azul" id="btnCadastraUsuario">CADASTRE-SE</button>
-                    <button class="btn btn-cinza" id="btnTabelaUsuarios">LISTA DE USUÁRIOS</button>
-                </div>
-            </div>
-            <div class="main">
+    <section>
+        <form class="formUpdateUsuario" id="formUpdateUsuario">
+            <h2>UPDATE USUÁRIOS</h2>
 
-                <!-- LISTAGEM DE USUÁRIO -->
-                <div>
-                    <form class="formUpdateUsuario" id="formUpdateUsuario">
-                        <h2>UPDATE USUÁRIOS</h2>
+            <label for="idUpdateUsuario">ID</label>
+            <input id="idUpdateUsuario" name="idUpdateUsuario" readonly>
 
-                        <label for="idUpdateUsuario">ID</label>
-                        <input id="idUpdateUsuario" name="idUpdateUsuario" readonly>
+            <label for="loginUpdateUsuario">LOGIN</label>
+            <input id="loginUpdateUsuario" name="loginUpdateUsuario" readonly>
 
-                        <label for="loginUpdateUsuario">LOGIN</label>
-                        <input id="loginUpdateUsuario" name="loginUpdateUsuario" readonly>
+            <label for="createUpdateUsuario" class="switch">CREATE</label>
+            <input type="button" id="createUpdateUsuario" name="createUpdateUsuario" class="btnUpdate">
 
-                        <label for="createUpdateUsuario" class="switch">CREATE</label>
-                        <input type="button" id="createUpdateUsuario" name="createUpdateUsuario" class="btnUpdate">
+            <label for="readUpdateUsuario" class="switch">READ</label>
+            <input type="button" id="readUpdateUsuario" name="readUpdateUsuario" class="btnUpdate">
 
-                        <label for="readUpdateUsuario" class="switch">READ</label>
-                        <input type="button" id="readUpdateUsuario" name="readUpdateUsuario" class="btnUpdate">
+            <label for="updateUpdateUsuario" class="switch">UPDATE</label>
+            <input type="button" id="updateUpdateUsuario" name="updateUpdateUsuario" class="btnUpdate">
 
-                        <label for="updateUpdateUsuario" class="switch">UPDATE</label>
-                        <input type="button" id="updateUpdateUsuario" name="updateUpdateUsuario" class="btnUpdate">
+            <label for="deleteUpdateUsuario" class="switch">DELET</label>
+            <input type="button" id="deleteUpdateUsuario" name="deleteUpdateUsuario" class="btnUpdate">
 
-                        <label for="deleteUpdateUsuario" class="switch">DELET</label>
-                        <input type="button" id="deleteUpdateUsuario" name="deleteUpdateUsuario" class="btnUpdate">
+            <button type="button" class="btn btn-verde" id="updateUsuario">ALTERAR</button>
+        </form>
 
-                        <button type="button" class="btn btn-verde" id="updateUsuario">ALTERAR</button>
-                        <div id="alertaSucessoUpdate">
-                            <p>USUÁRIO CADASTRADO</p>
-                        </div>
-                        <div id="alertaFalhaUpdate">
-                            <p>OPS! HOUVE UM ERRO!</p>
-                        </div>
-                    </form>
+        <table class="tabelaUsuarios" id="tabelaUsuarios">
+            <thead>
+                <td id="tdId">ID</td>
+                <td id="tdNome">NOME</td>
+                <td id="tdLogin">LOGIN</td>
+                <td id="tdTypeuser">TYPEUSER</td>
+                <td id="tdCreat">CREAT</td>
+                <td id="tdRead">READ</td>
+                <td id="tdUpdate">UPDATE</td>
+                <td id="tdDelet">DELET</td>
+                <td id="tdStatus">STATUS</td>
+                <td id="tdAcoes">AÇÕES</td>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+        </table>
+    </section>
 
-                    <table class="tabelaUsuarios" id="tabelaUsuarios">
-                        <thead>
-                            <td id="tdId">ID</td>
-                            <td id="tdNome">NOME</td>
-                            <td id="tdLogin">LOGIN</td>
-                            <td id="tdTypeuser">TYPEUSER</td>
-                            <td id="tdCreat">CREAT</td>
-                            <td id="tdRead">READ</td>
-                            <td id="tdUpdate">UPDATE</td>
-                            <td id="tdDelet">DELET</td>
-                            <td id="tdStatus">STATUS</td>
-                            <td id="tdAcoes">AÇÕES</td>
-                        </thead>
-                        <tbody id="tbody">
-                        </tbody>
-                    </table>
+    <footer>
 
-                </div>
-            </div>
-        </div>
-        <!-- --------------------------------------------------------------------------------------------------------------------- -->
+        <img src="img/icongmail.png" class="imgFooter">
+        <a href="instagram.com.br">paulo.kriger</a>
 
-        <div class="footer">
-            <div>
-                <img src="img/icongmail.png" class="imgFooter">
-                <a href="instagram.com.br">paulo.kriger</a>
-            </div>
-            <div>
-                <img src="img/iconinstagram.png" class="imgFooter">
-                <a href="instagram.com.br">paulomuzzy.dev</a>
-            </div>
-            <div>
-                <img src="img/icongithub.png" class="imgFooter">
-                <a href="instagram.com.br">PauloKrigerMuzzy</a>
-            </div>
-        </div>
-    </div>
+        <img src="img/iconinstagram.png" class="imgFooter">
+        <a href="instagram.com.br">paulomuzzy.dev</a>
+
+        <img src="img/icongithub.png" class="imgFooter">
+        <a href="instagram.com.br">PauloKrigerMuzzy</a>
+
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
