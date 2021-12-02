@@ -19,76 +19,64 @@
 
     <header>
         <img src="img/logokabum.png" alt="logoKabum" class="logoKabum">
-        <p class="saudacao"></p>
-        <button class="btn btn-vermelho" id="btnLogadoSair">SAIR</button>
+        <p class="saudacaoUsuario"></p>
+        <button>SAIR</button>
     </header>
 
     <nav>
-        <button id="btnSelected">HOME</button>
+        <button>HOME</button>
+        <div>
+            <a></a>
+            <a></a>
+            <a></a>
+        </div>
         <button>USUARIOS</button>
         <button>CLIENTES</button>
     </nav>
 
-    <aside>
-        <h2>MENU</h2>
-        <button class="btn btn-azul" id="btnFormLogar">FAZER LOGIN</button>
-        <button class="btn btn-azul" id="btnCadastraUsuario">CADASTRE-SE</button>
-    </aside>
-
     <section>
-
-        <!-- LOGAR -->
-        <form class="formLogar" method="POST">
+        <form class="Logar" method="POST">
             <h2>ENTRAR NO CRUD</h2>
             <label for="loginLogar">Login</label>
             <input type="text" id="loginLogar" name="loginLogar" required />
 
             <label for="senhaLogar">Senha</label>
-            <input type="password" id="senhaLogar" name="senhaLogar" autocomplete="on" required>
+            <input type="password" id="senhaLogar" name="senhaLogar" autocomplete="on" required />
 
-            <button type="submit" class="btn btn-verde">ENTRAR</button>
+            <button type="submit" class="">ENTRAR</button>
 
             <div class="alerta">
                 <p>LOGIN OU SENHA INVALÁLIDOS !!!</p>
-                <button class="btn btn-vermelho btnAlertaSenha">x</button>
             </div>
         </form>
 
-        <!-- CADASTRAR USUÁRIO -->
-        <form class="formCadastraUsuario" method="POST" id="formCadastraUsuario"">
-                    <h2>CADASTRAR USUÁRIO</h2>
-                    <label for=" nomeCadastraUsuario">Nome</label>
-            <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" required>
+        <form class="formCadastraUsuario" method="POST" id="formCadastraUsuario">
+            <h2>CADASTRAR USUÁRIO</h2>
+            <label for=" nomeCadastraUsuario">Nome</label>
+            <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" required />
 
             <label for="loginCadastraUsuario">Login</label>
-            <input type="text" name="loginCadastraUsuario" id="loginCadastraUsuario" required>
+            <input type="text" name="loginCadastraUsuario" id="loginCadastraUsuario" required />
 
             <label for="emailCadastraUsuario">E-mail</label>
-            <input type="email" name="emailCadastraUsuario" id="emailCadastraUsuario" required>
+            <input type="email" name="emailCadastraUsuario" id="emailCadastraUsuario" required />
 
             <label for=" senhaCadastraUsuario">Senha</label>
-            <input type="password" name="senhaCadastraUsuario" id="senhaCadastraUsuario" autocomplete="off" required>
+            <input type="password" name="senhaCadastraUsuario" id="senhaCadastraUsuario" autocomplete="off" required />
 
             <label for="confirmaSenhaCadastraUsuario">Confirmar Senha</label>
             <input type="password" name="confirmaSenhaCadastraUsuario" id="confSenhaCadastraUsuario" autocomplete="off"
-                required>
+                required />
             <button type="submit" class="btn btn-verde">CADASTRAR</button>
-
         </form>
     </section>
 
     <footer>
-
-        <img src="img/icongmail.png" class="imgFooter">
-        <a href="instagram.com.br">paulo.kriger</a>
-
-        <img src="img/iconinstagram.png" class="imgFooter">
-        <a href="instagram.com.br">paulomuzzy.dev</a>
-
-        <img src="img/icongithub.png" class="imgFooter">
-        <a href="instagram.com.br">PauloKrigerMuzzy</a>
-
+        <a href="instagram.com.br"><img src="img/icongmail.png" class="imgFooter">paulo.kriger</a>
+        <a href="instagram.com.br"><img src="img/iconinstagram.png" class="imgFooter">paulomuzzy.dev</a>
+        <a href="instagram.com.br"><img src="img/icongithub.png" class="imgFooter">PauloKrigerMuzzy</a>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>
