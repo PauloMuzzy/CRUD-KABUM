@@ -3,8 +3,8 @@ $(function () {
     $("#alertLoginSuccess").hide()
     $("#alertLoginFail").hide()
     $("#statusLogin").hide()
-    $("#formCadastraUsuario").hide()
-
+    $("#formRegisterUser").hide()
+    $("#linkCrudUsers").hide()
 
     const statusLogged = () => {
         $("#statusLogin").show()
@@ -28,7 +28,7 @@ $(function () {
                     const salutation = "Olá, " + res.NOME + "."
                     $("#salutation").html(salutation)
                     if (res.TYPE_USER == "MASTER") {
-                        // $("#btnFormUpdateUsuario").show()
+                        $("#linkCrudUsers").show()
                         statusLogged()
                     }
                 }
@@ -37,12 +37,23 @@ $(function () {
     }
     verificaLocalstorage()
 
+    $("#btnFormLogin").click(function () {
+        $("#formRegisterUser").hide()
+        $("#formLogin").show()
+    })
+
+    $("#btnFormRegister").click(function () {
+        $("#formLogin").hide()
+        $("#formRegisterUser").show()
+
+    })
+
     // ------------------------------------- OK -----------------------------
     //LOGAR    
 
 
 
-    $("#formLogar").click((e) => {
+    $("#formLogin").click((e) => {
         e.preventDefault()
         const loginLogar = document.getElementById("loginLogar").value
         const senhaLogar = document.getElementById("senhaLogar").value

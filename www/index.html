@@ -32,33 +32,17 @@
                 <summary>
                     <p>HOME</p>
                 </summary>
-                <button>LOGAR</button>
-                <button>CADASTRE-SE</button>
+                <button id="btnFormLogin">LOGAR</button>
+                <button id="btnFormRegister">CADASTRE-SE</button>
             </details>
 
-            <details>
-                <summary>
-                    <a href="/usuario/usuario.html">CRUD USUÁRIOS</a>
-                </summary>
-                <button>CREATE</button>
-                <button>READ</button>
-                <button>UPDATE</button>
-                <button>DELETE</button>
-            </details>
+            <button>CRUD USUÁRIOS</button>
+            <button>CRUD CLIENTES</button>
 
-            <details>
-                <summary>
-                    <a href="/cliente/cliente.html">CRUD CLIENTES</a>
-                </summary>
-                <button>CREATE</button>
-                <button>READ</button>
-                <button>UPDATE</button>
-                <button>DELETE</button>
-            </details>
         </nav>
 
         <article>
-            <form class="Logar" method="POST" id="formLogar">
+            <form class="Logar" method="POST" id="formLogin">
                 <h2>ENTRAR NO CRUD</h2>
                 <label for="loginLogar">Login</label>
                 <input type="text" id="loginLogar" name="loginLogar" required />
@@ -78,7 +62,7 @@
 
             </form>
 
-            <form class=" formCadastraUsuario" method="POST" id="formCadastraUsuario">
+            <form class=" formCadastraUsuario" method="POST" id="formRegisterUser">
                 <h2>CADASTRAR USUÁRIO</h2>
                 <label for=" nomeCadastraUsuario">Nome</label>
                 <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" required />

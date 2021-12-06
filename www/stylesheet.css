@@ -74,6 +74,8 @@ nav p {
     font-weight: 600;
 }
 
+
+
 /* -----------------------------------------------------------------------------------------------------------SECTION */
 section{
     width: 100%;
@@ -174,11 +176,29 @@ button {
     height: 20%;
 }
 
-nav details summary button {
-    background-color: whitesmoke;
+nav details button {
     width: 100%;
+    background-color: whitesmoke;
+    margin: 4px;
+    color: black;
 }
 
+nav details button:hover{
+    background-color: gray;
+    color: whitesmoke;
+}
+
+nav button {
+    background-color: #FA6501;
+    color: whitesmoke;
+    border-radius: 0px;
+    width: 100%;
+    margin: 4px;
+    height: 25px;
+    text-align: start;
+    font-weight: 600;
+    font-size: 15px;
+}
 
 /* -----------------------------------------------------------------------------------------------------------ALERTAS */
 
