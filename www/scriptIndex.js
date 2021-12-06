@@ -107,7 +107,6 @@ $(function () {
     })
 
     $("#btnExitLogin").click(function () {
-
         const logOff = () => {
             localStorage.clear()
             location.reload()

@@ -12,13 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="scriptIndex.js"></script>
+    <script type="text/javascript" src="usuario.js"></script>
 </head>
 
 <body>
 
     <header>
-        <img src="img/logokabum.png" alt="logoKabum" class="logoKabum">
+        <img src="../img/logokabum.png" alt="logoKabum" class="logoKabum">
         <div id="statusLogin">
             <p class="saudacaoUsuario" id="salutation"></p>
             <button class="btn-red" id="btnExitLogin">SAIR</button>
@@ -30,18 +30,13 @@
         <nav class="menu">
 
             <button type="button"><a href="./localhost/index.html">HOME</a></button>
-            <details>
-                <summary>
-                    <p>USUÁRIOS</p>
-                </summary>
-                <button id="btnCrudUsers">CRUD</button>
-            </details>
+            <button><a>USUÁRIOS</a></button>
 
             <button><a href="/cliente/cliente.html">CLIENTES</a></button>
         </nav>
 
-        <div class="sectionContent">
-            <form class="formUpdateUsuario" id="formUpdateUsuario">
+        <article>
+            <form class="formUpdateUser" id="formUpdateUser">
                 <h2>UPDATE USUÁRIOS</h2>
 
                 <label for="idUpdateUsuario">ID</label>
@@ -62,7 +57,7 @@
                 <label for="deleteUpdateUsuario" class="switch">DELET</label>
                 <input type="button" id="deleteUpdateUsuario" name="deleteUpdateUsuario" class="btnUpdate">
 
-                <button type="button" class="btn btn-verde" id="updateUsuario">ALTERAR</button>
+                <button type="button" class="btn-green" id="updateUsuario">ALTERAR</button>
             </form>
 
             <table class="tabelaUsuarios" id="tabelaUsuarios">
@@ -81,14 +76,14 @@
                 <tbody id="tbody">
                 </tbody>
             </table>
-        </div>
+        </article>
 
     </section>
 
     <footer>
-        <a href="instagram.com.br"><img src="img/icongmail.png">paulo.kriger</a>
-        <a href="instagram.com.br"><img src="img/iconinstagram.png">paulomuzzy.dev</a>
-        <a href="instagram.com.br"><img src="img/icongithub.png">PauloKrigerMuzzy</a>
+        <a href="instagram.com.br"><img src="../img/icongmail.png">paulo.kriger</a>
+        <a href="instagram.com.br"><img src="../img/iconinstagram.png">paulomuzzy.dev</a>
+        <a href="instagram.com.br"><img src="../img/icongithub.png">PauloKrigerMuzzy</a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

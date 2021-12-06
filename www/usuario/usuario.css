@@ -88,7 +88,7 @@ section{
     background-color: #F2F3F4;
 }
 
-.sectionContent{
+article{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -126,13 +126,21 @@ input {
     margin-bottom: 7px;
 }
 
-article{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 85%;
+table{
+    border: solid 1px black;
 }
+
+table td {
+    border: solid 1px black;
+    width: 150px;
+    text-align: center;
+}
+
+thead {
+    background-color:#FA6501 ;
+    color: whitesmoke;
+}
+
 
 /* -----------------------------------------------------------------------------------------------------------FOOTER */
 footer{
@@ -167,6 +175,7 @@ button {
 
 .btn-orange{
     background-color: #FA6501;
+    color: whitesmoke;
     width: 50%;
 }
 
@@ -174,6 +183,9 @@ button {
     background-color: #1A8754;
     color: whitesmoke;
     width: 50%;
+}
+
+#updateUsuario{
     height: 30px;
 }
 
@@ -181,8 +193,22 @@ button {
     background-color: #DC3545;
     color: whitesmoke;
     width: 50%;
-    height: 20%;
 }
+
+.btn-lightGreen{
+    background-color: #1A8754;
+    color: whitesmoke;
+    width: 50%;
+    opacity: 50%;
+}
+
+.btn-lightRed{
+    background-color: #DC3545;
+    color: whitesmoke;
+    width: 50%;
+    opacity: 50%;
+}
+
 
 nav details button {
     width: 100%;
@@ -206,6 +232,11 @@ nav button {
     text-align: start;
     font-weight: 600;
     font-size: 15px;
+}
+
+table button {
+    width: 40%;
+    height: 90%;
 }
 
 /* -----------------------------------------------------------------------------------------------------------ALERTAS */
