@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+/* -----------------------------------------------------------------------------------------------------------HEADER */
+header{
+    width: 100%;
+    height: 12%;
+    display: flex;
+    background-color: #1860B1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#statusLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+}
+
+/* -----------------------------------------------------------------------------------------------------------NAV */
+nav{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    background-color: #FAFAFB;
+    gap: 10px;
+    padding: 1px;
+    width: 10%;
+}
+
+summary::--webkit-details-marker {
+    display: none;
+  }
+
+  nav details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+}
+
+nav details summary {
+    display: flex;
+    background-color: #FA6501;
+    color: black;
+    width: 100%;
+}
+
+nav a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+nav p {
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+
+
+/* -----------------------------------------------------------------------------------------------------------SECTION */
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    background-color: #F2F3F4;
+}
+
+.sectionContent{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    opacity: 95%;
+    padding-bottom: 10px;
+    width: 25%;
+}
+    form h2{
+        background-color:#FA6501;
+        width: 100%;
+        color: whitesmoke;
+        border-radius: 3px;
+    }
+
+input {
+    font-size: 15px;
+    border:solid 1px black;
+    border-radius: 3px;
+    text-align: center;
+    width: 50%;
+    height: 30px;
+    margin-bottom: 7px;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+}
+
+/* -----------------------------------------------------------------------------------------------------------FOOTER */
+footer{
+    width: 100%;
+    height: 12%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    background-color: #114D8E;
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+    height: 20%;
+    text-decoration: none;
+    color: white;
+    gap: 5%;
+}
+
+/* -----------------------------------------------------------------------------------------------------------BOTÕES */
+button {
+    border: 0px;
+    border-radius: 3px;
+    font-weight: 600;
+    transition: transform 200ms ease;
+    will-change: transform;
+    cursor: pointer;
+}
+
+.btn-orange{
+    background-color: #FA6501;
+    width: 50%;
+}
+
+.btn-green{
+    background-color: #1A8754;
+    color: whitesmoke;
+    width: 50%;
+    height: 30px;
+}
+
+.btn-red{
+    background-color: #DC3545;
+    color: whitesmoke;
+    width: 50%;
+    height: 20%;
+}
+
+nav details button {
+    width: 100%;
+    background-color: whitesmoke;
+    margin: 4px;
+    color: black;
+}
+
+nav details button:hover{
+    background-color: gray;
+    color: whitesmoke;
+}
+
+nav button {
+    background-color: #FA6501;
+    color: whitesmoke;
+    border-radius: 0px;
+    width: 100%;
+    margin: 4px;
+    height: 25px;
+    text-align: start;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* -----------------------------------------------------------------------------------------------------------ALERTAS */
+
+.alert-red{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DC3545;
+    border-radius: 3px;
+    opacity: 75%;
+    width: 100%;
+    margin-top: 5px;
+    height: 50px;
+}
+
+.alert-green{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1A8754;
+    opacity: 75%;
+    width: 100%;
+    margin-top: 5px;
+    height: 50px;
+}
+
+/* -----------------------------------------------------------------------------------------------------------IMAGENS */
+img{
+    height: 100%;
+}
