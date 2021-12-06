@@ -19,62 +19,93 @@
 
     <header>
         <img src="img/logokabum.png" alt="logoKabum" class="logoKabum">
-        <p class="saudacaoUsuario"></p>
-        <button>SAIR</button>
+        <div id="statusLogin">
+            <p class="saudacaoUsuario" id="salutation"></p>
+            <button class="btn-red" id="btnExitLogin">SAIR</button>
+        </div>
     </header>
 
-    <nav>
-        <button>HOME</button>
-        <div>
-            <a></a>
-            <a></a>
-            <a></a>
-        </div>
-        <button>USUARIOS</button>
-        <button>CLIENTES</button>
-    </nav>
-
     <section>
-        <form class="Logar" method="POST">
-            <h2>ENTRAR NO CRUD</h2>
-            <label for="loginLogar">Login</label>
-            <input type="text" id="loginLogar" name="loginLogar" required />
 
-            <label for="senhaLogar">Senha</label>
-            <input type="password" id="senhaLogar" name="senhaLogar" autocomplete="on" required />
+        <nav class="menu">
+            <details>
+                <summary>
+                    <p>HOME</p>
+                </summary>
+                <button>LOGAR</button>
+                <button>CADASTRE-SE</button>
+            </details>
 
-            <button type="submit" class="">ENTRAR</button>
+            <details>
+                <summary>
+                    <a href="/usuario/usuario.html">CRUD USUÁRIOS</a>
+                </summary>
+                <button>CREATE</button>
+                <button>READ</button>
+                <button>UPDATE</button>
+                <button>DELETE</button>
+            </details>
 
-            <div class="alerta">
-                <p>LOGIN OU SENHA INVALÁLIDOS !!!</p>
-            </div>
-        </form>
+            <details>
+                <summary>
+                    <a href="/cliente/cliente.html">CRUD CLIENTES</a>
+                </summary>
+                <button>CREATE</button>
+                <button>READ</button>
+                <button>UPDATE</button>
+                <button>DELETE</button>
+            </details>
+        </nav>
 
-        <form class="formCadastraUsuario" method="POST" id="formCadastraUsuario">
-            <h2>CADASTRAR USUÁRIO</h2>
-            <label for=" nomeCadastraUsuario">Nome</label>
-            <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" required />
+        <article>
+            <form class="Logar" method="POST" id="formLogar">
+                <h2>ENTRAR NO CRUD</h2>
+                <label for="loginLogar">Login</label>
+                <input type="text" id="loginLogar" name="loginLogar" required />
 
-            <label for="loginCadastraUsuario">Login</label>
-            <input type="text" name="loginCadastraUsuario" id="loginCadastraUsuario" required />
+                <label for="senhaLogar">Senha</label>
+                <input type="password" id="senhaLogar" name="senhaLogar" autocomplete="on" required />
 
-            <label for="emailCadastraUsuario">E-mail</label>
-            <input type="email" name="emailCadastraUsuario" id="emailCadastraUsuario" required />
+                <button type="button" class="btn-green">ENTRAR</button>
 
-            <label for=" senhaCadastraUsuario">Senha</label>
-            <input type="password" name="senhaCadastraUsuario" id="senhaCadastraUsuario" autocomplete="off" required />
+                <div class="alert-red" id="alertLoginSuccess">
+                    <p>LOGIN OU SENHA INVALÁLIDOS !!!</p>
+                </div>
 
-            <label for="confirmaSenhaCadastraUsuario">Confirmar Senha</label>
-            <input type="password" name="confirmaSenhaCadastraUsuario" id="confSenhaCadastraUsuario" autocomplete="off"
-                required />
-            <button type="submit" class="btn btn-verde">CADASTRAR</button>
-        </form>
+                <div class="alert-green" id="alertLoginFail">
+                    <p>LOGIN REALIZADO !!!</p>
+                </div>
+
+            </form>
+
+            <form class=" formCadastraUsuario" method="POST" id="formCadastraUsuario">
+                <h2>CADASTRAR USUÁRIO</h2>
+                <label for=" nomeCadastraUsuario">Nome</label>
+                <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" required />
+
+                <label for="loginCadastraUsuario">Login</label>
+                <input type="text" name="loginCadastraUsuario" id="loginCadastraUsuario" required />
+
+                <label for="emailCadastraUsuario">E-mail</label>
+                <input type="email" name="emailCadastraUsuario" id="emailCadastraUsuario" required />
+
+                <label for=" senhaCadastraUsuario">Senha</label>
+                <input type="password" name="senhaCadastraUsuario" id="senhaCadastraUsuario" autocomplete="off"
+                    required />
+
+                <label for="confirmaSenhaCadastraUsuario">Confirmar Senha</label>
+                <input type="password" name="confirmaSenhaCadastraUsuario" id="confSenhaCadastraUsuario"
+                    autocomplete="off" required />
+                <button type="submit" class="btn-green">CADASTRAR</button>
+            </form>
+        </article>
+
     </section>
 
     <footer>
-        <a href="instagram.com.br"><img src="img/icongmail.png" class="imgFooter">paulo.kriger</a>
-        <a href="instagram.com.br"><img src="img/iconinstagram.png" class="imgFooter">paulomuzzy.dev</a>
-        <a href="instagram.com.br"><img src="img/icongithub.png" class="imgFooter">PauloKrigerMuzzy</a>
+        <a href="instagram.com.br"><img src="img/icongmail.png">paulo.kriger</a>
+        <a href="instagram.com.br"><img src="img/iconinstagram.png">paulomuzzy.dev</a>
+        <a href="instagram.com.br"><img src="img/icongithub.png">PauloKrigerMuzzy</a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

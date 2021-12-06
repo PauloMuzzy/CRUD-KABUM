@@ -15,7 +15,7 @@ body{
 /* -----------------------------------------------------------------------------------------------------------HEADER */
 header{
     width: 100%;
-    height: 15%;
+    height: 12%;
     display: flex;
     background-color: #1860B1;
     flex-direction: row;
@@ -23,20 +23,62 @@ header{
     align-items: center;
 }
 
+#statusLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+}
+
 /* -----------------------------------------------------------------------------------------------------------NAV */
 nav{
-    width: 100%;
-    height: 5%;
+    flex-direction: column;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color:#FA6501;
+    justify-content: flex-start;
+    width: 15%;
+    height: 100%;
+    background-color: #FAFAFB;
+    gap: 10px;
+}
+
+summary::--webkit-details-marker {
+    display: none;
+  }
+
+  nav details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+}
+
+nav details summary {
+    display: flex;
+    background-color: #FA6501;
+    color: black;
+    width: 100%;
+}
+
+nav a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
+}
+
+nav p {
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 600;
 }
 
 /* -----------------------------------------------------------------------------------------------------------SECTION */
 section{
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     flex: 1;
@@ -52,23 +94,40 @@ form{
     margin: 5px;
     padding: 5px;
     border: 1px solid grey;
+    border-radius: 3px;
     opacity: 95%;
     padding-bottom: 10px;
+    width: 25%;
 }
+    form h2{
+        background-color:#FA6501;
+        width: 100%;
+        color: whitesmoke;
+        border-radius: 3px;
+    }
 
 input {
     font-size: 15px;
     border:solid 1px black;
+    border-radius: 3px;
     text-align: center;
     width: 50%;
     height: 30px;
     margin-bottom: 7px;
 }
 
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+}
+
 /* -----------------------------------------------------------------------------------------------------------FOOTER */
 footer{
     width: 100%;
-    height: 15%;
+    height: 12%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -88,29 +147,67 @@ footer a {
 
 /* -----------------------------------------------------------------------------------------------------------BOTÕES */
 button {
-    background-color: #FA6501;
     border: 0px;
-    width: 15%;
-    height: 90%;
-    color: white;
+    border-radius: 3px;
     font-weight: 600;
-    font-size: 18px;
-    gap: 20px;
     transition: transform 200ms ease;
     will-change: transform;
     cursor: pointer;
 }
 
-button:hover {
-    transform: scale(1.05);
-    border: solid 1px whitesmoke;
+.btn-orange{
+    background-color: #FA6501;
+    width: 50%;
+}
+
+.btn-green{
+    background-color: #1A8754;
+    color: whitesmoke;
+    width: 50%;
+    height: 30px;
+}
+
+.btn-red{
+    background-color: #DC3545;
+    color: whitesmoke;
+    width: 50%;
+    height: 20%;
+}
+
+nav details summary button {
+    background-color: whitesmoke;
+    width: 100%;
+}
+
+
+/* -----------------------------------------------------------------------------------------------------------ALERTAS */
+
+.alert-red{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DC3545;
+    border-radius: 3px;
+    opacity: 75%;
+    width: 100%;
+    margin-top: 5px;
+    height: 50px;
+}
+
+.alert-green{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1A8754;
+    opacity: 75%;
+    width: 100%;
+    margin-top: 5px;
+    height: 50px;
 }
 
 /* -----------------------------------------------------------------------------------------------------------IMAGENS */
-.logoKabum{
+img{
     height: 100%;
 }
 
-.imgFooter{
-    height: 100%;
-}
+
