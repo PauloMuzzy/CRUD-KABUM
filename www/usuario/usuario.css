@@ -185,8 +185,9 @@ button {
     width: 50%;
 }
 
-#updateUsuario{
+form button{
     height: 30px;
+    margin-top: 2px;
 }
 
 .btn-red{

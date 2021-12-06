@@ -133,23 +133,47 @@ if ($_POST) {
 if ($method === 'PUT') {
     parse_str(file_get_contents('php://input'), $_PUT);
 
-    $create = ($_PUT['create']);
-    $read = ($_PUT['read']);
-    $update = ($_PUT['update']);
-    $delete = ($_PUT['delete']);
-    $id = ($_PUT['id']);
+    $action = ($_PUT['action']);
 
-    try {
-        $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_CREATE=?,ACESSO_READ=?,ACESSO_UPDATE=?,ACESSO_DELETE=? WHERE ID=?');
+    if ($action == "update") {
+        $create = ($_PUT['create']);
+        $read = ($_PUT['read']);
+        $update = ($_PUT['update']);
+        $delete = ($_PUT['delete']);
+        $id = ($_PUT['id']);
 
-        $query->bindParam(1, $_PUT['create'], PDO::PARAM_STR);
-        $query->bindParam(2, $_PUT['read'], PDO::PARAM_STR);
-        $query->bindParam(3, $_PUT['update'], PDO::PARAM_STR);
-        $query->bindParam(4, $_PUT['delete'], PDO::PARAM_STR);
-        $query->bindParam(5, $id, PDO::PARAM_INT);
+        try {
+            $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_CREATE=?,ACESSO_READ=?,ACESSO_UPDATE=?,ACESSO_DELETE=? WHERE ID=?');
 
-        $query->execute();
-    } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
+            $query->bindParam(1, $_PUT['create'], PDO::PARAM_STR);
+            $query->bindParam(2, $_PUT['read'], PDO::PARAM_STR);
+            $query->bindParam(3, $_PUT['update'], PDO::PARAM_STR);
+            $query->bindParam(4, $_PUT['delete'], PDO::PARAM_STR);
+            $query->bindParam(5, $id, PDO::PARAM_INT);
+
+            $query->execute();
+
+            echo json_encode("1");
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    } else if ($action == "softDelete") {
+
+        $ativo = ($_PUT['ativo']);
+        $id = ($_PUT['id']);
+
+        try {
+            $query = $pdo->prepare('UPDATE USUARIOS SET ATIVO=? WHERE ID=?');
+
+            $query->bindParam(1, $ativo, PDO::PARAM_STR);
+            $query->bindParam(2, $id, PDO::PARAM_STR);
+
+
+            $query->execute();
+
+            echo json_encode($id);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
     }
 }

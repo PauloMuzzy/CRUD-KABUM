@@ -1,7 +1,6 @@
 $(function () {
 
-    $("#formUpdateUser").hide()
-
+    $("#formUpdateUsers").hide()
     const verificaLocalstorage = () => {
 
         const logadoLocalstorage = localStorage.getItem("logado")
@@ -16,7 +15,7 @@ $(function () {
                 success: function (res) {
                     const saudacao = "Olá, " + res.NOME + "."
                     $(".saudacao").html(saudacao)
-                    mostrarLogado()
+                    // mostrarLogado()
                     if (res.TYPE_USER == "MASTER") {
                         $("#btnFormUpdateUsuario").show()
                     }
@@ -60,6 +59,27 @@ $(function () {
                 actionsCell.appendChild(btnActionDelete)
                 newRow.appendChild(actionsCell)
             });
+
+
+            $(".btnDeleteUser").click(function () {
+
+                const idBtnSoftDelete = $(this).attr('data-id')
+                const objsoftDeleteUsuario = {
+                    action: "softDelete",
+                    ativo: "0",
+                    id: idBtnSoftDelete
+                }
+
+                $.ajax({
+                    type: "PUT",
+                    url: "/api/usuarios.php",
+                    data: objsoftDeleteUsuario,
+                    success: () => {
+                        location.reload()
+                    }
+                })
+            })
+
 
             $(".btnUpdateUser").click(function () {
 
@@ -114,8 +134,8 @@ $(function () {
 
                         insereDadosInputUpdateUsuario()
 
-                        $("#formUpdateUser").show()
-                        $("#tabelaUsuarios").hide()
+                        $("#formUpdateUsers").show()
+                        $("#tableUsers").hide()
 
                         let valueBtnCreateUpdate = document.querySelector("#createUpdateUsuario").value
                         let valueBtnReadUpdate = document.querySelector("#readUpdateUsuario").value
@@ -173,49 +193,26 @@ $(function () {
                             }
                         })
 
-                        let valueInputCreate = document.getElementById("createUpdateUsuario").value
-                        let valueInputRead = document.getElementById("readUpdateUsuario").value
-                        let valueInputUpdate = document.getElementById("updateUpdateUsuario").value
-                        let valueInputDelete = document.getElementById("deleteUpdateUsuario").value
-
-                        if (valueInputCreate == "HABILITADO") {
-                            valueInputCreate = "DESABILITADO"
-                        } else {
-                            valueInputCreate = "HABILITADO"
-                        }
-
-                        if (valueInputRead == "HABILITADO") {
-                            valueInputRead = "DESABILITADO"
-                        } else {
-                            valueInputRead = "HABILITADO"
-                        }
-
-                        if (valueInputUpdate == "HABILITADO") {
-                            valueInputUpdate = "DESABILITADO"
-                        } else {
-                            valueInputUpdate = "HABILITADO"
-                        }
-
-                        if (valueInputDelete == "HABILITADO") {
-                            valueInputDelete = "DESABILITADO"
-                        } else {
-                            valueInputDelete = "HABILITADO"
-                        }
-
-                        const objUpdateUsuario = {
-                            create: valueInputCreate,
-                            read: valueInputRead,
-                            update: valueInputUpdate,
-                            delete: valueInputDelete,
-                            id: idBtnUpdate
-                        }
-
                         $("#updateUsuario").click(function () {
+                            let valueInputCreate = document.getElementById("createUpdateUsuario").value
+                            let valueInputRead = document.getElementById("readUpdateUsuario").value
+                            let valueInputUpdate = document.getElementById("updateUpdateUsuario").value
+                            let valueInputDelete = document.getElementById("deleteUpdateUsuario").value
+
+                            const objUpdateUsuario = {
+                                action: "update",
+                                create: valueInputCreate,
+                                read: valueInputRead,
+                                update: valueInputUpdate,
+                                delete: valueInputDelete,
+                                id: idBtnUpdate
+                            }
+
                             $.ajax({
                                 type: "PUT",
                                 url: "/api/usuarios.php",
                                 data: objUpdateUsuario,
-                                success: () => {
+                                success: (res) => {
                                     location.reload()
                                 }
                             })
@@ -223,7 +220,14 @@ $(function () {
                     }
                 })
             })
+
         }
     })
 
+    $("#btnBackToTableUser").click(() => {
+        location.reload()
+    })
+
+
 })
+
