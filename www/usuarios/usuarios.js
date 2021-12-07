@@ -1,6 +1,26 @@
 $(function () {
 
+    $("#tableUsers").hide()
     $("#formUpdateUsers").hide()
+
+    $("#btnShowFormRegisterUsers").click(function () {
+        $("#formRegisterUsers").show()
+        $("#tableUsers").hide()
+        $("#formUpdateUsers").hide()
+    })
+
+    $("#btnShowTableUsers").click(function () {
+        $("#formRegisterUsers").hide()
+        $("#tableUsers").show()
+        $("#formUpdateUsers").hide()
+    })
+
+    $("#btnShowFormUpdateDeleteUsers").click(function () {
+        $("#formRegisterUsers").hide()
+        $("#tableUsers").show()
+        $("#formUpdateUsers").show()
+    })
+
     const verificaLocalstorage = () => {
 
         const logadoLocalstorage = localStorage.getItem("logado")
@@ -15,7 +35,6 @@ $(function () {
                 success: function (res) {
                     const saudacao = "Olá, " + res.NOME + "."
                     $(".saudacao").html(saudacao)
-                    // mostrarLogado()
                     if (res.TYPE_USER == "MASTER") {
                         $("#btnFormUpdateUsuario").show()
                     }
@@ -26,8 +45,26 @@ $(function () {
     verificaLocalstorage()
 
     // ------------------------------------- OK -----------------------------
-    //BUSCA USUARIOS
+    //CADASTRAR USUARIO
+    $("#formCadastraUsuario").on("submit", function (e) {
+        e.preventDefault()
 
+        const nomeCadastraUsuario = document.getElementById("nomeCadastraUsuario").value
+        const loginCadastraUsuario = document.getElementById("loginCadastraUsuario").value
+        const senhaCadastraUsuario = document.getElementById("senhaCadastraUsuario").value
+        const emailCadastraUsuario = document.getElementById("emailCadastraUsuario").value
+        const objCadastraUsuarios = { nome: nomeCadastraUsuario, login: loginCadastraUsuario, senha: senhaCadastraUsuario, email: emailCadastraUsuario }
+
+        $.ajax({
+            method: "POST",
+            url: "/api/usuarios.php",
+            data: objCadastraUsuarios,
+            success: function (res) {
+            }
+        })
+    })
+
+    //BUSCA USUARIOS
     $("#tbody tr").remove()
 
     $.ajax({
@@ -133,8 +170,8 @@ $(function () {
 
                         insereDadosInputUpdateUsuario()
 
-                        $("#formUpdateUsers").show()
-                        $("#tableUsers").hide()
+                        // $("#formUpdateUsers").show()
+                        // $("#tableUsers").hide()
 
                         let valueBtnCreateUpdate = document.querySelector("#createUpdateUsuario").value
                         let valueBtnReadUpdate = document.querySelector("#readUpdateUsuario").value
@@ -226,7 +263,5 @@ $(function () {
     $("#btnBackToTableUser").click(() => {
         location.reload()
     })
-
-
 })
 

@@ -26,16 +26,15 @@
     </header>
 
     <nav class="menu">
-        <button>HOME</button>
-        <button>CLIENTES</button>
-        <button>USUÁRIOS</button>
+        <button><a href="../index.html">HOME</a></button>
+        <button><a href="../clientes/clientes.html">CLIENTES</a></button>
+        <button id="btnShowUsuersIfMaster"><a href="../usuarios/usuarios.html">USUÁRIOS</a></button>
     </nav>
 
     <main>
 
         <aside>
             <button id="btnShowFormLogin">LOGAR</button>
-            <button id="btnFormRegisterUser">CADASTRAR</button>
         </aside>
 
         <article>
@@ -60,26 +59,7 @@
 
             </form>
 
-            <form class=" formCadastraUsuario" method="POST" id="formRegisterUser">
-                <h2>CADASTRAR USUÁRIO</h2>
-                <label for=" nomeCadastraUsuario">Nome</label>
-                <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" required />
 
-                <label for="loginCadastraUsuario">Login</label>
-                <input type="text" name="loginCadastraUsuario" id="loginCadastraUsuario" required />
-
-                <label for="emailCadastraUsuario">E-mail</label>
-                <input type="email" name="emailCadastraUsuario" id="emailCadastraUsuario" required />
-
-                <label for=" senhaCadastraUsuario">Senha</label>
-                <input type="password" name="senhaCadastraUsuario" id="senhaCadastraUsuario" autocomplete="off"
-                    required />
-
-                <label for="confirmaSenhaCadastraUsuario">Confirmar Senha</label>
-                <input type="password" name="confirmaSenhaCadastraUsuario" id="confSenhaCadastraUsuario"
-                    autocomplete="off" required />
-                <button type="submit" class="btn-green">CADASTRAR</button>
-            </form>
         </article>
 
     </main>

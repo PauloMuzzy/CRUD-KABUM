@@ -39,6 +39,7 @@ main{
     flex-direction: row;
     width: 100%;
 }
+
 /* -----------------------------------------------------------------------------------------------------------NAV */
 nav {
     display: flex;
@@ -52,13 +53,21 @@ nav {
 
 nav button{
     background-color: #FA6501;
-    color: whitesmoke;
     width: 25%;
     height: 100%;
     font-size: 120%;
 }
-/* -----------------------------------------------------------------------------------------------------------ASIDE */
 
+nav button a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+nav button a:hover{
+    color: rgb(202, 199, 199);
+}
+
+/* -----------------------------------------------------------------------------------------------------------ASIDE */
 aside{
     display: flex;
     flex-direction: column;
@@ -82,7 +91,6 @@ aside button:hover {
 }
 
 /* -----------------------------------------------------------------------------------------------------------ARTICLE */
-
 article{
     width: 100%;
     display: flex;
@@ -102,9 +110,10 @@ form{
     border-radius: 3px;
     opacity: 95%;
     padding-bottom: 10px;
-    width: 25%;
+    width: 20%;
 }
     form h2{
+        font-size: 18px;
         background-color:#FA6501;
         width: 100%;
         color: whitesmoke;
@@ -168,11 +177,10 @@ button {
     background-color: #DC3545;
     color: whitesmoke;
     width: 50%;
-    height: 20%;
+    height: 30px;
 }
 
 /* -----------------------------------------------------------------------------------------------------------ALERTAS */
-
 .alert-red{
     display: flex;
     align-items: center;

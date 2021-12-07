@@ -12,7 +12,6 @@ const verificaLocalstorage = () => {
             success: function (res) {
                 const saudacao = "Olá, " + res.NOME + "."
                 $(".saudacao").html(saudacao)
-                mostrarLogado()
                 if (res.TYPE_USER == "MASTER") {
                     $("#btnFormUpdateUsuario").show()
                 }

@@ -3,23 +3,12 @@ $(function () {
     $("#alertLoginSuccess").hide()
     $("#alertLoginFail").hide()
     $("#statusLogin").hide()
-    $("#formRegisterUser").hide()
     $("#linkCrudUsers").hide()
+    $("#btnShowUsuersIfMaster").hide()
 
     const statusLogged = () => {
         $("#statusLogin").show()
     }
-
-    $("#btnShowFormLogin").click(function () {
-        $("#formLogin").show()
-        $("#formRegisterUser").hide()
-    })
-
-    $("#btnFormRegisterUser").click(function () {
-        $("#formRegisterUser").show()
-        $("#formLogin").hide()
-
-    })
 
     // ------------------------------------- OK -----------------------------
     //VERIFICAR LOCALSTORAGE
@@ -38,7 +27,7 @@ $(function () {
                     const salutation = "Olá, " + res.NOME + "."
                     $("#salutation").html(salutation)
                     if (res.TYPE_USER == "MASTER") {
-                        $("#linkCrudUsers").show()
+                        $("#btnShowUsuersIfMaster").show()
                         statusLogged()
                     }
                 }
@@ -82,24 +71,6 @@ $(function () {
     })
 
     // ------------------------------------- OK -----------------------------
-    //CADASTRAR USUARIO
-    $("#formCadastraUsuario").on("submit", function (e) {
-        e.preventDefault()
-
-        const nomeCadastraUsuario = document.getElementById("nomeCadastraUsuario").value
-        const loginCadastraUsuario = document.getElementById("loginCadastraUsuario").value
-        const senhaCadastraUsuario = document.getElementById("senhaCadastraUsuario").value
-        const emailCadastraUsuario = document.getElementById("emailCadastraUsuario").value
-        const objCadastraUsuarios = { nome: nomeCadastraUsuario, login: loginCadastraUsuario, senha: senhaCadastraUsuario, email: emailCadastraUsuario }
-
-        $.ajax({
-            method: "POST",
-            url: "/api/usuarios.php",
-            data: objCadastraUsuarios,
-            success: function (res) {
-            }
-        })
-    })
 
     $("#btnExitLogin").click(function () {
         const logOff = () => {
