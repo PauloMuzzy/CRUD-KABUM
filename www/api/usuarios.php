@@ -62,7 +62,7 @@ if ($_GET['acao'] == "loginLocalstorage") {
 if ($_GET['acao'] == "listaUsuarios") {
 
     try {
-        $query = $pdo->prepare('SELECT ID,NOME,LOGIN,TYPE_USER,ACESSO_CREATE,ACESSO_READ,ACESSO_UPDATE,ACESSO_DELETE,ATIVO FROM USUARIOS WHERE TYPE_USER ="PADRAO"');
+        $query = $pdo->prepare('SELECT ID,NOME,LOGIN,TYPE_USER,ACESSO_CREATE,ACESSO_READ,ACESSO_UPDATE,ACESSO_DELETE,ATIVO FROM USUARIOS WHERE TYPE_USER="PADRAO" AND ATIVO =1');
 
         $query->execute();
 

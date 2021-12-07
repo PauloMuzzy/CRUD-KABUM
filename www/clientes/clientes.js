@@ -17,6 +17,8 @@ const verificaLocalstorage = () => {
                 }
             }
         })
+    } else {
+        window.location.href = "../index.html"
     }
 }
 verificaLocalstorage()

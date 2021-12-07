@@ -4,7 +4,8 @@ $(function () {
     $("#alertLoginFail").hide()
     $("#statusLogin").hide()
     $("#linkCrudUsers").hide()
-    $("#btnShowUsuersIfMaster").hide()
+    $("#btnShowUsers").hide()
+    $("#btnShowCustomers").hide()
 
     const statusLogged = () => {
         $("#statusLogin").show()
@@ -26,8 +27,10 @@ $(function () {
                 success: function (res) {
                     const salutation = "Olá, " + res.NOME + "."
                     $("#salutation").html(salutation)
+                    $("#btnShowCustomers").show()
+
                     if (res.TYPE_USER == "MASTER") {
-                        $("#btnShowUsuersIfMaster").show()
+                        $("#btnShowUsers").show()
                         statusLogged()
                     }
                 }

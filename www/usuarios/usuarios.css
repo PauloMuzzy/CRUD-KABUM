@@ -14,53 +14,41 @@ thead {
     color: whitesmoke;
 }
 
-.btn-orange-update{
-    color: #FA6501;
-    border: solid 1px #FA6501;
-    width: 50%;
-}
-
-.btn-orange-update:hover{
-    background-color: #FA6501;
-    color: whitesmoke;
-    width: 50%;
-}
-
-.btn-green-update{
-    color: #1A8754;
-    border: solid 1px #1A8754;
-    width: 50%;
-}
-
-.btn-green-update:hover{
-    background-color: #1A8754;
-    color: whitesmoke;
-    width: 50%;
-}
-
-.btn-red-update{
-    border: solid 1px #DC3545;
-    color: #DC3545;
-    width: 50%;
-}
-
-.btn-red-update:hover{
-    background-color: #DC3545;
-    color: whitesmoke;
-    width: 50%;
-}
-
-.btn-lightGreen{
-    background-color: #1A8754;
-    color: whitesmoke;
-    width: 50%;
+table button:hover{
     opacity: 50%;
 }
 
-.btn-lightRed{
-    background-color: #DC3545;
-    color: whitesmoke;
-    width: 50%;
-    opacity: 50%;
+.btn-orange{
+    width: 100%;
 }
 
+#confirmUpdateUsers{
+    margin-top: 40px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#confirmDeleteUsers{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.labelFomr{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.labelForm input {
+    width: 50%;
+}
