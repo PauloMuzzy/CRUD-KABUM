@@ -1,0 +1,66 @@
+
+table{
+    border: solid 1px black;
+}
+
+table td {
+    border: solid 1px black;
+    width: 150px;
+    text-align: center;
+}
+
+thead {
+    background-color:#FA6501 ;
+    color: whitesmoke;
+}
+
+.btn-orange-update{
+    color: #FA6501;
+    border: solid 1px #FA6501;
+    width: 50%;
+}
+
+.btn-orange-update:hover{
+    background-color: #FA6501;
+    color: whitesmoke;
+    width: 50%;
+}
+
+.btn-green-update{
+    color: #1A8754;
+    border: solid 1px #1A8754;
+    width: 50%;
+}
+
+.btn-green-update:hover{
+    background-color: #1A8754;
+    color: whitesmoke;
+    width: 50%;
+}
+
+.btn-red-update{
+    border: solid 1px #DC3545;
+    color: #DC3545;
+    width: 50%;
+}
+
+.btn-red-update:hover{
+    background-color: #DC3545;
+    color: whitesmoke;
+    width: 50%;
+}
+
+.btn-lightGreen{
+    background-color: #1A8754;
+    color: whitesmoke;
+    width: 50%;
+    opacity: 50%;
+}
+
+.btn-lightRed{
+    background-color: #DC3545;
+    color: whitesmoke;
+    width: 50%;
+    opacity: 50%;
+}
+

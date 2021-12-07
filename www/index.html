@@ -25,23 +25,21 @@
         </div>
     </header>
 
-    <section>
+    <nav class="menu">
+        <button>HOME</button>
+        <button>CLIENTES</button>
+        <button>USUÁRIOS</button>
+    </nav>
 
-        <nav class="menu">
-            <details>
-                <summary>
-                    <p>HOME</p>
-                </summary>
-                <button id="btnFormLogin">LOGAR</button>
-                <button id="btnFormRegister">CADASTRE-SE</button>
-            </details>
+    <main>
 
-            <button type="button" id="linkCrudUsers"><a href="/usuario/usuario.html">CRUD USUÁRIOS</a></button>
-            <button><a href="/cliente/cliente.html">CRUD CLIENTES</a></button>
-
-        </nav>
+        <aside>
+            <button id="btnShowFormLogin">LOGAR</button>
+            <button id="btnFormRegisterUser">CADASTRAR</button>
+        </aside>
 
         <article>
+
             <form class="Logar" method="POST" id="formLogin">
                 <h2>ENTRAR NO CRUD</h2>
                 <label for="loginLogar">Login</label>
@@ -84,7 +82,7 @@
             </form>
         </article>
 
-    </section>
+    </main>
 
     <footer>
         <a href="instagram.com.br"><img src="img/icongmail.png">paulo.kriger</a>

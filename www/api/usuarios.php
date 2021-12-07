@@ -168,7 +168,6 @@ if ($method === 'PUT') {
             $query->bindParam(1, $ativo, PDO::PARAM_STR);
             $query->bindParam(2, $id, PDO::PARAM_STR);
 
-
             $query->execute();
 
             echo json_encode($id);

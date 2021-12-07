@@ -51,8 +51,8 @@ $(function () {
                 var btnActionDelete = document.createElement("button")
                 btnActionUpdate.setAttribute("data-id", row.ID)
                 btnActionDelete.setAttribute("data-id", row.ID)
-                btnActionUpdate.setAttribute("class", "btn-green btnUpdateUser")
-                btnActionDelete.setAttribute("class", "btn-red btnDeleteUser")
+                btnActionUpdate.setAttribute("class", "btn-green-update btnUpdateUser")
+                btnActionDelete.setAttribute("class", "btn-red-update btnDeleteUser")
                 btnActionUpdate.textContent = "UPDATE"
                 btnActionDelete.textContent = "DELETE"
                 actionsCell.appendChild(btnActionUpdate)
@@ -79,7 +79,6 @@ $(function () {
                     }
                 })
             })
-
 
             $(".btnUpdateUser").click(function () {
 

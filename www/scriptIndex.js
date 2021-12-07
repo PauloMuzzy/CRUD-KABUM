@@ -10,10 +10,20 @@ $(function () {
         $("#statusLogin").show()
     }
 
+    $("#btnShowFormLogin").click(function () {
+        $("#formLogin").show()
+        $("#formRegisterUser").hide()
+    })
+
+    $("#btnFormRegisterUser").click(function () {
+        $("#formRegisterUser").show()
+        $("#formLogin").hide()
+
+    })
 
     // ------------------------------------- OK -----------------------------
     //VERIFICAR LOCALSTORAGE
-    const verificaLocalstorage = () => {
+    const verificaLogin = () => {
 
         const logadoLocalstorage = localStorage.getItem("logado")
 
@@ -35,24 +45,10 @@ $(function () {
             })
         }
     }
-    verificaLocalstorage()
-
-    $("#btnFormLogin").click(function () {
-        $("#formRegisterUser").hide()
-        $("#formLogin").show()
-    })
-
-    $("#btnFormRegister").click(function () {
-        $("#formLogin").hide()
-        $("#formRegisterUser").show()
-
-    })
+    verificaLogin()
 
     // ------------------------------------- OK -----------------------------
     //LOGAR    
-
-
-
     $("#formLogin").click((e) => {
         e.preventDefault()
         const loginLogar = document.getElementById("loginLogar").value
@@ -66,7 +62,6 @@ $(function () {
             url: urlLogar,
             success: function (res) {
                 console.log(res)
-
 
                 const statusLogadoRes = res.statusLogado
 

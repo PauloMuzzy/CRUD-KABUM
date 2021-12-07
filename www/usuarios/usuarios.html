@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
-    <link rel="stylesheet" type="text/css" href="usuario.css" media="screen" />
+    <title>USUÁRIOS</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="usuarios.css" media="screen" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="usuario.js"></script>
+    <script type="text/javascript" src="../scriptIndex.js"></script>
+    <script type="text/javascript" src="usuarios.js"></script>
 </head>
 
 <body>
@@ -25,15 +27,20 @@
         </div>
     </header>
 
-    <section>
+    <nav class="menu">
+        <button>HOME</button>
+        <button>CLIENTES</button>
+        <button>USUÁRIOS</button>
+    </nav>
 
-        <nav class="menu">
 
-            <button type="button"><a href="../index.html">HOME</a></button>
-            <button><a>USUÁRIOS</a></button>
+    <main>
 
-            <button><a href="/cliente/cliente.html">CLIENTES</a></button>
-        </nav>
+
+        <aside>
+            <button></button>
+            <button></button>
+        </aside>
 
         <article>
             <form class="formUpdateUsers" id="formUpdateUsers">
@@ -57,8 +64,8 @@
                 <label for="deleteUpdateUsuario" class="switch">DELET</label>
                 <input type="button" id="deleteUpdateUsuario" name="deleteUpdateUsuario" class="btnUpdate">
 
-                <button type="button" class="btn-green" id="updateUsuario">ALTERAR</button>
-                <button type="button" class="btn-orange" id="btnBackToTableUser">VOLTAR</button>
+                <button type="button" class="btn-green-update" id="updateUsuario">ALTERAR</button>
+                <button type="button" class="btn-orange-update" id="btnBackToTableUser">VOLTAR</button>
             </form>
 
             <table class="tableUsers" id="tableUsers">
@@ -79,7 +86,7 @@
             </table>
         </article>
 
-    </section>
+    </main>
 
     <footer>
         <a href="instagram.com.br"><img src="../img/icongmail.png">paulo.kriger</a>
