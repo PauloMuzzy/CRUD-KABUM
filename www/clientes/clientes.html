@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CLIENTES</title>
     <link rel="stylesheet" type="text/css" href="../stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="clientes.css" media="screen" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -38,7 +39,78 @@
             <button></button>
         </aside>
 
+        <!-- Cadastro de cliente 
+Nome 
+CPF
+RG
+Email
+Telefone 1
+Telefone 2
+Data de Nascimento  -->
+
         <article>
+            <form class="formRegisterCustomer" method="POST" id="formRegisterCustomer">
+                <h2>CADASTRAR CLIENTE</h2>
+                <label for="nameRegisterCustomer">Nome</label>
+                <input type="text" name="nameRegisterCustomer" id="nameRegisterCustomer" />
+
+                <label for="cpfRegisterCustomer">CPF</label>
+                <input type="text" name="cpfRegisterCustomer" id="cpfRegisterCustomer" />
+
+                <label for="rgRegisterCustomer">RG</label>
+                <input type="text" name="rgRegisterCustomer" id="rgRegisterCustomer" />
+
+                <label for="emailRegisterCustomer">E-mail</label>
+                <input type="email" name="emailRegisterCustomer" id="emailRegisterCustomer" />
+
+                <label for="telefone01RegisterCustomer">Telefone 01</label>
+                <input type="tel" name="telefone01RegisterCustomer" id="telefone01RegisterCustomer" />
+
+                <label for="telefone02RegisterCustomer">Telefone 02</label>
+                <input type="tel" name="telefone01RegisterCustomer" id="telefone01RegisterCustomer" />
+
+
+                <div id="adresses">
+                    <div class="divAddress">
+                        <label for="address01RegisterCustomer">Endereço 01</label>
+                        <input type="text" name="addressRegisterCustomer" id="addressRegisterCustomer" />
+                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
+                    </div>
+
+                    <button class="btn-orange" id="btnAddress02">Adicionar outro endereço</button>
+                    <div id="address02" class="divAddress">
+                        <label for="address02RegisterCustomer">Endereço 02</label>
+                        <input type="text" name="address02RegisterCustomer" id="address02RegisterCustomer" />
+                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
+                    </div>
+
+                    <button class="btn-orange" id="btnAddress03">Adicionar outro endereço</button>
+                    <div id="address03" class="divAddress">
+                        <label for="address03RegisterCustomer">Endereço 03</label>
+                        <input type="text" name="address03RegisterCustomer" id="address03RegisterCustomer" />
+                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
+                    </div>
+
+                    <button class="btn-orange" id="btnAddress04">Adicionar outro endereço</button>
+                    <div id="address04" class="divAddress">
+                        <label for="address04RegisterCustomer">Endereço 04</label>
+                        <input type="text" name="address04RegisterCustomer" id="address04RegisterCustomer" />
+                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
+                    </div>
+
+                    <button class="btn-orange" id="btnAddress05">Adicionar outro endereço</button>
+                    <div id="address05" class="divAddress">
+                        <label for="address05RegisterCustomer">Endereço 05</label>
+                        <input type="text" name="address05RegisterCustomer" id="address05RegisterCustomer" />
+                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
+                    </div>
+                </div>
+
+                <label for="dataNascRegisterCustomer">Data de Nascimento</label>
+                <input type="date" name="dataNascRegisterCustomer" id="dataNascRegisterCustomer" />
+
+                <button type="submit" class="btn-green">CADASTRAR</button>
+            </form>
 
         </article>
 

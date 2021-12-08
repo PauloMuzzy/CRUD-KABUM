@@ -1,0 +1,13 @@
+#adresses{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.divAddress{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
