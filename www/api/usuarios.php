@@ -62,7 +62,7 @@ if ($_GET['acao'] == "loginLocalstorage") {
 if ($_GET['acao'] == "listaUsuarios") {
 
     try {
-        $query = $pdo->prepare('SELECT id_usuario,nome,login,usuario_tipo,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo FROM usuarios WHERE usuario_tipo=0 AND ativo =1');
+        $query = $pdo->prepare('SELECT id_usuario,nome,login,usuario_tipo,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo FROM usuarios WHERE usuario_tipo="PADRAO" AND ativo =1');
 
         $query->execute();
 
@@ -105,11 +105,11 @@ if ($_POST['acao'] == 'cadastrarUsuario') {
 
     echo $hash_senha, "\n";
 
-    $usuario_tipo = 0;
-    $acesso_criar = 1;
-    $acesso_ler = 0;
-    $acesso_editar = 0;
-    $acesso_deletar = 0;
+    $usuario_tipo = "PADRAO";
+    $acesso_criar = "HABILITADO";
+    $acesso_ler = "DESABILITADO";
+    $acesso_editar = "DESABILITADO";
+    $acesso_deletar = "DESABILITADO";
     $ativo = 1;
 
     try {
@@ -132,49 +132,47 @@ if ($_POST['acao'] == 'cadastrarUsuario') {
     }
 }
 
-// if ($method === 'PUT') {
-//     parse_str(file_get_contents('php://input'), $_PUT);
+if ($method === 'PUT') {
+    parse_str(file_get_contents('php://input'), $_PUT);
 
-//     $action = ($_PUT['action']);
+    $action = ($_PUT['action']);
 
-//     if ($action == "update") {
-//         $create = ($_PUT['create']);
-//         $read = ($_PUT['read']);
-//         $update = ($_PUT['update']);
-//         $delete = ($_PUT['delete']);
-//         $id = ($_PUT['id']);
+    if ($action == "update") {
+        $create = ($_PUT['create']);
+        $read = ($_PUT['read']);
+        $update = ($_PUT['update']);
+        $delete = ($_PUT['delete']);
+        $id = intval($_PUT['id']);
 
-//         try {
-//             $query = $pdo->prepare('UPDATE USUARIOS SET ACESSO_CREATE=?,ACESSO_READ=?,ACESSO_UPDATE=?,ACESSO_DELETE=? WHERE ID=?');
+        try {
+            $query = $pdo->prepare('UPDATE usuarios SET acesso_criar=?,acesso_ler=?,acesso_editar=?,acesso_deletar=? WHERE id_usuario=?');
 
-//             $query->bindParam(1, $_PUT['create'], PDO::PARAM_STR);
-//             $query->bindParam(2, $_PUT['read'], PDO::PARAM_STR);
-//             $query->bindParam(3, $_PUT['update'], PDO::PARAM_STR);
-//             $query->bindParam(4, $_PUT['delete'], PDO::PARAM_STR);
-//             $query->bindParam(5, $id, PDO::PARAM_INT);
+            $query->bindParam(1, $create);
+            $query->bindParam(2, $read);
+            $query->bindParam(3, $update);
+            $query->bindParam(4, $delete);
+            $query->bindParam(5, $id);
 
-//             $query->execute();
+            $query->execute();
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    } else if ($action == "softDelete") {
 
-//             echo json_encode("1");
-//         } catch (PDOException $e) {
-//             echo 'Error: ' . $e->getMessage();
-//         }
-//     } else if ($action == "softDelete") {
+        $ativo = ($_PUT['ativo']);
+        $id = intval($_PUT['id']);
 
-//         $ativo = ($_PUT['ativo']);
-//         $id = ($_PUT['id']);
+        try {
+            $query = $pdo->prepare('UPDATE usuarios SET ativo=? WHERE id_usuario=?');
 
-//         try {
-//             $query = $pdo->prepare('UPDATE USUARIOS SET ATIVO=? WHERE ID=?');
+            $query->bindParam(1, $ativo);
+            $query->bindParam(2, $id);
 
-//             $query->bindParam(1, $ativo, PDO::PARAM_STR);
-//             $query->bindParam(2, $id, PDO::PARAM_STR);
+            $query->execute();
 
-//             $query->execute();
-
-//             echo json_encode($id);
-//         } catch (PDOException $e) {
-//             echo 'Error: ' . $e->getMessage();
-//         }
-//     }
-// }
+            echo json_encode($id);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+}

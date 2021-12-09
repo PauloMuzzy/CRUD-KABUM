@@ -90,6 +90,7 @@ $(function () {
             url: "/api/usuarios.php",
             data: objCadastraUsuarios,
             success: function (res) {
+                location.reload()
             }
         })
     })
@@ -115,7 +116,7 @@ $(function () {
                 })
                 var actionsCell = document.createElement("td");
                 var btnActionUpdateDelete = document.createElement("button")
-                btnActionUpdateDelete.setAttribute("data-id", row.ID)
+                btnActionUpdateDelete.setAttribute("data-id", row.id_usuario)
                 btnActionUpdateDelete.setAttribute("class", "btn-orange btnUpdateDeleteUser")
                 btnActionUpdateDelete.textContent = "UPDATE/DELETE"
                 actionsCell.appendChild(btnActionUpdateDelete)
@@ -128,162 +129,160 @@ $(function () {
                 const idBtnUpdateDelete = $(this).attr('data-id')
                 const urlIdBtnUpdate = "/api/usuarios.php?acao=updateUsuario&id=" + idBtnUpdateDelete
 
-                console.log(urlIdBtnUpdate)
+                $.ajax({
+                    method: "GET",
+                    url: urlIdBtnUpdate,
+                    success: (res) => {
 
-                // $.ajax({
-                //     method: "GET",
-                //     url: urlIdBtnUpdate,
-                //     success: (res) => {
+                        const insereDadosInputUpdateUsuario = () => {
 
-                //         const insereDadosInputUpdateUsuario = () => {    
+                            const idUpdateUsuario = idBtnUpdateDelete
+                            $("#idUpdateUsuario").val(idUpdateUsuario);
 
-                //             const idUpdateUsuario = idBtnUpdateDelete
-                //             $("#idUpdateUsuario").val(idUpdateUsuario);
+                            const loginUpdateUsuario = res.login
+                            $("#loginUpdateUsuario").val(loginUpdateUsuario);
 
-                //             const loginUpdateUsuario = res.login
-                //             $("#loginUpdateUsuario").val(loginUpdateUsuario);
+                            const createUpdateUsuario = res.acesso_criar
+                            $("#createUpdateUsuario").val(createUpdateUsuario);
+                            if (createUpdateUsuario == "HABILITADO") {
+                                $("#createUpdateUsuario").attr("class", "btn-lightGreen")
+                            } else {
+                                $("#createUpdateUsuario").attr("class", "btn-lightRed")
+                            }
 
-                //             const createUpdateUsuario = res.acesso_criar
-                //             $("#createUpdateUsuario").val(createUpdateUsuario);
-                //             if (createUpdateUsuario == "HABILITADO") {
-                //                 $("#createUpdateUsuario").attr("class", "btn-lightGreen")
-                //             } else {
-                //                 $("#createUpdateUsuario").attr("class", "btn-lightRed")
-                //             }
+                            const readUpdateUsuario = res.acesso_ler
+                            $("#readUpdateUsuario").val(readUpdateUsuario);
+                            if (readUpdateUsuario == "HABILITADO") {
+                                $("#readUpdateUsuario").attr("class", "btn-lightGreen")
+                            } else {
+                                $("#readUpdateUsuario").attr("class", "btn-lightRed")
+                            }
 
-                //             const readUpdateUsuario = res.acesso_ler
-                //             $("#readUpdateUsuario").val(readUpdateUsuario);
-                //             if (readUpdateUsuario == "HABILITADO") {
-                //                 $("#readUpdateUsuario").attr("class", "btn-lightGreen")
-                //             } else {
-                //                 $("#readUpdateUsuario").attr("class", "btn-lightRed")
-                //             }
+                            const updateUpdateUsuario = res.acesso_editar
+                            $("#updateUpdateUsuario").val(updateUpdateUsuario);
+                            if (readUpdateUsuario == "HABILITADO") {
+                                $("#updateUpdateUsuario").attr("class", "btn-lightGreen")
+                            } else {
+                                $("#updateUpdateUsuario").attr("class", "btn-lightRed")
+                            }
 
-                //             const updateUpdateUsuario = res.acesso_editar
-                //             $("#updateUpdateUsuario").val(updateUpdateUsuario);
-                //             if (readUpdateUsuario == "HABILITADO") {
-                //                 $("#updateUpdateUsuario").attr("class", "btn-lightGreen")
-                //             } else {
-                //                 $("#updateUpdateUsuario").attr("class", "btn-lightRed")
-                //             }
+                            const deleteUpdateUsuario = res.acesso_deletar
+                            $("#deleteUpdateUsuario").val(deleteUpdateUsuario);
+                            if (deleteUpdateUsuario == "HABILITADO") {
+                                $("#deleteUpdateUsuario").attr("class", "btn-lightGreen")
+                            } else {
+                                $("#deleteUpdateUsuario").attr("class", "btn-lightRed")
+                            }
+                        }
 
-                //             const deleteUpdateUsuario = res.acesso_deletar
-                //             $("#deleteUpdateUsuario").val(deleteUpdateUsuario);
-                //             if (deleteUpdateUsuario == "HABILITADO") {
-                //                 $("#deleteUpdateUsuario").attr("class", "btn-lightGreen")
-                //             } else {
-                //                 $("#deleteUpdateUsuario").attr("class", "btn-lightRed")
-                //             }
-                //         }
+                        insereDadosInputUpdateUsuario()
 
-                //         insereDadosInputUpdateUsuario()
+                        let valueBtnCreateUpdate = document.querySelector("#createUpdateUsuario").value
+                        let valueBtnReadUpdate = document.querySelector("#readUpdateUsuario").value
+                        let valueBtnUpdateUpdate = document.querySelector("#updateUpdateUsuario").value
+                        let valueBtnDeleteUpdate = document.querySelector("#deleteUpdateUsuario").value
 
-                //         let valueBtnCreateUpdate = document.querySelector("#createUpdateUsuario").value
-                //         let valueBtnReadUpdate = document.querySelector("#readUpdateUsuario").value
-                //         let valueBtnUpdateUpdate = document.querySelector("#updateUpdateUsuario").value
-                //         let valueBtnDeleteUpdate = document.querySelector("#deleteUpdateUsuario").value
+                        // CREATE USUARIO
+                        $("#createUpdateUsuario").click(() => {
+                            if (valueBtnCreateUpdate == "HABILITADO") {
+                                $("#createUpdateUsuario").removeClass()
+                                $("#createUpdateUsuario").addClass("btn-red")
+                                $("#createUpdateUsuario").attr("value", "DESABILITADO")
+                            } else if (valueBtnCreateUpdate == "DESABILITADO") {
+                                $("#createUpdateUsuario").removeClass()
+                                $("#createUpdateUsuario").addClass("btn-green")
+                                $("#createUpdateUsuario").attr("value", "HABILITADO")
+                            }
+                        })
 
-                //         // CREATE USUARIO
-                //         $("#createUpdateUsuario").click(() => {
-                //             if (valueBtnCreateUpdate == "HABILITADO") {
-                //                 $("#createUpdateUsuario").removeClass()
-                //                 $("#createUpdateUsuario").addClass("btn-red")
-                //                 $("#createUpdateUsuario").attr("value", "DESABILITADO")
-                //             } else if (valueBtnCreateUpdate == "DESABILITADO") {
-                //                 $("#createUpdateUsuario").removeClass()
-                //                 $("#createUpdateUsuario").addClass("btn-green")
-                //                 $("#createUpdateUsuario").attr("value", "HABILITADO")
-                //             }
-                //         })
+                        // READ USUARIO
+                        $("#readUpdateUsuario").click(() => {
+                            if (valueBtnReadUpdate == "HABILITADO") {
+                                $("#readUpdateUsuario").removeClass()
+                                $("#readUpdateUsuario").addClass("btn-red")
+                                $("#readUpdateUsuario").attr("value", "DESABILITADO")
+                            } else if (valueBtnReadUpdate == "DESABILITADO") {
+                                $("#readUpdateUsuario").removeClass()
+                                $("#readUpdateUsuario").addClass("btn-green")
+                                $("#readUpdateUsuario").attr("value", "HABILITADO")
+                            }
+                        })
+                        // UPDATE USUARIO
+                        $("#updateUpdateUsuario").click(() => {
+                            if (valueBtnUpdateUpdate == "HABILITADO") {
+                                $("#updateUpdateUsuario").removeClass()
+                                $("#updateUpdateUsuario").addClass("btn-red")
+                                $("#updateUpdateUsuario").attr("value", "DESABILITADO")
+                            } else if (valueBtnUpdateUpdate == "DESABILITADO") {
+                                $("#updateUpdateUsuario").removeClass()
+                                $("#updateUpdateUsuario").addClass("btn-green")
+                                $("#updateUpdateUsuario").attr("value", "HABILITADO")
+                            }
+                        })
 
-                //         // READ USUARIO
-                //         $("#readUpdateUsuario").click(() => {
-                //             if (valueBtnReadUpdate == "HABILITADO") {
-                //                 $("#readUpdateUsuario").removeClass()
-                //                 $("#readUpdateUsuario").addClass("btn-red")
-                //                 $("#readUpdateUsuario").attr("value", "DESABILITADO")
-                //             } else if (valueBtnReadUpdate == "DESABILITADO") {
-                //                 $("#readUpdateUsuario").removeClass()
-                //                 $("#readUpdateUsuario").addClass("btn-green")
-                //                 $("#readUpdateUsuario").attr("value", "HABILITADO")
-                //             }
-                //         })
-                //         // UPDATE USUARIO
-                //         $("#updateUpdateUsuario").click(() => {
-                //             if (valueBtnUpdateUpdate == "HABILITADO") {
-                //                 $("#updateUpdateUsuario").removeClass()
-                //                 $("#updateUpdateUsuario").addClass("btn-red")
-                //                 $("#updateUpdateUsuario").attr("value", "DESABILITADO")
-                //             } else if (valueBtnUpdateUpdate == "DESABILITADO") {
-                //                 $("#updateUpdateUsuario").removeClass()
-                //                 $("#updateUpdateUsuario").addClass("btn-green")
-                //                 $("#updateUpdateUsuario").attr("value", "HABILITADO")
-                //             }
-                //         })
+                        // DELETE USUARIO
+                        $("#deleteUpdateUsuario").click(() => {
+                            if (valueBtnDeleteUpdate == "HABILITADO") {
+                                $("#deleteUpdateUsuario").removeClass()
+                                $("#deleteUpdateUsuario").addClass("btn-red")
+                                $("#deleteUpdateUsuario").attr("value", "DESABILITADO")
+                            } else if (valueBtnDeleteUpdate == "DESABILITADO") {
+                                $("#deleteUpdateUsuario").removeClass()
+                                $("#deleteUpdateUsuario").addClass("btn-green")
+                                $("#deleteUpdateUsuario").attr("value", "HABILITADO")
+                            }
+                        })
 
-                //         // DELETE USUARIO
-                //         $("#deleteUpdateUsuario").click(() => {
-                //             if (valueBtnDeleteUpdate == "HABILITADO") {
-                //                 $("#deleteUpdateUsuario").removeClass()
-                //                 $("#deleteUpdateUsuario").addClass("btn-red")
-                //                 $("#deleteUpdateUsuario").attr("value", "DESABILITADO")
-                //             } else if (valueBtnDeleteUpdate == "DESABILITADO") {
-                //                 $("#deleteUpdateUsuario").removeClass()
-                //                 $("#deleteUpdateUsuario").addClass("btn-green")
-                //                 $("#deleteUpdateUsuario").attr("value", "HABILITADO")
-                //             }
-                //         })
+                        $("#btnConfirmUpdateUser").click(function (e) {
+                            e.preventDefault()
+                            let valueInputCreate = document.getElementById("createUpdateUsuario").value
+                            let valueInputRead = document.getElementById("readUpdateUsuario").value
+                            let valueInputUpdate = document.getElementById("updateUpdateUsuario").value
+                            let valueInputDelete = document.getElementById("deleteUpdateUsuario").value
 
-                //         $("#btnConfirmUpdateUser").click(function (e) {
-                //             e.preventDefault()
-                //             let valueInputCreate = document.getElementById("createUpdateUsuario").value
-                //             let valueInputRead = document.getElementById("readUpdateUsuario").value
-                //             let valueInputUpdate = document.getElementById("updateUpdateUsuario").value
-                //             let valueInputDelete = document.getElementById("deleteUpdateUsuario").value
+                            const objUpdateUsuario = {
+                                action: "update",
+                                create: valueInputCreate,
+                                read: valueInputRead,
+                                update: valueInputUpdate,
+                                delete: valueInputDelete,
+                                id: idBtnUpdateDelete
+                            }
 
-                //             const objUpdateUsuario = {
-                //                 action: "update",
-                //                 create: valueInputCreate,
-                //                 read: valueInputRead,
-                //                 update: valueInputUpdate,
-                //                 delete: valueInputDelete,
-                //                 id: idBtnUpdateDelete
-                //             }
+                            $.ajax({
+                                type: "PUT",
+                                url: "/api/usuarios.php",
+                                data: objUpdateUsuario,
+                                success: () => {
+                                    $("#alertSuccessUpdateUser").show(150)
+                                    setTimeout(function () { location.reload(); }, 2000);
+                                }
+                            })
+                        })
 
-                //             $.ajax({
-                //                 type: "PUT",
-                //                 url: "/api/usuarios.php",
-                //                 data: objUpdateUsuario,
-                //                 success: () => {
-                //                     $("#alertSuccessUpdateUser").show(150)
-                //                     setTimeout(function () { location.reload(); }, 2000);
-                //                 }
-                //             })
-                //         })
+                        $("#btnConfirmDeleteUser").click(function (e) {
+                            e.preventDefault()
+                            const objsoftDeleteUsuario = {
+                                action: "softDelete",
+                                ativo: "0",
+                                id: idBtnUpdateDelete
+                            }
 
-                //         $("#btnConfirmDeleteUser").click(function (e) {
-                //             e.preventDefault()
-                //             const objsoftDeleteUsuario = {
-                //                 action: "softDelete",
-                //                 ativo: "0",
-                //                 id: idBtnUpdateDelete
-                //             }
+                            $.ajax({
+                                type: "PUT",
+                                url: "/api/usuarios.php",
+                                data: objsoftDeleteUsuario,
+                                success: () => {
+                                    $("#alertSuccessDeleteUser").show(150)
+                                    setTimeout(function () { location.reload(); }, 2000);
+                                },
+                                fail: () => {
 
-                //             $.ajax({
-                //                 type: "PUT",
-                //                 url: "/api/usuarios.php",
-                //                 data: objsoftDeleteUsuario,
-                //                 success: () => {
-                //                     $("#alertSuccessDeleteUser").show(150)
-                //                     setTimeout(function () { location.reload(); }, 2000);
-                //                 },
-                //                 fail: () => {
-
-                //                 }
-                //             })
-                //         })
-                //     }
-                // })
+                                }
+                            })
+                        })
+                    }
+                })
             })
         }
     })
