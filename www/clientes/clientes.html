@@ -35,18 +35,10 @@
 
     <main>
         <aside>
-            <button></button>
-            <button></button>
+            <button>CREATE</button>
+            <button>READ</button>
+            <button>UPDATE/DELETE</button>
         </aside>
-
-        <!-- Cadastro de cliente 
-Nome 
-CPF
-RG
-Email
-Telefone 1
-Telefone 2
-Data de Nascimento  -->
 
         <article>
             <form class="formRegisterCustomer" method="POST" id="formRegisterCustomer">
@@ -63,53 +55,20 @@ Data de Nascimento  -->
                 <label for="emailRegisterCustomer">E-mail</label>
                 <input type="email" name="emailRegisterCustomer" id="emailRegisterCustomer" />
 
-                <label for="telefone01RegisterCustomer">Telefone 01</label>
-                <input type="tel" name="telefone01RegisterCustomer" id="telefone01RegisterCustomer" />
+                <label for="tel01RegisterCustomer">Telefone 01</label>
+                <input type="tel" name="tel01RegisterCustomer" id="tel01RegisterCustomer" />
 
-                <label for="telefone02RegisterCustomer">Telefone 02</label>
-                <input type="tel" name="telefone01RegisterCustomer" id="telefone01RegisterCustomer" />
-
-
-                <div id="adresses">
-                    <div class="divAddress">
-                        <label for="address01RegisterCustomer">Endereço 01</label>
-                        <input type="text" name="addressRegisterCustomer" id="addressRegisterCustomer" />
-                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
-                    </div>
-
-                    <button class="btn-orange" id="btnAddress02">Adicionar outro endereço</button>
-                    <div id="address02" class="divAddress">
-                        <label for="address02RegisterCustomer">Endereço 02</label>
-                        <input type="text" name="address02RegisterCustomer" id="address02RegisterCustomer" />
-                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
-                    </div>
-
-                    <button class="btn-orange" id="btnAddress03">Adicionar outro endereço</button>
-                    <div id="address03" class="divAddress">
-                        <label for="address03RegisterCustomer">Endereço 03</label>
-                        <input type="text" name="address03RegisterCustomer" id="address03RegisterCustomer" />
-                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
-                    </div>
-
-                    <button class="btn-orange" id="btnAddress04">Adicionar outro endereço</button>
-                    <div id="address04" class="divAddress">
-                        <label for="address04RegisterCustomer">Endereço 04</label>
-                        <input type="text" name="address04RegisterCustomer" id="address04RegisterCustomer" />
-                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
-                    </div>
-
-                    <button class="btn-orange" id="btnAddress05">Adicionar outro endereço</button>
-                    <div id="address05" class="divAddress">
-                        <label for="address05RegisterCustomer">Endereço 05</label>
-                        <input type="text" name="address05RegisterCustomer" id="address05RegisterCustomer" />
-                        <button class="btn-lightGreen">ENDEREÇO PRINCIPAL</button>
-                    </div>
-                </div>
+                <label for="tel02RegisterCustomer">Telefone 02</label>
+                <input type="tel" name="tel02RegisterCustomer" id="tel02RegisterCustomer" />
 
                 <label for="dataNascRegisterCustomer">Data de Nascimento</label>
                 <input type="date" name="dataNascRegisterCustomer" id="dataNascRegisterCustomer" />
 
-                <button type="submit" class="btn-green">CADASTRAR</button>
+                <button class="btn-orange" id="btnAddAddress">+ ADICIONAR ENDEREÇO</button>
+                <div id="addresses">
+
+                </div>
+                <button type="button" id="teste" class="btn-green">CADASTRAR</button>
             </form>
 
         </article>

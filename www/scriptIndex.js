@@ -20,16 +20,20 @@ $(function () {
         if (logadoLocalstorage == "1") {
 
             const loginLocalstorage = localStorage.getItem("login")
+
             const urlLoginLocalstorage = "/api/usuarios.php?acao=loginLocalstorage&login=" + loginLocalstorage
+
+
             $.ajax({
                 method: "GET",
                 url: urlLoginLocalstorage,
                 success: function (res) {
-                    const salutation = "Olá, " + res.NOME + "."
+
+                    const salutation = "Olá, " + res.nome + "."
                     $("#salutation").html(salutation)
                     $("#btnShowCustomers").show()
 
-                    if (res.TYPE_USER == "MASTER") {
+                    if (res.usuario_tipo == "MASTER") {
                         $("#btnShowUsers").show()
                         statusLogged()
                     }
@@ -47,20 +51,17 @@ $(function () {
         const senhaLogar = document.getElementById("senhaLogar").value
         const urlLogar = "/api/usuarios.php?acao=logar&login=" + loginLogar + "&senha=" + senhaLogar
 
-        console.log(urlLogar)
-
         $.ajax({
             method: "GET",
             url: urlLogar,
             success: function (res) {
-                console.log(res)
 
-                const statusLogadoRes = res.statusLogado
+                const statusLogadoRes = res.status_logado
 
                 if (statusLogadoRes == "1") {
                     localStorage.setItem("logado", "1")
                     localStorage.setItem("login", loginLogar)
-                    localStorage.setItem("TypeUser", res.typeUser)
+                    localStorage.setItem("usuario_tipo", res.usuario_tipo)
                     location.reload()
 
                 } else {
