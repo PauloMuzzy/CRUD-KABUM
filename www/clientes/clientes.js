@@ -4,6 +4,110 @@ $(function () {
         $("#statusLogin").show()
     }
 
+    $("#formRegisterCustomerAddress").show()
+
+    $("#tableCustomers").hide()
+
+    $("#formUpdateCustomer").hide()
+
+    $("#formDeleteCustomer").hide()
+
+    $("#tableUpdateDeleteCustomers").hide()
+
+    $("#tableAddress").hide()
+
+    $("#formUpdateAddress").hide()
+
+    $("#formDeleteAddress").hide()
+
+    $("#tableUpdateDeleteAddress").hide()
+
+
+    $("#btnCadastraClienteEndereco").click(function () {
+        $("#formRegisterCustomerAddress").show()
+        $("#tableCustomers").hide()
+        $("#formUpdateCustomer").hide()
+        $("#formDeleteCustomer").hide()
+        $("#tableUpdateDeleteCustomers").hide()
+        $("#tableAddress").hide()
+        $("#formUpdateAddress").hide()
+        $("#formDeleteAddress").hide()
+        $("#tableUpdateDeleteAddress").hide()
+    })
+
+    $("#btnListaCliente").click(function () {
+        $("#formRegisterCustomerAddress").hide()
+        $("#tableCustomers").show()
+        $("#formUpdateCustomer").hide()
+        $("#formDeleteCustomer").hide()
+        $("#tableUpdateDeleteCustomers").hide()
+        $("#tableAddress").hide()
+        $("#formUpdateAddress").hide()
+        $("#formDeleteAddress").hide()
+        $("#tableUpdateDeleteAddress").hide()
+    })
+
+    $("#btnAlteraCliente").click(function () {
+        $("#formRegisterCustomerAddress").hide()
+        $("#tableCustomers").hide()
+        $("#formUpdateCustomer").show()
+        $("#formDeleteCustomer").hide()
+        $("#tableUpdateDeleteCustomers").show()
+        $("#tableAddress").hide()
+        $("#formUpdateAddress").hide()
+        $("#formDeleteAddress").hide()
+        $("#tableUpdateDeleteAddress").hide()
+    })
+
+    $("#btnDeletaCliente").click(function () {
+        $("#formRegisterCustomerAddress").hide()
+        $("#tableCustomers").hide()
+        $("#formUpdateCustomer").hide()
+        $("#formDeleteCustomer").show()
+        $("#tableUpdateDeleteCustomers").show()
+        $("#tableAddress").hide()
+        $("#formUpdateAddress").hide()
+        $("#formDeleteAddress").hide()
+        $("#tableUpdateDeleteAddress").hide()
+    })
+
+    $("#btnListaEndereco").click(function () {
+        $("#formRegisterCustomerAddress").hide()
+        $("#tableCustomers").hide()
+        $("#formUpdateCustomer").hide()
+        $("#formDeleteCustomer").hide()
+        $("#tableUpdateDeleteCustomers").hide()
+        $("#tableAddress").show()
+        $("#formUpdateAddress").hide()
+        $("#formDeleteAddress").hide()
+        $("#tableUpdateDeleteAddress").hide()
+    })
+
+    $("#btnAlteraEndereco").click(function () {
+        $("#formRegisterCustomerAddress").hide()
+        $("#tableCustomers").hide()
+        $("#formUpdateCustomer").hide()
+        $("#formDeleteCustomer").hide()
+        $("#tableUpdateDeleteCustomers").hide()
+        $("#tableAddress").hide()
+        $("#formUpdateAddress").show()
+        $("#formDeleteAddress").hide()
+        $("#tableUpdateDeleteAddress").show()
+    })
+
+    $("#btnDeletaEndereco").click(function () {
+        $("#formRegisterCustomerAddress").hide()
+        $("#tableCustomers").hide()
+        $("#formUpdateCustomer").hide()
+        $("#formDeleteCustomer").hide()
+        $("#tableUpdateDeleteCustomers").hide()
+        $("#tableAddress").hide()
+        $("#formUpdateAddress").hide()
+        $("#formDeleteAddress").show()
+        $("#tableUpdateDeleteAddress").show()
+    })
+
+
     // ------------------------------------- OK -----------------------------
     //VERIFICAR LOCALSTORAGE
     const verificaLogin = () => {

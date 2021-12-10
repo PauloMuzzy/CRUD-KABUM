@@ -35,36 +35,40 @@
 
     <main>
         <aside>
-            <button>CREATE</button>
-            <button id="btnShowTableCustomers">READ CLIENTES</button>
-            <button id="btnUpdateDeleteShowTableCustomers">UPDATE/DELETE CLIENTES</button>
-            <button id="btnShowTableAddresses">READ ENDERECOS</button>
-            <button id="btnUpdateDeleteShowTableAddresses">UPDATE/DELETE ENDERECOS</button>
+            <button id="btnCadastraClienteEndereco">CREATE</button>
+            <button id="btnListaCliente">READ CLIENTES</button>
+            <button id="btnAlteraCliente">UPDATE CLIENTES</button>
+            <button id="btnDeletaCliente">DELETE CLIENTES</button>
+            <button id="btnListaEndereco">READ ENDEREÇOS</button>
+            <button id="btnAlteraEndereco">UPDATE ENDEREÇOS</button>
+            <button id="btnDeletaEndereco">DELETE ENDEREÇOS</button>
         </aside>
 
+
+        <!-- ------------------------------------- CRIAR CLIENTE E ENDEREÇO ----------------------------- -->
         <article>
-            <form class="formRegisterCustomer" method="POST" id="formRegisterCustomer">
+            <form class="formRegisterCustomerAddress" method="POST" id="formRegisterCustomerAddress">
                 <h2>CADASTRAR CLIENTE</h2>
-                <label for="nameRegisterCustomer">Nome</label>
-                <input type="text" name="nameRegisterCustomer" id="nameRegisterCustomer" />
+                <label for="nameRegisterCustomerAddress">Nome</label>
+                <input type="text" name="nameRegisterCustomerAddress" id="nameRegisterCustomerAddress" />
 
-                <label for="cpfRegisterCustomer">CPF</label>
-                <input type="text" name="cpfRegisterCustomer" id="cpfRegisterCustomer" />
+                <label for="cpfRegisterCustomerAddress">CPF</label>
+                <input type="text" name="cpfRegisterCustomerAddress" id="cpfRegisterCustomerAddress" />
 
-                <label for="rgRegisterCustomer">RG</label>
-                <input type="text" name="rgRegisterCustomer" id="rgRegisterCustomer" />
+                <label for="rgRegisterCustomerAddress">RG</label>
+                <input type="text" name="rgRegisterCustomerAddress" id="rgRegisterCustomerAddress" />
 
-                <label for="emailRegisterCustomer">E-mail</label>
-                <input type="email" name="emailRegisterCustomer" id="emailRegisterCustomer" />
+                <label for="emailRegisterCustomerAddress">E-mail</label>
+                <input type="email" name="emailRegisterCustomerAddress" id="emailRegisterCustomerAddress" />
 
                 <label for="tel01RegisterCustomer">Telefone 01</label>
-                <input type="tel" name="tel01RegisterCustomer" id="tel01RegisterCustomer" />
+                <input type="tel" name="tel01RegisterCustomerAddress" id="tel01RegisterCustomerAddress" />
 
-                <label for="tel02RegisterCustomer">Telefone 02</label>
-                <input type="tel" name="tel02RegisterCustomer" id="tel02RegisterCustomer" />
+                <label for="tel02RegisterCustomerAddress">Telefone 02</label>
+                <input type="tel" name="tel02RegisterCustomerAddress" id="tel02RegisterCustomerAddress" />
 
-                <label for="dataNascRegisterCustomer">Data de Nascimento</label>
-                <input type="date" name="dataNascRegisterCustomer" id="dataNascRegisterCustomer" />
+                <label for="dataNascRegisterCustomerAddress">Data de Nascimento</label>
+                <input type="date" name="dataNascRegisterCustomerAddress" id="dataNascRegisterCustomerAddress" />
 
                 <button class="btn-orange" id="btnAddAddress">+ ADICIONAR ENDEREÇO</button>
                 <div id="addresses">
@@ -74,6 +78,8 @@
                 <button type="button" id="btnCancelRegisterCustomerAddresses" class="btn-red">CANCELAR</button>
             </form>
 
+
+            <!-- ------------------------------------- TABELA DE CLIENTES ----------------------------- -->
             <table class="tableCustomers" id="tableCustomers">
                 <thead>
                     <td id="tdIdCliente">ID</td>
@@ -91,24 +97,7 @@
                 </tbody>
             </table>
 
-            <table class="tableAddresses" id="tableAddresses">
-                <thead>
-                    <td id="tdIdEndereco">ID ENDEREÇO</td>
-                    <td id="tdCpfCliente">CPF CLIENTE</td>
-                    <td id="tdRua">RUA</td>
-                    <td id="tdNumerof">NÚMERO</td>
-                    <td id="tdBairro">BAIRRO</td>
-                    <td id="tdCep">CEP</td>
-                    <td id="tdCidade">CIDADE</td>
-                    <td id="tdEstado">ESTADO</td>
-                    <td id="tdPrincipal">PRINCIPAL</td>
-                    <td id="tdAtivo">ATIVO</td>
-                    <td id="tdIdUsuario">ID USUARIO</td>
-                </thead>
-                <tbody id="tbodyEnderecos">
-                </tbody>
-            </table>
-
+            <!-- ------------------------------------- ALTERAR CLIENTE ----------------------------- -->
             <form class="formUpdateCustomer" method="PUT" id="formUpdateCustomer">
                 <h2>UPDATE CLIENTE</h2>
                 <label for="nameUpdateCustomer">Nome</label>
@@ -136,6 +125,35 @@
                 <button type="button" id="btnCancelUpdateCustomer" class="btn-red">CANCELAR</button>
             </form>
 
+            <!-- ------------------------------------- DELETAR CLIENTE ----------------------------- -->
+            <form class="formDeleteCustomer" method="PUT" id="formDeleteCustomer">
+                <h2>Delete CLIENTE</h2>
+                <label for="nameDeleteCustomer">Nome</label>
+                <input type="text" name="nameDeleteCustomer" id="nameDeleteCustomer" readonly />
+
+                <label for="cpfDeleteCustomer">CPF</label>
+                <input type="text" name="cpfDeleteCustomer" id="cpfDeleteCustomer" readonly />
+
+                <label for="rgDeleteCustomer">RG</label>
+                <input type="text" name="rgDeleteCustomer" id="rgDeleteCustomer" readonly />
+
+                <label for="emailDeleteCustomer">E-mail</label>
+                <input type="email" name="emailDeleteCustomer" id="emailDeleteCustomer" readonly />
+
+                <label for="tel01DeleteCustomer">Telefone 01</label>
+                <input type="tel" name="tel01DeleteCustomer" id="tel01DeleteCustomer" readonly />
+
+                <label for="tel02DeleteCustomer">Telefone 02</label>
+                <input type="tel" name="tel02DeleteCustomer" id="tel02DeleteCustomer" readonly />
+
+                <label for="dataNascDeleteCustomer">Data de Nascimento</label>
+                <input type="date" name="dataNascDeleteCustomer" id="dataNascRegisterCustomer" />
+
+                <button type="button" id="btnDeleteCustomer" class="btn-green">ALTERAR</button>
+                <button type="button" id="btnCancelDeleteCustomer" class="btn-red">CANCELAR</button>
+            </form>
+
+            <!-- ------------------------------------- TABELA DE AÇÕES CLIENTES ----------------------------- -->
             <table class="tableUpdateDeleteCustomers" id="tableUpdateDeleteCustomers">
                 <thead>
                     <td id="tdIdCliente">ID</td>
@@ -154,36 +172,107 @@
                 </tbody>
             </table>
 
-            <form id="formUpdate" method="PUT">
+            <!-- ------------------------------------- TABELA DE ENDEREÇOS ----------------------------- -->
+            <table class="tableAddress" id="tableAddress">
+                <thead>
+                    <td id="tdIdEndereco">ID ENDEREÇO</td>
+                    <td id="tdCpfCliente">CPF CLIENTE</td>
+                    <td id="tdRua">RUA</td>
+                    <td id="tdNumerof">NÚMERO</td>
+                    <td id="tdBairro">BAIRRO</td>
+                    <td id="tdCep">CEP</td>
+                    <td id="tdCidade">CIDADE</td>
+                    <td id="tdEstado">ESTADO</td>
+                    <td id="tdPrincipal">PRINCIPAL</td>
+                    <td id="tdAtivo">ATIVO</td>
+                    <td id="tdIdUsuario">ID USUARIO</td>
+                </thead>
+                <tbody id="tbodyEnderecos">
+                </tbody>
+            </table>
+
+            <!-- ------------------------------------- UPDATE ENDEREÇOS ----------------------------- -->
+            <form id="formUpdateAddress" method="PUT">
                 <h2>UPDATE ENDEREÇO</h2>
 
-                <label for="streetUpdate">ID</label>
-                <input name="streetUpdate" readonly>
+                <label for="streetUpdateAddress">ID</label>
+                <input name="streetUpdateAddress" readonly>
 
-                <label for="streetUpdate">CPF CLIENTE</label>
-                <input type="number" name="streetUpdate" readonly>
+                <label for="streetUpdateAddress">CPF CLIENTE</label>
+                <input type="number" name="streetUpdateAddress" readonly>
 
-                <label for="streetUpdate">Rua/Avenida</label>
-                <input type="text" name="streetUpdate">
+                <label for="streetUpdateAddress">Rua/Avenida</label>
+                <input type="text" name="streetUpdateAddress">
 
-                <label for="numberUpdate">Número</label>
-                <input type="text" name="numberUpdates">
+                <label for="numberUpdateAddress">Número</label>
+                <input type="text" name="numberUpdatesAddress">
 
-                <label for="districtUpdate">Bairro</label>
-                <input type="text" name="districtUpdate">
+                <label for="districtUpdateAddress">Bairro</label>
+                <input type="text" name="districtUpdateAddress">
 
-                <label for="cepUpdate">CEP</label>
-                <input type="number" name="cepUpdate">
+                <label for="cepUpdateAddress">CEP</label>
+                <input type="number" name="cepUpdateAddress">
 
-                <label for="cityUpdate">Cidade</label>
-                <input type="text" name="cityUpdate">
+                <label for="cityUpdateAddress">Cidade</label>
+                <input type="text" name="cityUpdateAddress">
 
-                <label for="stateUpdate">Estado</label>
-                <input type="text" name="stateUpdate">
+                <label for="stateUpdateAddress">Estado</label>
+                <input type="text" name="stateUpdateAddress">
 
                 <button type="button" id="btnUpdateAddress" class="btn-green">ALTERAR</button>
                 <button type="button" id="btnCancelUpdateAddress" class="btn-red">ALTERAR</button>
             </form>
+
+            <!-- ------------------------------------- UPDATE ENDEREÇOS ----------------------------- -->
+            <form id="formDeleteAddress" method="PUT">
+                <h2>DELETE ENDEREÇO</h2>
+
+                <label for="streetDeleteAddress">ID</label>
+                <input name="streetDeleteAddress" readonly>
+
+                <label for="streetDeleteAddress">CPF CLIENTE</label>
+                <input type="number" name="streetDeleteAddress" readonly>
+
+                <label for="streetDeleteAddress">Rua/Avenida</label>
+                <input type="text" name="streetDeleteAddress" readonly>
+
+                <label for="numberDeleteAddress">Número</label>
+                <input type="text" name="numberDeletesAddress" readonly>
+
+                <label for="districtDeleteAddress">Bairro</label>
+                <input type="text" name="districtDeleteAddress" readonly>
+
+                <label for="cepDeleteAddress">CEP</label>
+                <input type="number" name="cepDeleteAddress" readonly>
+
+                <label for="cityDeleteAddress">Cidade</label>
+                <input type="text" name="cityDeleteAddress" readonly>
+
+                <label for="stateDeleteAddress">Estado</label>
+                <input type="text" name="stateDeleteAddress" readonly>
+
+                <button type="button" id="btnDeleteAddress" class="btn-green">ALTERAR</button>
+                <button type="button" id="btnCancelDeleteAddress" class="btn-red">ALTERAR</button>
+            </form>
+
+            <!-- ------------------------------------- UPDATE DE AÇÕES ENDEREÇOS ----------------------------- -->
+            <table class="tableUpdateDeleteAddress" id="tableUpdateDeleteAddress">
+                <thead>
+                    <td id="tdIdEndereco">ID ENDEREÇO</td>
+                    <td id="tdCpfCliente">CPF CLIENTE</td>
+                    <td id="tdRua">RUA</td>
+                    <td id="tdNumerof">NÚMERO</td>
+                    <td id="tdBairro">BAIRRO</td>
+                    <td id="tdCep">CEP</td>
+                    <td id="tdCidade">CIDADE</td>
+                    <td id="tdEstado">ESTADO</td>
+                    <td id="tdPrincipal">PRINCIPAL</td>
+                    <td id="tdAtivo">ATIVO</td>
+                    <td id="tdIdUsuario">ID USUARIO</td>
+                </thead>
+                <tbody id="tbodyEnderecos">
+                </tbody>
+            </table>
 
         </article>
 
