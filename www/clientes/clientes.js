@@ -142,12 +142,13 @@ $(function () {
         tagInput.setAttribute("name", 'stateAddres')
         tagForm.appendChild(tagInput)
 
+
     })
 
 
     // ------------------------------------- OK -----------------------------
     //CADASTRA CLIENTE E ENDREÇO(S)
-    $("#teste").click(function (e) {
+    $("#btnRegisterCustomerAddresses").click(function (e) {
         e.preventDefault()
 
         const nameRegisterCustomer = document.getElementById("nameRegisterCustomer").value
@@ -201,17 +202,6 @@ $(function () {
                 idUsuario: idUsuario
             }
 
-            // $query->bindParam(1, $cpf_cliente);
-            // $query->bindParam(2, $rua);
-            // $query->bindParam(3, $numero);
-            // $query->bindParam(4, $bairro);
-            // $query->bindParam(5, $cep);
-            // $query->bindParam(6, $cidade);
-            // $query->bindParam(7, $estado);
-            // $query->bindParam(8, $principal);
-            // $query->bindParam(9, $ativo);
-            // $query->bindParam(10, $id_usuario);
-
             $.ajax({
                 method: "POST",
                 url: "/api/clientes.php",
@@ -223,4 +213,113 @@ $(function () {
         }
 
     })
+
+    $("#btnShowTableCustomers").click(function () {
+
+        $.ajax({
+            method: "GET",
+            url: "/api/clientes.php?acao=listarClientes",
+            success: (res) => {
+                console.log(res)
+
+                res.forEach(function (row) {
+                    var tableBody = document.getElementById("tbodyClientes");
+                    var newRow = document.createElement("tr");
+                    tableBody.appendChild(newRow);
+
+                    Object.values(row).forEach(value => {
+                        var newCell = document.createElement("td");
+                        newCell.textContent = value;
+                        newRow.appendChild(newCell);
+                    })
+                });
+            }
+        })
+    })
+
+    $("#btnShowTableAddresses").click(function () {
+
+        $.ajax({
+            method: "GET",
+            url: "/api/clientes.php?acao=listarEnderecos",
+            success: (res) => {
+                console.log(res)
+
+                res.forEach(function (row) {
+                    var tableBody = document.getElementById("tbodyEnderecos");
+                    var newRow = document.createElement("tr");
+                    tableBody.appendChild(newRow);
+
+                    Object.values(row).forEach(value => {
+                        var newCell = document.createElement("td");
+                        newCell.textContent = value;
+                        newRow.appendChild(newCell);
+                    })
+                });
+            }
+        })
+    })
+
+    $("#btnUpdateDeleteTableCustomers").click(function () {
+
+        $.ajax({
+            method: "GET",
+            url: "/api/clientes.php?acao=listarClientes",
+            success: (res) => {
+                console.log(res)
+
+                res.forEach(function (row) {
+                    var tableBody = document.getElementById("tbodyUpdateDeleteEnderecos");
+                    var newRow = document.createElement("tr");
+                    tableBody.appendChild(newRow);
+
+                    Object.values(row).forEach(value => {
+                        var newCell = document.createElement("td");
+                        newCell.textContent = value;
+                        newRow.appendChild(newCell);
+                    })
+                    var actionsCell = document.createElement("td");
+                    var btnActionUpdateDelete = document.createElement("button")
+                    btnActionUpdateDelete.setAttribute("data-id", row.id_usuario)
+                    btnActionUpdateDelete.setAttribute("class", "btn-orange btnUpdateDeleteUser")
+                    btnActionUpdateDelete.textContent = "UPDATE/DELETE"
+                    actionsCell.appendChild(btnActionUpdateDelete)
+                    newRow.appendChild(actionsCell)
+                });
+            }
+        })
+    })
+
+    $("#btnUpdateDeleteTableAddresses").click(function () {
+
+        $.ajax({
+            method: "GET",
+            url: "/api/clientes.php?acao=listarEnderecos",
+            success: (res) => {
+                console.log(res)
+
+                res.forEach(function (row) {
+                    var tableBody = document.getElementById("tbodyUpdateDeleteEnderecos");
+                    var newRow = document.createElement("tr");
+                    tableBody.appendChild(newRow);
+
+                    Object.values(row).forEach(value => {
+                        var newCell = document.createElement("td");
+                        newCell.textContent = value;
+                        newRow.appendChild(newCell);
+                    })
+                    var actionsCell = document.createElement("td");
+                    var btnActionUpdateDelete = document.createElement("button")
+                    btnActionUpdateDelete.setAttribute("data-id", row.id_usuario)
+                    btnActionUpdateDelete.setAttribute("class", "btn-orange btnUpdateDeleteUser")
+                    btnActionUpdateDelete.textContent = "UPDATE/DELETE"
+                    actionsCell.appendChild(btnActionUpdateDelete)
+                    newRow.appendChild(actionsCell)
+                });
+            }
+        })
+    })
 })
+
+
+

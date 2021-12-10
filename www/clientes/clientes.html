@@ -36,8 +36,10 @@
     <main>
         <aside>
             <button>CREATE</button>
-            <button>READ</button>
-            <button>UPDATE/DELETE</button>
+            <button id="btnShowTableCustomers">READ CLIENTES</button>
+            <button id="btnUpdateDeleteShowTableCustomers">UPDATE/DELETE CLIENTES</button>
+            <button id="btnShowTableAddresses">READ ENDERECOS</button>
+            <button id="btnUpdateDeleteShowTableAddresses">UPDATE/DELETE ENDERECOS</button>
         </aside>
 
         <article>
@@ -68,7 +70,119 @@
                 <div id="addresses">
 
                 </div>
-                <button type="button" id="teste" class="btn-green">CADASTRAR</button>
+                <button type="button" id="btnRegisterCustomerAddresses" class="btn-green">CADASTRAR</button>
+                <button type="button" id="btnCancelRegisterCustomerAddresses" class="btn-red">CANCELAR</button>
+            </form>
+
+            <table class="tableCustomers" id="tableCustomers">
+                <thead>
+                    <td id="tdIdCliente">ID</td>
+                    <td id="tdNome">NOME</td>
+                    <td id="tdcpf">CPF</td>
+                    <td id="tdRg">RG</td>
+                    <td id="tdEmail">EMAIL</td>
+                    <td id="tdTelefone1">TELEFONE 1</td>
+                    <td id="tdTelefone2">TELEFONE 2</td>
+                    <td id="tdDataNasc">DATA NASC.</td>
+                    <td id="tdAtivo">ATIVO</td>
+                    <td id="tdIdUsuario">ID USUARIO</td>
+                </thead>
+                <tbody id="tbodyClientes">
+                </tbody>
+            </table>
+
+            <table class="tableAddresses" id="tableAddresses">
+                <thead>
+                    <td id="tdIdEndereco">ID ENDEREÇO</td>
+                    <td id="tdCpfCliente">CPF CLIENTE</td>
+                    <td id="tdRua">RUA</td>
+                    <td id="tdNumerof">NÚMERO</td>
+                    <td id="tdBairro">BAIRRO</td>
+                    <td id="tdCep">CEP</td>
+                    <td id="tdCidade">CIDADE</td>
+                    <td id="tdEstado">ESTADO</td>
+                    <td id="tdPrincipal">PRINCIPAL</td>
+                    <td id="tdAtivo">ATIVO</td>
+                    <td id="tdIdUsuario">ID USUARIO</td>
+                </thead>
+                <tbody id="tbodyEnderecos">
+                </tbody>
+            </table>
+
+            <form class="formUpdateCustomer" method="PUT" id="formUpdateCustomer">
+                <h2>UPDATE CLIENTE</h2>
+                <label for="nameUpdateCustomer">Nome</label>
+                <input type="text" name="nameUpdateCustomer" id="nameUpdateCustomer" />
+
+                <label for="cpfUpdateCustomer">CPF</label>
+                <input type="text" name="cpfUpdateCustomer" id="cpfUpdateCustomer" />
+
+                <label for="rgUpdateCustomer">RG</label>
+                <input type="text" name="rgUpdateCustomer" id="rgUpdateCustomer" />
+
+                <label for="emailUpdateCustomer">E-mail</label>
+                <input type="email" name="emailUpdateCustomer" id="emailUpdateCustomer" />
+
+                <label for="tel01UpdateCustomer">Telefone 01</label>
+                <input type="tel" name="tel01UpdateCustomer" id="tel01UpdateCustomer" />
+
+                <label for="tel02UpdateCustomer">Telefone 02</label>
+                <input type="tel" name="tel02UpdateCustomer" id="tel02UpdateCustomer" />
+
+                <label for="dataNascUpdateCustomer">Data de Nascimento</label>
+                <input type="date" name="dataNascUpdateCustomer" id="dataNascRegisterCustomer" />
+
+                <button type="button" id="btnUpdateCustomer" class="btn-green">ALTERAR</button>
+                <button type="button" id="btnCancelUpdateCustomer" class="btn-red">CANCELAR</button>
+            </form>
+
+            <table class="tableUpdateDeleteCustomers" id="tableUpdateDeleteCustomers">
+                <thead>
+                    <td id="tdIdCliente">ID</td>
+                    <td id="tdNome">NOME</td>
+                    <td id="tdcpf">CPF</td>
+                    <td id="tdRg">RG</td>
+                    <td id="tdEmail">EMAIL</td>
+                    <td id="tdTelefone1">TELEFONE 1</td>
+                    <td id="tdTelefone2">TELEFONE 2</td>
+                    <td id="tdDataNasc">DATA NASC.</td>
+                    <td id="tdAtivo">ATIVO</td>
+                    <td id="tdIdUsuario">ID USUARIO</td>
+                    <td>AÇÕES</td>
+                </thead>
+                <tbody id="tbodyUpdateDeleteClientes">
+                </tbody>
+            </table>
+
+            <form id="formUpdate" method="PUT">
+                <h2>UPDATE ENDEREÇO</h2>
+
+                <label for="streetUpdate">ID</label>
+                <input name="streetUpdate" readonly>
+
+                <label for="streetUpdate">CPF CLIENTE</label>
+                <input type="number" name="streetUpdate" readonly>
+
+                <label for="streetUpdate">Rua/Avenida</label>
+                <input type="text" name="streetUpdate">
+
+                <label for="numberUpdate">Número</label>
+                <input type="text" name="numberUpdates">
+
+                <label for="districtUpdate">Bairro</label>
+                <input type="text" name="districtUpdate">
+
+                <label for="cepUpdate">CEP</label>
+                <input type="number" name="cepUpdate">
+
+                <label for="cityUpdate">Cidade</label>
+                <input type="text" name="cityUpdate">
+
+                <label for="stateUpdate">Estado</label>
+                <input type="text" name="stateUpdate">
+
+                <button type="button" id="btnUpdateAddress" class="btn-green">ALTERAR</button>
+                <button type="button" id="btnCancelUpdateAddress" class="btn-red">ALTERAR</button>
             </form>
 
         </article>

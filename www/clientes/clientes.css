@@ -105,3 +105,22 @@ form button{
 .btnSetAddress{
     width: 100%;
 }
+
+table{
+    border: solid 1px black;
+}
+
+table td {
+    border: solid 1px black;
+    width: 150px;
+    text-align: center;
+}
+
+thead {
+    background-color:#FA6501 ;
+    color: whitesmoke;
+}
+
+table button:hover{
+    opacity: 50%;
+}

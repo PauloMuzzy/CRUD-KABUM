@@ -36,7 +36,7 @@ if ($_POST) {
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
-    } else if ($_POST['acao'] == 'cadastraEndereco') {
+    } else if ($_POST['acao'] == 'cadastraEnderecos') {
 
         $cpf_cliente = intval($_POST['cpf']);
         $rua = $_POST['rua'];
@@ -46,6 +46,11 @@ if ($_POST) {
         $cidade = $_POST['cidade'];
         $estado = $_POST['estado'];
         $principal = intval($_POST['principal']);
+        if ($principal == 1) {
+            $principal = 1;
+        } else {
+            $principal = 0;
+        }
         $ativo = intval($_POST['ativo']);
         $id_usuario = intval($_POST['idUsuario']);
 
@@ -65,6 +70,38 @@ if ($_POST) {
             $query->bindParam(10, $id_usuario);
 
             $query->execute();
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+}
+
+if ($_GET) {
+    if ($_GET['acao'] == 'listarClientes') {
+
+        try {
+            $query = $pdo->prepare('SELECT id_cliente,nome,cpf,rg,email,telefone1,telefone2,data_nasc,id_usuario,ativo FROM clientes WHERE ativo =1');
+
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            echo json_encode($result);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    if ($_GET['acao'] == 'listarEnderecos') {
+
+        try {
+            $query = $pdo->prepare('SELECT id_endereco,cpf_cliente,rua,numero,bairro,cep,cidade,estado,principal,ativo,id_usuario FROM enderecos WHERE ativo =1');
+
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            echo json_encode($result);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
