@@ -47,7 +47,7 @@ if ($_GET['acao'] == "loginLocalstorage") {
 
 
     try {
-        $query = $pdo->prepare('SELECT nome, usuario_tipo FROM usuarios WHERE login= ?');
+        $query = $pdo->prepare('SELECT id_usuario, nome, usuario_tipo FROM usuarios WHERE login= ?');
         $query->bindParam(1, $login);
         $query->execute();
 

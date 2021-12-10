@@ -23,11 +23,14 @@ $(function () {
 
             const urlLoginLocalstorage = "/api/usuarios.php?acao=loginLocalstorage&login=" + loginLocalstorage
 
+            statusLogged()
 
             $.ajax({
                 method: "GET",
                 url: urlLoginLocalstorage,
                 success: function (res) {
+
+                    idUsuario = res.id_usuario
 
                     const salutation = "Olá, " + res.nome + "."
                     $("#salutation").html(salutation)
@@ -35,7 +38,7 @@ $(function () {
 
                     if (res.usuario_tipo == "MASTER") {
                         $("#btnShowUsers").show()
-                        statusLogged()
+
                     }
                 }
             })

@@ -1,5 +1,9 @@
 $(function () {
 
+    const statusLogged = () => {
+        $("#statusLogin").show()
+    }
+
     // ------------------------------------- OK -----------------------------
     //VERIFICAR LOCALSTORAGE
     const verificaLogin = () => {
@@ -11,10 +15,13 @@ $(function () {
             const loginLocalstorage = localStorage.getItem("login")
             const urlLoginLocalstorage = "/api/usuarios.php?acao=loginLocalstorage&login=" + loginLocalstorage
 
+            statusLogged()
+
             $.ajax({
                 method: "GET",
                 url: urlLoginLocalstorage,
                 success: function (res) {
+                    idUsuario = res.id_usuario
 
                     const salutation = "Olá, " + res.nome + "."
                     $("#salutation").html(salutation)
@@ -31,6 +38,9 @@ $(function () {
     }
     verificaLogin()
 
+
+    // ------------------------------------- OK -----------------------------
+    //ADICIONA ENDEREÇO
     var clicks = 0;
     $("#btnAddAddress").click(function (e) {
         e.preventDefault()
@@ -134,6 +144,9 @@ $(function () {
 
     })
 
+
+    // ------------------------------------- OK -----------------------------
+    //CADASTRA CLIENTE E ENDREÇO(S)
     $("#teste").click(function (e) {
         e.preventDefault()
 
@@ -146,7 +159,6 @@ $(function () {
         const dataNascRegisterCustomer = document.getElementById("dataNascRegisterCustomer").value
 
         const objRegisterCustomer = {
-            loginUser: localStorage.getItem("login"),
             acao: "cadastraCliente",
             nome: nameRegisterCustomer,
             cpf: cpfRegisterCustomer,
@@ -154,8 +166,18 @@ $(function () {
             email: emailRegisterCustomer,
             tel1: tel1RegisterCustomer,
             tel2: tel2RegisterCustomer,
-            dataNasc: dataNascRegisterCustomer
+            dataNasc: dataNascRegisterCustomer,
+            idUsuario: idUsuario
         }
+
+        $.ajax({
+            method: "POST",
+            url: "/api/clientes.php",
+            data: objRegisterCustomer,
+            success: function (res) {
+                console.log(res)
+            }
+        })
 
         for (var i = 1; i <= clicks; i++) {
             const streetAddres = document.getElementById("streetAddress" + i).value
@@ -165,27 +187,30 @@ $(function () {
             const cityAddres = document.getElementById("cityAddres" + i).value
             const stateAddres = document.getElementById("stateAddres" + i).value
 
-            var objFirstAddress = {
-                // acao: "cadastraEndereco",
-                // enderecoNumero: i,
-                cpf: document.getElementById("cpfRegisterCustomer").value,
+            const objFirstAddress = {
+                acao: "cadastraEndereco",
+                cpf: cpfRegisterCustomer,
                 rua: streetAddres,
                 numero: numberAddress,
                 bairro: districtAddres,
                 cep: cepAddres,
                 cidade: cityAddres,
                 estado: stateAddres,
-                principal: "1",
-                ativo: "1"
+                principal: i,
+                ativo: "1",
+                idUsuario: idUsuario
             }
 
-            console.log(objFirstAddress)
-            console.log(typeof (document.getElementById("streetAddress" + i).value))
-            console.log(typeof (document.getElementById("numberAddress" + i).value))
-            console.log(typeof (document.getElementById("districtAddres" + i).value))
-            console.log(typeof (document.getElementById("cepAddres" + i).value))
-            console.log(typeof (document.getElementById("cityAddres" + i).value))
-            console.log(typeof (document.getElementById("stateAddres" + i).value))
+            // $query->bindParam(1, $cpf_cliente);
+            // $query->bindParam(2, $rua);
+            // $query->bindParam(3, $numero);
+            // $query->bindParam(4, $bairro);
+            // $query->bindParam(5, $cep);
+            // $query->bindParam(6, $cidade);
+            // $query->bindParam(7, $estado);
+            // $query->bindParam(8, $principal);
+            // $query->bindParam(9, $ativo);
+            // $query->bindParam(10, $id_usuario);
 
             $.ajax({
                 method: "POST",
@@ -197,13 +222,5 @@ $(function () {
             })
         }
 
-        // $.ajax({
-        //     method: "POST",
-        //     url: "/api/clientes.php",
-        //     data: objRegisterCustomer,
-        //     success: function (res) {
-        //         console.log(res)
-        //     }
-        // })
     })
 })

@@ -37,6 +37,10 @@ $(function () {
         $("#confirmDeleteUsers").show()
     })
 
+    const statusLogged = () => {
+        $("#statusLogin").show()
+    }
+
     // ------------------------------------- OK -----------------------------
     //VERIFICAR LOCALSTORAGE
     const verificaLogin = () => {
@@ -54,6 +58,7 @@ $(function () {
                 method: "GET",
                 url: urlLoginLocalstorage,
                 success: function (res) {
+                    idUsuario = res.id_usuario
 
                     const salutation = "Olá, " + res.nome + "."
                     $("#salutation").html(salutation)
