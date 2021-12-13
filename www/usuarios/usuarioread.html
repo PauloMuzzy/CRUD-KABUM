@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USUÁRIOS</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="usuarios.css" media="screen" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../scriptIndex.js"></script>
+    <script type="text/javascript" src="usuarios.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img src="../img/logokabum.png" alt="logoKabum" class="logoKabum">
+        <div id="statusLogin">
+            <p class="saudacaoUsuario" id="salutation"></p>
+            <button class="btn-red" id="btnExitLogin">SAIR</button>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <button><a href="../index.html">HOME</a></button>
+        <button><a href="../clientes/clientes.html">CLIENTES</a></button>
+        <button id="btnShowUsuersIfMaster"><a href="../usuarios/usuarios.html">USUÁRIOS</a></button>
+    </nav>
+
+    <main>
+        <aside>
+            <button id="btnShowFormRegisterUsers">CREATE</button>
+            <button id="btnShowTableUsers">READ</button>
+            <button id="btnShowFormUpdateDeleteUsers">UPDATE/DELETE</button>
+        </aside>
+
+        <article>
+            <form class=" formCadastraUsuario" method="POST" id="formRegisterUsers">
+                <h2>CADASTRAR USUÁRIO</h2>
+                <label for=" nomeCadastraUsuario">Nome</label>
+                <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" required />
+
+                <label for="loginCadastraUsuario">Login</label>
+                <input type="text" name="loginCadastraUsuario" id="loginCadastraUsuario" required />
+
+                <label for="emailCadastraUsuario">E-mail</label>
+                <input type="email" name="emailCadastraUsuario" id="emailCadastraUsuario" required />
+
+                <label for=" senhaCadastraUsuario">Senha</label>
+                <input type="password" name="senhaCadastraUsuario" id="senhaCadastraUsuario" autocomplete="off"
+                    required />
+
+                <label for="confirmaSenhaCadastraUsuario">Confirmar Senha</label>
+                <input type="password" name="confirmaSenhaCadastraUsuario" id="confSenhaCadastraUsuario"
+                    autocomplete="off" required />
+                <button type="submit" class="btn-green">CADASTRAR</button>
+            </form>
+
+            <form class="formUpdateUsers" id="formUpdateUsers">
+                <h2>UPDATE USUÁRIOS</h2>
+
+                <label for="idUpdateUsuario">ID</label>
+                <input id="idUpdateUsuario" name="idUpdateUsuario" readonly />
+
+                <label for="loginUpdateUsuario">LOGIN</label>
+                <input id="loginUpdateUsuario" name="loginUpdateUsuario" readonly />
+
+                <label for="createUpdateUsuario" class="switch">CREATE</label>
+                <input type="button" id="createUpdateUsuario" name="createUpdateUsuario" />
+
+                <label for="readUpdateUsuario" class="switch">READ</label>
+                <input type="button" id="readUpdateUsuario" name="readUpdateUsuario" />
+
+                <label for="updateUpdateUsuario" class="switch">UPDATE</label>
+                <input type="button" id="updateUpdateUsuario" name="updateUpdateUsuario" />
+
+                <label for="deleteUpdateUsuario" class="switch">DELET</label>
+                <input type="button" id="deleteUpdateUsuario" name="deleteUpdateUsuario" />
+
+                <button type="button" class="btn-green" id="btnUpdateUser">ALTERAR</button>
+
+                <div id="confirmUpdateUsers">
+                    <button class="btn-green" id="btnConfirmUpdateUser">CONFIRMA</button>
+                    <button class="btn-red" id="btnCancelUpdateUser">CANCELA</button>
+                </div>
+                <p class="alert-green" id="alertSuccessUpdateUser">USUÁRIO ALTERADO !!!</p>
+                <p class="alert-red" id="alertFailUpdateUser">OPS! ALGO DEU ERRADO !!!</p>
+
+                <button type="button" class="btn-red" id="btnDeleteUser">APAGAR</button>
+                <div id="confirmDeleteUsers">
+                    <button class="btn-green" id="btnConfirmDeleteUser">CONFIRMA</button>
+                    <button class="btn-red" id="btnCancelDeleteUser">CANCELA</button>
+                </div>
+                <p class="alert-green" id="alertSuccessDeleteUser">USUÁRIO ALTERADO !!!</p>
+                <p class="alert-red" id="alertFailDeleteUser">OPS! ALGO DEU ERRADO !!!</p>
+
+            </form>
+
+            <table class="tableUsers" id="tableUsers">
+                <thead>
+                    <td id="tdId">ID</td>
+                    <td id="tdNome">NOME</td>
+                    <td id="tdLogin">LOGIN</td>
+                    <td id="tdTypeuser">TYPEUSER</td>
+                    <td id="tdCreat">CREAT</td>
+                    <td id="tdRead">READ</td>
+                    <td id="tdUpdate">UPDATE</td>
+                    <td id="tdDelet">DELET</td>
+                    <td id="tdStatus">ATIVO</td>
+                    <td id="tdAcoes">AÇÕES</td>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </article>
+
+    </main>
+
+    <footer>
+        <a href="instagram.com.br"><img src="../img/icongmail.png">paulo.kriger</a>
+        <a href="instagram.com.br"><img src="../img/iconinstagram.png">paulomuzzy.dev</a>
+        <a href="instagram.com.br"><img src="../img/icongithub.png">PauloKrigerMuzzy</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
