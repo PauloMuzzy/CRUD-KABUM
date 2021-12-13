@@ -26,18 +26,10 @@ $(function () {
                 method: "POST",
                 url: "/api/usuarios.php",
                 data: objCadastraUsuarios,
-                success: function (res) {
-                    $("#alertaSucessoCadastraUsuario").show()
-
-                    setTimeout(() => {
-                    }, 150000);
-                    location.reload()
-
-                },
-                error: function () {
-                    $("#alertaErroCadastraUsuario").show()
-                }
+                // success: function () {
+                // }
             })
         }
+        location.reload()
     })
 })

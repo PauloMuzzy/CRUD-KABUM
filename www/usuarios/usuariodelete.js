@@ -45,8 +45,8 @@ $(function () {
                         type: "PUT",
                         url: "/api/usuarios.php",
                         data: objDeleteUsuario,
-                        success: (res) => {
-                        }
+                        // success: () => {
+                        // }
                     })
                 }
                 location.reload()

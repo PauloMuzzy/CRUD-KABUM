@@ -97,7 +97,7 @@ if ($_GET["acao"] == "loginLocalstorage") {
 }
 
 // // ------------------------- LISTA DE USUÁRIOS UPDATE----------------------------
-if ($_GET["acao"] == "listaUsuariosUpdate") {
+if ($_GET["acao"] == "listaUsuarios") {
 
     try {
         $query = $pdo->prepare('SELECT id_usuario,nome,login,tipo_usuario,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo FROM usuarios WHERE tipo_usuario="PADRAO" AND ativo =1');
@@ -112,6 +112,21 @@ if ($_GET["acao"] == "listaUsuariosUpdate") {
 }
 
 // // ------------------------- LISTA DE USUÁRIOS UPDATE----------------------------
+if ($_GET["acao"] == "listaUsuariosUpdate") {
+
+    try {
+        $query = $pdo->prepare('SELECT id_usuario,nome,login,tipo_usuario,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo FROM usuarios WHERE tipo_usuario="PADRAO" AND ativo =1');
+
+        $query->execute();
+
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+// // ------------------------- LISTA DE USUÁRIOS DELETE----------------------------
 if ($_GET["acao"] == "listaUsuariosDelete") {
 
     try {

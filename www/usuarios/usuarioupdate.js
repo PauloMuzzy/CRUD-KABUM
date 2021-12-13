@@ -38,8 +38,6 @@ $(function () {
                     url: urlIdbotaoUpdate,
                     success: (res) => {
 
-                        console.log(res)
-
                         const inseVermelhoadosInputUpdateUsuario = () => {
 
                             const idUpdateUsuario = idbotaoUpdateDelete
@@ -169,8 +167,6 @@ $(function () {
                                     }
                                 })
 
-                                location.reload()
-                            } else {
                                 location.reload()
                             }
                         })
