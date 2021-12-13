@@ -128,71 +128,71 @@ $(function () {
     $('#botaoCadastraCliente').click(function (e) {
         e.preventDefault()
 
-        // const confirmaCadastro = confirm('Confirma cadastro do cliente?')
+        const confirmaCadastro = confirm('Confirma cadastro do cliente?')
 
+        if (confirmaCadastro == true) {
+            const nomeCadastraCliente = document.getElementById('nomeCadastraCliente').value
+            const cpfCadastraCliente = document.getElementById('cpfCadastraCliente').value
+            const rgCadastraCliente = document.getElementById('rgCadastraCliente').value
+            const emailCadastraCliente = document.getElementById('emailCadastraCliente').value
+            const tel1CadastraCliente = document.getElementById('tel01CadastraCliente').value
+            const tel2CadastraCliente = document.getElementById('tel02CadastraCliente').value
+            const dataNascCadastraCliente = document.getElementById('dataNascCadastraCliente').value
 
-        // (confirmaCadastro == true) {
-        const nomeCadastraCliente = document.getElementById('nomeCadastraCliente').value
-        const cpfCadastraCliente = document.getElementById('cpfCadastraCliente').value
-        const rgCadastraCliente = document.getElementById('rgCadastraCliente').value
-        const emailCadastraCliente = document.getElementById('emailCadastraCliente').value
-        const tel1CadastraCliente = document.getElementById('tel01CadastraCliente').value
-        const tel2CadastraCliente = document.getElementById('tel02CadastraCliente').value
-        const dataNascCadastraCliente = document.getElementById('dataNascCadastraCliente').value
-
-        const objCadastraCliente = {
-            acao: 'cadastraCliente',
-            nome: nomeCadastraCliente,
-            cpf: cpfCadastraCliente,
-            rg: rgCadastraCliente,
-            email: emailCadastraCliente,
-            tel1: tel1CadastraCliente,
-            tel2: tel2CadastraCliente,
-            dataNasc: dataNascCadastraCliente,
-            idUsuario: idUsuario
-        }
-
-        // $.ajax({
-        //     method: 'POST',
-        //     url: '/api/clientes.php',
-        //     data: objCadastraCliente,
-        //     success: function (res) {
-        //         console.log(res)
-        //     }
-        // })
-
-        for (var i = 1; i <= clicks; i++) {
-            const ruaEndereco = document.getElementById('ruaEndereco' + i).value
-            const numeroEndereco = document.getElementById('numeroEndereco' + i).value
-            const bairroEndereco = document.getElementById('bairroEndereco' + i).value
-            const cepEndereco = document.getElementById('cepEndereco' + i).value
-            const cidadeEndereco = document.getElementById('cidadeEndereco' + i).value
-            const estadoEndereco = document.getElementById('estadoEndereco' + i).value
-
-            const objFirstEndereco = {
-                acao: 'cadastraEndereco',
+            const objCadastraCliente = {
+                acao: 'cadastraCliente',
+                nome: nomeCadastraCliente,
                 cpf: cpfCadastraCliente,
-                rua: ruaEndereco,
-                numero: numeroEndereco,
-                bairro: bairroEndereco,
-                cep: cepEndereco,
-                cidade: cidadeEndereco,
-                estado: estadoEndereco,
-                enderecoOrdem: i,
+                rg: rgCadastraCliente,
+                email: emailCadastraCliente,
+                tel1: tel1CadastraCliente,
+                tel2: tel2CadastraCliente,
+                dataNasc: dataNascCadastraCliente,
                 idUsuario: idUsuario
             }
-
-            console.log(objFirstEndereco)
 
             // $.ajax({
             //     method: 'POST',
             //     url: '/api/clientes.php',
-            //     data: objFirstEndereco,
+            //     data: objCadastraCliente,
             //     success: function (res) {
             //         console.log(res)
             //     }
             // })
 
+            for (var i = 1; i <= clicks; i++) {
+                const ruaEndereco = document.getElementById('ruaEndereco' + i).value
+                const numeroEndereco = document.getElementById('numeroEndereco' + i).value
+                const bairroEndereco = document.getElementById('bairroEndereco' + i).value
+                const cepEndereco = document.getElementById('cepEndereco' + i).value
+                const cidadeEndereco = document.getElementById('cidadeEndereco' + i).value
+                const estadoEndereco = document.getElementById('estadoEndereco' + i).value
+
+                const objFirstEndereco = {
+                    acao: 'cadastraEndereco',
+                    cpf: cpfCadastraCliente,
+                    rua: ruaEndereco,
+                    numero: numeroEndereco,
+                    bairro: bairroEndereco,
+                    cep: cepEndereco,
+                    cidade: cidadeEndereco,
+                    estado: estadoEndereco,
+                    enderecoOrdem: i,
+                    idUsuario: idUsuario
+                }
+
+                console.log(objFirstEndereco)
+
+                // $.ajax({
+                //     method: 'POST',
+                //     url: '/api/clientes.php',
+                //     data: objFirstEndereco,
+                //     success: function (res) {
+                //         console.log(res)
+                //     }
+                // })
+
+            }
         }
     })
 })

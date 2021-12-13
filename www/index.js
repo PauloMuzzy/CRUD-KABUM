@@ -1,44 +1,38 @@
 $(function () {
 
-    $("#alertLoginSuccess").hide()
-    $("#alertLoginFail").hide()
-    $("#statusLogin").hide()
-    $("#linkCrudUsers").hide()
-    $("#btnShowUsers").hide()
-    $("#btnShowCustomers").hide()
-
-    const statusLogged = () => {
-        $("#statusLogin").show()
-    }
+    $('#divLogado').hide()
+    $('#alertaSucessoLogin').hide()
+    $('#alertaErroLogin').hide()
+    $('#linkClientes').hide()
+    $('#linkUsuarios').hide()
 
     // ------------------------------------- OK -----------------------------
     //VERIFICAR LOCALSTORAGE
     const verificaLogin = () => {
 
-        const logadoLocalstorage = localStorage.getItem("logado")
+        const logadoLocalstorage = localStorage.getItem('logado')
 
-        if (logadoLocalstorage == "1") {
+        if (logadoLocalstorage == '1') {
 
-            const loginLocalstorage = localStorage.getItem("login")
-
-            const urlLoginLocalstorage = "/api/usuarios.php?acao=loginLocalstorage&login=" + loginLocalstorage
-
-            statusLogged()
+            const loginLocalstorage = localStorage.getItem('login')
+            const urlLoginLocalstorage = '/api/usuarios.php?acao=loginLocalstorage&login=' + loginLocalstorage
 
             $.ajax({
-                method: "GET",
+                method: 'GET',
                 url: urlLoginLocalstorage,
                 success: function (res) {
 
+                    const saudacao = 'Olá, ' + res.nome + '.'
+                    $('#saudacaoUsuario').html(saudacao)
+                    $('#divLogado').show()
                     idUsuario = res.id_usuario
+                    tipoUsuario = res.tipo_usuario
 
-                    const salutation = "Olá, " + res.nome + "."
-                    $("#salutation").html(salutation)
-                    $("#btnShowCustomers").show()
-
-                    if (res.usuario_tipo == "MASTER") {
-                        $("#btnShowUsers").show()
-
+                    if (tipoUsuario == 'MASTER') {
+                        $('#linkClientes').show()
+                        $('#linkUsuarios').show()
+                    } else if (tipoUsuario == 'PADRAO') {
+                        $('#linkClientes').show()
                     }
                 }
             })
@@ -48,43 +42,39 @@ $(function () {
 
     // ------------------------------------- OK -----------------------------
     //LOGAR    
-    $("#formLogin").click((e) => {
+    $('#botaoEntrar').click(function (e) {
         e.preventDefault()
-        const loginLogar = document.getElementById("loginLogar").value
-        const senhaLogar = document.getElementById("senhaLogar").value
-        const urlLogar = "/api/usuarios.php?acao=logar&login=" + loginLogar + "&senha=" + senhaLogar
+        const loginLogar = document.getElementById('loginLogar').value
+        const senhaLogar = document.getElementById('senhaLogar').value
+
+        const objLogar = {
+            acao: 'logar',
+            login: loginLogar,
+            senha: senhaLogar
+        }
 
         $.ajax({
-            method: "GET",
-            url: urlLogar,
+            method: 'POST',
+            url: '/api/usuarios.php',
+            data: objLogar,
             success: function (res) {
-
-                const statusLogadoRes = res.status_logado
-
-                if (statusLogadoRes == "1") {
-                    localStorage.setItem("logado", "1")
-                    localStorage.setItem("login", loginLogar)
-                    localStorage.setItem("usuario_tipo", res.usuario_tipo)
-                    location.reload()
-
-                } else {
-                    $(".alerta").show(200)
-                    $("#btnAlertaSenha").click(() => {
-                        $(".formLogar").clear()
-                    })
-                }
+                localStorage.setItem('logado', '1')
+                localStorage.setItem('login', loginLogar)
+                localStorage.setItem('tipoUsuario', res.tipo_usuario)
+                $('#alertaSucessoLogin').show()
+                setTimeout(location.reload(), 150000)
             }
         })
     })
 
     // ------------------------------------- OK -----------------------------
 
-    $("#btnExitLogin").click(function () {
-        const logOff = () => {
+    $('#botaoSairLogado').click(function () {
+        const sairLogado = function () {
             localStorage.clear()
             location.reload()
         }
-        logOff()
+        sairLogado()
     })
 })
 

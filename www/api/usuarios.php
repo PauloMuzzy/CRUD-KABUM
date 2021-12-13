@@ -5,88 +5,39 @@ include('conexao.php');
 header('Content-Type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
 
-// ------------------- LOGAR
-if ($_GET['acao'] == "logar") {
+// ################################### POST ###################################
 
-    $login = $_GET['login'];
-    $senha = $_GET['senha'];
+// ---------------------------------- LOGAR ----------------------------------
+if ($_POST['acao'] == "logar") {
+
+    $login = $_POST['login'];
+    $senha = $_POST['senha'];
 
     try {
-        $query = $pdo->prepare('SELECT nome ,hash_senha ,usuario_tipo FROM usuarios WHERE LOGIN= ?');
+        $query = $pdo->prepare('SELECT nome,hash_senha,tipo_usuario FROM usuarios WHERE LOGIN= ?');
         $query->bindParam(1, $login);
         $query->execute();
 
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
         $result_nome = $result['nome'];
-        $result_usuario_tipo = $result['usuario_tipo'];
+        $result_tipo_usuario = $result['tipo_usuario'];
+        $result_hash_senha = $result['hash_senha'];
 
-        if (password_verify($senha,  $result['hash_senha'])) {
+        if (password_verify($senha,  $result_hash_senha)) {
 
             $login_verificado = array(
                 "status_logado" => "1",
                 "nome" => "$result_nome",
-                "usuario_tipo" => "$result_usuario_tipo"
+                "tipo_usuario" => "$result_tipo_usuario"
             );
-            echo json_encode($login_verificado);
         } else {
             $login_verificado = array(
                 "resultado" => "0"
             );
-            echo json_encode($login_verificado);
         }
-    } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
-}
 
-// ------------------- FAZ LOGIN COM LOCALSTORAGE
-if ($_GET['acao'] == "loginLocalstorage") {
-
-    $login = $_GET['login'];
-
-
-    try {
-        $query = $pdo->prepare('SELECT id_usuario, nome, usuario_tipo FROM usuarios WHERE login= ?');
-        $query->bindParam(1, $login);
-        $query->execute();
-
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        echo json_encode($result);
-    } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
-}
-
-// // ------------------- LISTA DE USUÁRIOS
-if ($_GET['acao'] == "listaUsuarios") {
-
-    try {
-        $query = $pdo->prepare('SELECT id_usuario,nome,login,usuario_tipo,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo FROM usuarios WHERE usuario_tipo="PADRAO" AND ativo =1');
-
-        $query->execute();
-
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
-        echo json_encode($result);
-    } catch (PDOException $e) {
-        echo 'Error: ' . $e->getMessage();
-    }
-}
-
-// ------------------- BUSCA USUARIO PARA FAZER UPDATE
-if ($_GET['acao'] == "updateUsuario") {
-
-    $id = $_GET['id'];
-
-    try {
-        $query = $pdo->prepare('SELECT login,acesso_criar,acesso_ler,acesso_editar,acesso_deletar FROM usuarios WHERE id_usuario=?');
-        $query->bindParam(1, $id);
-        $query->execute();
-
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-
-        echo json_encode($result);
+        echo json_encode($login_verificado);
     } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }
@@ -95,17 +46,11 @@ if ($_GET['acao'] == "updateUsuario") {
 // ------------------- CADASTRA NOVO USUARIO
 if ($_POST['acao'] == 'cadastrarUsuario') {
 
-    $nome = ($_POST['nome']);
-    $login = ($_POST['login']);
-    $senha = ($_POST['senha']);
-
-    echo $senha, "\n";
-
+    $nome = $_POST['nome'];
+    $login = $_POST['login'];
+    $senha = $_POST['senha'];
     $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
-
-    echo $hash_senha, "\n";
-
-    $usuario_tipo = "PADRAO";
+    $tipo_usuario = "PADRAO";
     $acesso_criar = "HABILITADO";
     $acesso_ler = "DESABILITADO";
     $acesso_editar = "DESABILITADO";
@@ -113,13 +58,13 @@ if ($_POST['acao'] == 'cadastrarUsuario') {
     $ativo = 1;
 
     try {
-        $query = $pdo->prepare('INSERT INTO usuarios (nome,login,hash_senha,usuario_tipo,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo) 
+        $query = $pdo->prepare('INSERT INTO usuarios (nome,login,hash_senha,tipo_usuario,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo) 
         VALUES (? ,? ,? ,? ,? ,? ,? ,? ,? )');
 
         $query->bindParam(1, $nome);
         $query->bindParam(2, $login);
         $query->bindParam(3, $hash_senha);
-        $query->bindParam(4, $usuario_tipo);
+        $query->bindParam(4, $tipo_usuario);
         $query->bindParam(5, $acesso_criar);
         $query->bindParam(6, $acesso_ler);
         $query->bindParam(7, $acesso_editar);
@@ -132,17 +77,68 @@ if ($_POST['acao'] == 'cadastrarUsuario') {
     }
 }
 
+// ################################### GET ################################### 
+
+// ------------------------ FAZ LOGIN COM LOCALSTORAGE -----------------------
+if ($_GET['acao'] == "loginLocalstorage") {
+
+    $login = $_GET['login'];
+
+    try {
+        $query = $pdo->prepare('SELECT id_usuario,nome,tipo_usuario FROM usuarios WHERE login= ?');
+        $query->bindParam(1, $login);
+        $query->execute();
+
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        echo json_encode($result);
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+// // ------------------------- LISTA DE USUÁRIOS ----------------------------
+if ($_GET['acao'] == "listaUsuarios") {
+
+    try {
+        $query = $pdo->prepare('SELECT id_usuario,nome,login,usuario_tipo,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo FROM usuarios WHERE usuario_tipo="PADRAO" AND ativo =1');
+
+        $query->execute();
+
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+// ------------------- BUSCA USUARIO PARA FAZER UPDATE -----------------------
+if ($_GET['acao'] == "updateUsuario") {
+
+    $id = $_GET['id'];
+
+    try {
+        $query = $pdo->prepare('SELECT login,acesso_criar,acesso_ler,acesso_editar,acesso_deletar FROM usuarios WHERE id_usuario=?');
+        $query->bindParam(1, $id);
+        $query->execute();
+
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
+}
+
+// ################################### PUT ################################### 
+
 if ($method === 'PUT') {
     parse_str(file_get_contents('php://input'), $_PUT);
 
     $action = ($_PUT['action']);
 
     if ($action == "update") {
-        $create = ($_PUT['create']);
-        $read = ($_PUT['read']);
-        $update = ($_PUT['update']);
-        $delete = ($_PUT['delete']);
-        $id = intval($_PUT['id']);
+        $create = $_PUT['create'];
+        $read = $_PUT['read'];
+        $update = $_PUT['update'];
+        $delete = $_PUT['delete'];
+        $id = $_PUT['id'];
 
         try {
             $query = $pdo->prepare('UPDATE usuarios SET acesso_criar=?,acesso_ler=?,acesso_editar=?,acesso_deletar=? WHERE id_usuario=?');
@@ -169,8 +165,6 @@ if ($method === 'PUT') {
             $query->bindParam(2, $id);
 
             $query->execute();
-
-            echo json_encode($id);
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }

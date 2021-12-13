@@ -1,12 +1,17 @@
 #divEnderecos{
     width: 100%;
-    margin-top: 15px;
 }
 
 .formularioEnderecos{
     width: 100%;
-    margin: 15px 0px 0px 0px;
+    padding: 0px;
+    margin: 0px;
     background-color: rgb(220, 220, 220);
-    border: 0px;
+    border: 1px solid grey;
+    border-radius: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 

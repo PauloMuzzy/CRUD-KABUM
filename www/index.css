@@ -23,7 +23,7 @@ header{
     align-items: center;
 }
 
-#statusLogin{
+#divLogado{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -48,50 +48,58 @@ nav {
     justify-content: center;
     background-color: #FA6501;
     width: 100%;
-    height: 30p;
+    height: 30px;
 }
 
-nav button{
+nav a{
+    text-align: center;
     background-color: #FA6501;
     width: 25%;
     height: 100%;
     font-size: 120%;
-}
-
-nav button a{
     text-decoration: none;
     color: whitesmoke;
+    cursor: pointer;
 }
 
-nav button a:hover{
+nav a:hover{
     color: rgb(202, 199, 199);
 }
-
-
 
 /* -----------------------------------------------------------------------------------------------------------ASIDE */
 aside{
     display: flex;
     flex-direction: column;
 align-items: center;
-    width: 10%;
+    width: 12%;
     background-color: whitesmoke;
     padding: 5px;
     gap: 5px;
 }
 
-aside button {
+aside a {
+    text-align: center;
+    text-decoration: none;
     border: solid 1px #FA6501 ;
     color: #FA6501;
     width: 90%;
     height: 30px;
 }
 
-aside button:hover {  
+aside a:hover {  
     background-color: #FA6501 ;
     color: whitesmoke;
 }
 
+#linkAsideCadastraCLiente{
+    height: 60px;
+}
+
+.aSelecionado {
+    background-color: #FA6501;
+    border: solid 1px #FA6501;
+    color: whitesmoke;
+}
 
 /* -----------------------------------------------------------------------------------------------------------ARTICLE */
 article{
@@ -199,20 +207,20 @@ form button:hover{
     text-align: center;
     color: whitesmoke;
     background-color: #DC3545;
-    opacity: 75%;
+    opacity: 60%;
     width: 100%;
     height: 50px;
-    border-radius: 5px;
+    margin: 5px;
 }
 
 .alertaVerde{
     text-align: center;
     color: whitesmoke;
     background-color: #1A8754;
-    opacity: 75%;
+    opacity: 60%;
     width: 100%;
     height: 50px;
-    border-radius: 5px;
+    margin: 5px;
 }
 
 .botaoVerdeClaro{
@@ -231,35 +239,3 @@ form button:hover{
 img{
     height: 100%;
 }
-
-
-.popup{
-    width: 500px;
-    height: 500px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: rgba(0,0,0,0.8);
-    z-index: 99999;
-    opacity:0;
-    -webkit-transition: opacity 400ms ease-in;
-    -moz-transition: opacity 400ms ease-in;
-    transition: opacity 400ms ease-in;
-    pointer-events: none;
-}
-
-.popup:target {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .popup > div {
-    width: 400px;
-    position: relative;
-    margin: 10% auto;
-    padding: 15px 20px;
-    background: #fff;
-  }

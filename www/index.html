@@ -1,68 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang='pt-br'>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>HOME</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="scriptIndex.js"></script>
+    <link rel='stylesheet' type='text/css' href='index.css' media='screen' />
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'
+        rel='stylesheet'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript' src='index.js'></script>
 </head>
 
 <body>
 
     <header>
-        <img src="img/logokabum.png" alt="logoKabum" class="logoKabum">
-        <div id="statusLogin">
-            <p class="saudacaoUsuario" id="salutation"></p>
-            <button class="btn-red" id="btnExitLogin">SAIR</button>
+        <img src='img/logokabum.png' alt='logoKabum' class='logoKabum'>
+        <div id='divLogado'>
+            <p class='saudacaoUsuario' id='saudacaoUsuario'></p>
+            <button class='botaoVermelho' id='botaoSairLogado'>SAIR</button>
         </div>
     </header>
 
-    <nav class="menu">
-        <button><a href="../index.html">HOME</a></button>
-        <button id="btnShowCustomers"><a href="../clientes/clientes.html">CLIENTES</a></button>
-        <button id="btnShowUsers"><a href="../usuarios/usuarios.html">USUÁRIOS</a></button>
+    <nav class='menu'>
+        <a>HOME</a>
+        <a id="linkClientes">CLIENTES</a>
+        <a id="linkUsuarios">USUÁRIOS</a>
     </nav>
 
     <main>
 
         <aside>
-            <button id="btnShowFormLogin">LOGAR</button>
+            <a class="aSelecionado">LOGAR</a>
         </aside>
 
         <article>
 
-            <form class="Logar" method="POST" id="formLogin">
+            <form class='logar' method='POST'>
                 <h2>ENTRAR NO CRUD</h2>
-                <label for="loginLogar">Login</label>
-                <input type="text" id="loginLogar" name="loginLogar" required />
+                <label for='loginLogar'>Login</label>
+                <input type='text' id='loginLogar' name='loginLogar' required />
 
-                <label for="senhaLogar">Senha</label>
-                <input type="password" id="senhaLogar" name="senhaLogar" autocomplete="on" required />
+                <label for='senhaLogar'>Senha</label>
+                <input type='password' id='senhaLogar' name='senhaLogar' required />
 
-                <button type="button" class="btn-green">ENTRAR</button>
+                <button type='button' class='botaoVerde' id="botaoEntrar">ENTRAR</button>
 
-                <p class="alert-red" id="alertLoginSuccess">LOGIN OU SENHA INVALÁLIDOS !!!</p>
+                <div class="alertaVerde" id="alertaSucessoLogin">
+                    <p>LOGIN OU SENHA INVALÁLIDOS !!!</p>
+                </div>
 
-                <p class="alert-green" id="alertLoginFail">LOGIN REALIZADO !!!</p>
+                <div class="alertaVerde" id="alertaErroLogin">
+                    <p>LOGIN REALIZADO !!!</p>
+                </div>
+
             </form>
-
-
         </article>
 
     </main>
 
     <footer>
-        <a href="instagram.com.br"><img src="img/icongmail.png">paulo.kriger</a>
-        <a href="instagram.com.br"><img src="img/iconinstagram.png">paulomuzzy.dev</a>
-        <a href="instagram.com.br"><img src="img/icongithub.png">PauloKrigerMuzzy</a>
+        <a href='instagram.com.br'><img src='img/icongmail.png'>paulo.kriger</a>
+        <a href='instagram.com.br'><img src='img/iconinstagram.png'>paulomuzzy.dev</a>
+        <a href='instagram.com.br'><img src='img/icongithub.png'>PauloKrigerMuzzy</a>
     </footer>
 </body>
 
