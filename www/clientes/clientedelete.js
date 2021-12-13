@@ -1,123 +1,123 @@
 $(function () {
 
     //Mascaras
-    $('.cpf').mask('999.999.999-99');
-    $('.telefone').mask('(99)99999-9999');
-    $('.telefone').mask('(99)99999-9999');
-    $('.cep').mask('99999-999')
+    $(".cpf").mask("999.999.999-99");
+    $(".telefone").mask("(99)99999-9999");
+    $(".telefone").mask("(99)99999-9999");
+    $(".cep").mask("99999-999")
 
     var mascaraRg = {
-        'translation': {
+        "translation": {
             A: {
                 pattern: /[A-Za-z0-9]/
             }
         }
     };
-    $('.rg').mask('99.999.999-A' || '99.999.999-99', mascaraRg);
+    $(".rg").mask("99.999.999-A" || "99.999.999-99", mascaraRg);
 
 
     // ------------------------------------- OK -----------------------------
     //ADICIONA FORMULÁRIO DE ENDEREÇO
     var clicks = 0;
-    $('#botaoAdicionaEndereco').click(function (e) {
+    $("#botaoAdicionaEndereco").click(function (e) {
         e.preventDefault()
 
         clicks += 1;
 
-        var tagForm = document.createElement('form')
-        $('#divEnderecos').append(tagForm)
-        tagForm.setAttribute('id', 'formularioEnderecos' + clicks)
-        tagForm.setAttribute('method', 'POST')
-        tagForm.setAttribute('class', 'formularioEnderecos')
+        var tagForm = document.createElement("form")
+        $("#divEnderecos").append(tagForm)
+        tagForm.setAttribute("id", "formularioEnderecos" + clicks)
+        tagForm.setAttribute("method", "POST")
+        tagForm.setAttribute("class", "formularioEnderecos")
 
-        var tagH3 = document.createElement('h3')
-        tagH3.setAttribute('id', 'h3Enderecos' + clicks)
+        var tagH3 = document.createElement("h3")
+        tagH3.setAttribute("id", "h3Enderecos" + clicks)
         tagForm.appendChild(tagH3)
 
-        if (clicks == '1') {
-            tagH3.textContent = 'ENDEREÇO ' + clicks + ' - (PRINCIPAL)'
+        if (clicks == "1") {
+            tagH3.textContent = "ENDEREÇO " + clicks + " - (PRINCIPAL)"
         } else {
-            tagH3.textContent = 'ENDEREÇO ' + clicks
+            tagH3.textContent = "ENDEREÇO " + clicks
 
         }
 
         // ----------- RUA -----------
 
-        var tagLabel = document.createElement('label')
-        tagLabel.setAttribute('for', 'ruaEndereco' + clicks)
+        var tagLabel = document.createElement("label")
+        tagLabel.setAttribute("for", "ruaEndereco" + clicks)
         tagForm.appendChild(tagLabel)
-        tagLabel.textContent = 'Rua/Avenida'
+        tagLabel.textContent = "Rua/Avenida"
 
-        var tagInput = document.createElement('input')
-        tagInput.setAttribute('name', 'ruaEndereco')
-        tagInput.setAttribute('id', 'ruaEndereco' + clicks)
-        tagInput.setAttribute('style', 'text-transform:uppercase')
+        var tagInput = document.createElement("input")
+        tagInput.setAttribute("name", "ruaEndereco")
+        tagInput.setAttribute("id", "ruaEndereco" + clicks)
+        tagInput.setAttribute("style", "text-transform:uppercase")
         tagForm.appendChild(tagInput)
 
         // ----------- NÚMERO -----------
 
-        var tagLabel = document.createElement('label')
-        tagLabel.setAttribute('for', 'numeroEndereco' + clicks)
+        var tagLabel = document.createElement("label")
+        tagLabel.setAttribute("for", "numeroEndereco" + clicks)
         tagForm.appendChild(tagLabel)
-        tagLabel.textContent = 'Número'
+        tagLabel.textContent = "Número"
 
-        var tagInput = document.createElement('input')
-        tagInput.setAttribute('name', 'numeroEndereco')
-        tagInput.setAttribute('id', 'numeroEndereco' + clicks)
-        tagInput.setAttribute('style', 'text-transform:uppercase')
+        var tagInput = document.createElement("input")
+        tagInput.setAttribute("name", "numeroEndereco")
+        tagInput.setAttribute("id", "numeroEndereco" + clicks)
+        tagInput.setAttribute("style", "text-transform:uppercase")
         tagForm.appendChild(tagInput)
 
         // ----------- BAIRRO -----------
 
-        var tagLabel = document.createElement('label')
-        tagLabel.setAttribute('for', 'bairroEndereco' + clicks)
+        var tagLabel = document.createElement("label")
+        tagLabel.setAttribute("for", "bairroEndereco" + clicks)
         tagForm.appendChild(tagLabel)
-        tagLabel.textContent = 'Bairro'
+        tagLabel.textContent = "Bairro"
 
-        var tagInput = document.createElement('input')
-        tagInput.setAttribute('name', 'bairroEndereco')
-        tagInput.setAttribute('id', 'bairroEndereco' + clicks)
-        tagInput.setAttribute('style', 'text-transform:uppercase')
+        var tagInput = document.createElement("input")
+        tagInput.setAttribute("name", "bairroEndereco")
+        tagInput.setAttribute("id", "bairroEndereco" + clicks)
+        tagInput.setAttribute("style", "text-transform:uppercase")
         tagForm.appendChild(tagInput)
 
         // ----------- CEP -----------
 
-        var tagLabel = document.createElement('label')
-        tagLabel.setAttribute('for', 'cepEndereco' + clicks)
+        var tagLabel = document.createElement("label")
+        tagLabel.setAttribute("for", "cepEndereco" + clicks)
         tagForm.appendChild(tagLabel)
-        tagLabel.textContent = 'CEP'
+        tagLabel.textContent = "CEP"
 
-        var tagInput = document.createElement('input')
-        tagInput.setAttribute('class', 'cep')
-        tagInput.setAttribute('name', 'cepEndereco')
-        tagInput.setAttribute('id', 'cepEndereco' + clicks)
+        var tagInput = document.createElement("input")
+        tagInput.setAttribute("class", "cep")
+        tagInput.setAttribute("name", "cepEndereco")
+        tagInput.setAttribute("id", "cepEndereco" + clicks)
         tagForm.appendChild(tagInput)
-        $('.cep').mask('99999-999')
+        $(".cep").mask("99999-999")
 
         // ----------- CIDADE -----------
 
-        var tagLabel = document.createElement('label')
-        tagLabel.setAttribute('for', 'cidadeEndereco' + clicks)
+        var tagLabel = document.createElement("label")
+        tagLabel.setAttribute("for", "cidadeEndereco" + clicks)
         tagForm.appendChild(tagLabel)
-        tagLabel.textContent = 'Cidade'
+        tagLabel.textContent = "Cidade"
 
-        var tagInput = document.createElement('input')
-        tagInput.setAttribute('name', 'cidadeEndereco')
-        tagInput.setAttribute('id', 'cidadeEndereco' + clicks)
-        tagInput.setAttribute('style', 'text-transform:uppercase')
+        var tagInput = document.createElement("input")
+        tagInput.setAttribute("name", "cidadeEndereco")
+        tagInput.setAttribute("id", "cidadeEndereco" + clicks)
+        tagInput.setAttribute("style", "text-transform:uppercase")
         tagForm.appendChild(tagInput)
 
         // ----------- ESTADO -----------
 
-        var tagLabel = document.createElement('label')
-        tagLabel.setAttribute('for', 'estadoEndereco' + clicks)
+        var tagLabel = document.createElement("label")
+        tagLabel.setAttribute("for", "estadoEndereco" + clicks)
         tagForm.appendChild(tagLabel)
-        tagLabel.textContent = 'Estado'
+        tagLabel.textContent = "Estado"
 
-        var tagInput = document.createElement('input')
-        tagInput.setAttribute('name', 'estadoEndereco')
-        tagInput.setAttribute('id', 'estadoEndereco' + clicks)
-        tagInput.setAttribute('style', 'text-transform:uppercase')
+        var tagInput = document.createElement("input")
+        tagInput.setAttribute("name", "estadoEndereco")
+        tagInput.setAttribute("id", "estadoEndereco" + clicks)
+        tagInput.setAttribute("style", "text-transform:uppercase")
         tagForm.appendChild(tagInput)
     })
 
@@ -125,22 +125,22 @@ $(function () {
 
     // ------------------------------------- OK -----------------------------
     //CADASTRA CLIENTE E ENDREÇO(S)
-    $('#botaoCadastraCliente').click(function (e) {
+    $("#botaoCadastraCliente").click(function (e) {
         e.preventDefault()
 
-        const confirmaCadastro = confirm('Confirma cadastro do cliente?')
+        const confirmaCadastro = confirm("Confirma cadastro do cliente?")
 
         if (confirmaCadastro == true) {
-            const nomeCadastraCliente = document.getElementById('nomeCadastraCliente').value
-            const cpfCadastraCliente = document.getElementById('cpfCadastraCliente').value
-            const rgCadastraCliente = document.getElementById('rgCadastraCliente').value
-            const emailCadastraCliente = document.getElementById('emailCadastraCliente').value
-            const tel1CadastraCliente = document.getElementById('tel01CadastraCliente').value
-            const tel2CadastraCliente = document.getElementById('tel02CadastraCliente').value
-            const dataNascCadastraCliente = document.getElementById('dataNascCadastraCliente').value
+            const nomeCadastraCliente = document.getElementById("nomeCadastraCliente").value
+            const cpfCadastraCliente = document.getElementById("cpfCadastraCliente").value
+            const rgCadastraCliente = document.getElementById("rgCadastraCliente").value
+            const emailCadastraCliente = document.getElementById("emailCadastraCliente").value
+            const tel1CadastraCliente = document.getElementById("tel01CadastraCliente").value
+            const tel2CadastraCliente = document.getElementById("tel02CadastraCliente").value
+            const dataNascCadastraCliente = document.getElementById("dataNascCadastraCliente").value
 
             const objCadastraCliente = {
-                acao: 'cadastraCliente',
+                acao: "cadastraCliente",
                 nome: nomeCadastraCliente,
                 cpf: cpfCadastraCliente,
                 rg: rgCadastraCliente,
@@ -152,8 +152,8 @@ $(function () {
             }
 
             // $.ajax({
-            //     method: 'POST',
-            //     url: '/api/clientes.php',
+            //     method: "POST",
+            //     url: "/api/clientes.php",
             //     data: objCadastraCliente,
             //     success: function (res) {
             //         console.log(res)
@@ -161,15 +161,15 @@ $(function () {
             // })
 
             for (var i = 1; i <= clicks; i++) {
-                const ruaEndereco = document.getElementById('ruaEndereco' + i).value
-                const numeroEndereco = document.getElementById('numeroEndereco' + i).value
-                const bairroEndereco = document.getElementById('bairroEndereco' + i).value
-                const cepEndereco = document.getElementById('cepEndereco' + i).value
-                const cidadeEndereco = document.getElementById('cidadeEndereco' + i).value
-                const estadoEndereco = document.getElementById('estadoEndereco' + i).value
+                const ruaEndereco = document.getElementById("ruaEndereco" + i).value
+                const numeroEndereco = document.getElementById("numeroEndereco" + i).value
+                const bairroEndereco = document.getElementById("bairroEndereco" + i).value
+                const cepEndereco = document.getElementById("cepEndereco" + i).value
+                const cidadeEndereco = document.getElementById("cidadeEndereco" + i).value
+                const estadoEndereco = document.getElementById("estadoEndereco" + i).value
 
                 const objFirstEndereco = {
-                    acao: 'cadastraEndereco',
+                    acao: "cadastraEndereco",
                     cpf: cpfCadastraCliente,
                     rua: ruaEndereco,
                     numero: numeroEndereco,
@@ -184,8 +184,8 @@ $(function () {
                 console.log(objFirstEndereco)
 
                 // $.ajax({
-                //     method: 'POST',
-                //     url: '/api/clientes.php',
+                //     method: "POST",
+                //     url: "/api/clientes.php",
                 //     data: objFirstEndereco,
                 //     success: function (res) {
                 //         console.log(res)
@@ -344,12 +344,12 @@ $(function () {
 
 //         var tagForm = document.createElement("form")
 //         $("#addresses").append(tagForm)
-//         tagForm.setAttribute("id", 'formAddress' + clicks)
-//         tagForm.setAttribute("method", 'POST')
-//         tagForm.setAttribute("class", 'formAddress')
+//         tagForm.setAttribute("id", "formAddress" + clicks)
+//         tagForm.setAttribute("method", "POST")
+//         tagForm.setAttribute("class", "formAddress")
 
 //         var tagH3 = document.createElement("h3")
-//         tagH3.setAttribute("id", 'h3Address' + clicks)
+//         tagH3.setAttribute("id", "h3Address" + clicks)
 //         tagForm.appendChild(tagH3)
 
 //         if (clicks == "1") {
@@ -362,80 +362,80 @@ $(function () {
 //         // ----------- RUA -----------
 
 //         var tagLabel = document.createElement("label")
-//         tagLabel.setAttribute("for", 'streetAddres' + clicks)
+//         tagLabel.setAttribute("for", "streetAddres" + clicks)
 //         tagForm.appendChild(tagLabel)
 //         tagLabel.textContent = "Rua/Avenida"
 
 //         var tagInput = document.createElement("input")
-//         tagInput.setAttribute("class", 'addressCustomer')
-//         tagInput.setAttribute("name", 'streetAddres')
+//         tagInput.setAttribute("class", "addressCustomer")
+//         tagInput.setAttribute("name", "streetAddres")
 //         tagInput.setAttribute("id", "streetAddress" + clicks)
 //         tagForm.appendChild(tagInput)
 
 //         // ----------- NÚMERO -----------
 
 //         var tagLabel = document.createElement("label")
-//         tagLabel.setAttribute("for", 'numberAddres' + clicks)
+//         tagLabel.setAttribute("for", "numberAddres" + clicks)
 //         tagForm.appendChild(tagLabel)
 //         tagLabel.textContent = "Número"
 
 //         var tagInput = document.createElement("input")
-//         tagInput.setAttribute("class", 'addressCustomer')
-//         tagInput.setAttribute("name", 'numberAddress')
-//         tagInput.setAttribute("id", 'numberAddress' + clicks)
+//         tagInput.setAttribute("class", "addressCustomer")
+//         tagInput.setAttribute("name", "numberAddress")
+//         tagInput.setAttribute("id", "numberAddress" + clicks)
 //         tagForm.appendChild(tagInput)
 
 //         // ----------- BAIRRO -----------
 
 //         var tagLabel = document.createElement("label")
-//         tagLabel.setAttribute("for", 'districtAddres' + clicks)
+//         tagLabel.setAttribute("for", "districtAddres" + clicks)
 //         tagForm.appendChild(tagLabel)
 //         tagLabel.textContent = "Bairro"
 
 //         var tagInput = document.createElement("input")
-//         tagInput.setAttribute("class", 'addressCustomer')
-//         tagInput.setAttribute("name", 'districtAddres')
-//         tagInput.setAttribute("id", 'districtAddres' + clicks)
+//         tagInput.setAttribute("class", "addressCustomer")
+//         tagInput.setAttribute("name", "districtAddres")
+//         tagInput.setAttribute("id", "districtAddres" + clicks)
 //         tagForm.appendChild(tagInput)
 
 //         // ----------- CEP -----------
 
 //         var tagLabel = document.createElement("label")
-//         tagLabel.setAttribute("for", 'cepAddres' + clicks)
+//         tagLabel.setAttribute("for", "cepAddres" + clicks)
 //         tagForm.appendChild(tagLabel)
 //         tagLabel.textContent = "CEP"
 
 //         var tagInput = document.createElement("input")
-//         tagInput.setAttribute("class", 'addressCustomer')
-//         tagInput.setAttribute("name", 'cepAddres')
-//         tagInput.setAttribute("id", 'cepAddres' + clicks)
+//         tagInput.setAttribute("class", "addressCustomer")
+//         tagInput.setAttribute("name", "cepAddres")
+//         tagInput.setAttribute("id", "cepAddres" + clicks)
 //         tagForm.appendChild(tagInput)
 
 //         // ----------- CIDADE -----------
 
 //         var tagLabel = document.createElement("label")
-//         tagLabel.setAttribute("for", 'cityAddres' + clicks)
+//         tagLabel.setAttribute("for", "cityAddres" + clicks)
 //         tagForm.appendChild(tagLabel)
 //         tagLabel.textContent = "Cidade"
 
 //         var tagInput = document.createElement("input")
-//         tagInput.setAttribute("class", 'addressCustomer')
-//         tagInput.setAttribute("name", 'cityAddres')
-//         tagInput.setAttribute("id", 'cityAddres' + clicks)
+//         tagInput.setAttribute("class", "addressCustomer")
+//         tagInput.setAttribute("name", "cityAddres")
+//         tagInput.setAttribute("id", "cityAddres" + clicks)
 //         tagForm.appendChild(tagInput)
 
 //         // ----------- ESTADO -----------
 
 //         var tagLabel = document.createElement("label")
-//         tagLabel.setAttribute("for", 'stateAddres' + clicks)
+//         tagLabel.setAttribute("for", "stateAddres" + clicks)
 //         tagForm.appendChild(tagLabel)
 //         tagLabel.textContent = "Estado"
 
 //         var tagInput = document.createElement("input")
-//         tagInput.setAttribute("class", 'addressCustomer')
-//         tagInput.setAttribute("name", 'stateAddres')
-//         tagInput.setAttribute("id", 'stateAddres' + clicks)
-//         tagInput.setAttribute("name", 'stateAddres')
+//         tagInput.setAttribute("class", "addressCustomer")
+//         tagInput.setAttribute("name", "stateAddres")
+//         tagInput.setAttribute("id", "stateAddres" + clicks)
+//         tagInput.setAttribute("name", "stateAddres")
 //         tagForm.appendChild(tagInput)
 
 
@@ -577,7 +577,7 @@ $(function () {
 //                     $("#tel02UpdateCustomer").val("")
 //                     $("#dataNascRegisterCustomer").val("")
 
-//                     const idBtnUpdateCliente = $(this).attr('data-id')
+//                     const idBtnUpdateCliente = $(this).attr("data-id")
 //                     const urlIdBtnUpdateCliente = "/api/clientes.php?acao=listarUpdateCliente&id=" + idBtnUpdateCliente
 
 //                     $.ajax({

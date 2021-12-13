@@ -1,82 +1,82 @@
 <!DOCTYPE html>
-<html lang='pt-br'>
+<html lang="pt-br">
 
 <head>
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Cliente</title>
-    <link rel='stylesheet' type='text/css' href='../../index.css' media='screen' />
-    <link rel='stylesheet' type='text/css' href='cliente.css' media='screen' />
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'
-        rel='stylesheet'>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script type='text/javascript' src='../../index.js'></script>
-    <script type='text/javascript' src='clientecreate.js'></script>
+    <link rel="stylesheet" type="text/css" href="../../index.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="cliente.css" media="screen" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../index.js"></script>
+    <script type="text/javascript" src="clientecreate.js"></script>
 </head>
 
 <body>
 
     <header>
-        <img src='../../img/logokabum.png' alt='logoKabum' class='logoKabum'>
-        <div id='statusLogin'>
-            <p class='saudacaoUsuario' id='saudacao'></p>
-            <button class='botaoVermelho' id='botaoSairLogado'>SAIR</button>
+        <img src="../../img/logokabum.png" alt="logoKabum" class="logoKabum">
+        <div id="statusLogin">
+            <p class="saudacaoUsuario" id="saudacao"></p>
+            <button class="botaoVermelho" id="botaoSairLogado">SAIR</button>
         </div>
     </header>
 
-    <nav class='menu'>
-        <button><a href='../index.html'>HOME</a></button>
-        <button><a href='../clientes/clientes.html'>CLIENTES</a></button>
-        <button id='botaoMostraUsuarios'><a href='../usuarios/usuarios.html'>USUÁRIOS</a></button>
+    <nav class="menu">
+        <button><a href="../index.html">HOME</a></button>
+        <button><a href="../clientes/clientes.html">CLIENTES</a></button>
+        <button id="botaoMostraUsuarios"><a href="../usuarios/usuarios.html">USUÁRIOS</a></button>
     </nav>
 
     <main>
         <aside>
-            <a id="linkAsideCadastraCLiente" href='#' class='aSelecionado '>CREATE CLIENTES/ENDEREÇOS</a>
-            <a href='#'>READ CLIENTES</a>
-            <a href='#'>UPDATE CLIENTES</a>
-            <a href='#'>DELETE CLIENTES</a>
-            <a href='#'>READ ENDEREÇOS</a>
-            <a href='#'>READ ENDEREÇOS</a>
-            <a href='#'>DELETE ENDEREÇOS</a>
+            <a id="linkAsideCadastraCLiente" href="#" class="aSelecionado ">CREATE CLIENTES/ENDEREÇOS</a>
+            <a href="#">READ CLIENTES</a>
+            <a href="#">UPDATE CLIENTES</a>
+            <a href="#">DELETE CLIENTES</a>
+            <a href="#">READ ENDEREÇOS</a>
+            <a href="#">READ ENDEREÇOS</a>
+            <a href="#">DELETE ENDEREÇOS</a>
         </aside>
 
         <!-- ------------------------------------- CRIAR CLIENTE E ENDEREÇO ----------------------------- -->
         <article>
-            <form class='formularioCadastraCliente' method='POST' id='formularioCadastraCliente'>
+            <form class="formularioCadastraCliente" method="POST" id="formularioCadastraCliente">
                 <h2>CADASTRAR CLIENTE</h2>
-                <label for='nomeCadastraCliente'>Nome</label>
-                <input type='text' name='nomeCadastraCliente' id='nomeCadastraCliente'
+                <label for="nomeCadastraCliente">Nome</label>
+                <input type="text" name="nomeCadastraCliente" id="nomeCadastraCliente"
                     style="text-transform:uppercase" />
 
-                <label for='cpfCadastraCliente'>CPF</label>
-                <input type='text' name='cpfCadastraCliente' id='cpfCadastraCliente' class='cpf' />
+                <label for="cpfCadastraCliente">CPF</label>
+                <input type="text" name="cpfCadastraCliente" id="cpfCadastraCliente" class="cpf" />
 
-                <label for='rgCadastraCliente'>RG</label>
-                <input type='text' name='rgCadastraCliente' id='rgCadastraCliente' class='rg' />
+                <label for="rgCadastraCliente">RG</label>
+                <input type="text" name="rgCadastraCliente" id="rgCadastraCliente" class="rg" />
 
-                <label for='emailCadastraCliente'>E-mail</label>
-                <input type='email' name='emailCadastraCliente' id='emailCadastraCliente'
+                <label for="emailCadastraCliente">E-mail</label>
+                <input type="email" name="emailCadastraCliente" id="emailCadastraCliente"
                     style="text-transform:lowercase" />
 
-                <label for='tel01CadastraCliente'>Telefone 01</label>
-                <input type='tel' name='tel01CadastraCliente' id='tel01CadastraCliente' class='telefone' />
+                <label for="tel01CadastraCliente">Telefone 01</label>
+                <input type="tel" name="tel01CadastraCliente" id="tel01CadastraCliente" class="telefone" />
 
-                <label for='tel02CadastraCliente'>Telefone 02</label>
-                <input type='tel' name='tel02CadastraCliente' id='tel02CadastraCliente' class='telefone' />
+                <label for="tel02CadastraCliente">Telefone 02</label>
+                <input type="tel" name="tel02CadastraCliente" id="tel02CadastraCliente" class="telefone" />
 
-                <label for='dataNascCadastraCliente'>Data de Nascimento</label>
-                <input type='date' name='dataNascCadastraCliente' id='dataNascCadastraCliente' />
+                <label for="dataNascCadastraCliente">Data de Nascimento</label>
+                <input type="date" name="dataNascCadastraCliente" id="dataNascCadastraCliente" />
 
-                <button class='botaoLaranja' id='botaoAdicionaEndereco'>+ ADICIONAR ENDEREÇO</button>
-                <div id='divEnderecos'>
+                <button class="botaoLaranja" id="botaoAdicionaEndereco">+ ADICIONAR ENDEREÇO</button>
+                <div id="divEnderecos">
 
                 </div>
-                <button type='button' id='botaoCadastraCliente' class='botaoVerde'>CADASTRAR</button>
-                <button type='button' id='botaoCancelaCadastraCliente' class='botaoVermelho'>CANCELAR</button>
+                <button type="button" id="botaoCadastraCliente" class="botaoVerde">CADASTRAR</button>
+                <button type="button" id="botaoCancelaCadastraCliente" class="botaoVermelho">CANCELAR</button>
             </form>
         </article>
 
@@ -91,13 +91,13 @@
     </main>
 
     <footer>
-        <a href='instagram.com.br'><img src='../../img/icongmail.png'>paulo.kriger</a>
-        <a href='instagram.com.br'><img src='../../img/iconinstagram.png'>paulomuzzy.dev</a>
-        <a href='instagram.com.br'><img src='../../img/icongithub.png'>PauloKrigerMuzzy</a>
+        <a href="instagram.com.br"><img src="../../img/icongmail.png">paulo.kriger</a>
+        <a href="instagram.com.br"><img src="../../img/iconinstagram.png">paulomuzzy.dev</a>
+        <a href="instagram.com.br"><img src="../../img/icongithub.png">PauloKrigerMuzzy</a>
     </footer>
 </body>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js'
-    integrity='sha512-Y/GIYsd+LaQm6bGysIClyez2HGCIN1yrs94wUrHoRAD5RSURkqqVQEU6mM51O90hqS80ABFTGtiDpSXd2O05nw=='
-    crossorigin='anonymous' referrerpolicy='no-referrer'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"
+    integrity="sha512-Y/GIYsd+LaQm6bGysIClyez2HGCIN1yrs94wUrHoRAD5RSURkqqVQEU6mM51O90hqS80ABFTGtiDpSXd2O05nw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </html>

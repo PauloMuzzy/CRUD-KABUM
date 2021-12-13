@@ -1,14 +1,14 @@
 $(function () {
 
-    $('#alertaSucessoCadastraUsuario').hide()
-    $('#alertaErroCadastraUsuario').hide()
+    $("#alertaSucessoCadastraUsuario").hide()
+    $("#alertaErroCadastraUsuario").hide()
 
     // ------------------------------------- OK -----------------------------
     //CADASTRAR USUARIO
     $("#botaoCadastraUsuario").click(function (e) {
         e.preventDefault()
 
-        const confirmaCadastraUsuario = confirm('CONFIRMA CADASTRO DO USUÁRIO?')
+        const confirmaCadastraUsuario = confirm("CONFIRMA CADASTRO DO USUÁRIO?")
 
         if (confirmaCadastraUsuario == true) {
 
@@ -27,7 +27,7 @@ $(function () {
                 url: "/api/usuarios.php",
                 data: objCadastraUsuarios,
                 success: function (res) {
-                    $('#alertaSucessoCadastraUsuario').show()
+                    $("#alertaSucessoCadastraUsuario").show()
 
                     setTimeout(() => {
                     }, 150000);
@@ -35,7 +35,7 @@ $(function () {
 
                 },
                 error: function () {
-                    $('#alertaErroCadastraUsuario').show()
+                    $("#alertaErroCadastraUsuario").show()
                 }
             })
         }

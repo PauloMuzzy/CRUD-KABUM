@@ -1,66 +1,66 @@
 <!DOCTYPE html>
-<html lang='pt-br'>
+<html lang="pt-br">
 
 <head>
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USUÁRIOS</title>
-    <link rel='stylesheet' type='text/css' href='../index.css' media='screen' />
-    <link rel='stylesheet' type='text/css' href='usuarios.css' media='screen' />
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'
-        rel='stylesheet'>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script type='text/javascript' src='../index.js'></script>
-    <script type='text/javascript' src='usuariocreate.js'></script>
+    <link rel="stylesheet" type="text/css" href="../index.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="usuarios.css" media="screen" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../index.js"></script>
+    <script type="text/javascript" src="usuariocreate.js"></script>
 </head>
 
 <body>
 
     <header>
-        <img src='../img/logokabum.png' alt='logoKabum' class='logoKabum'>
-        <div id='divLogado'>
-            <p class='saudacaoUsuario' id='saudacaoUsuario'></p>
-            <button class='botaoVermelho' id='botaoSairLogado'>SAIR</button>
+        <img src="../img/logokabum.png" alt="logoKabum" class="logoKabum">
+        <div id="divLogado">
+            <p class="saudacaoUsuario" id="saudacaoUsuario"></p>
+            <button class="botaoVermelho" id="botaoSairLogado">SAIR</button>
         </div>
     </header>
 
-    <nav class='menu'>
+    <nav class="menu">
         <a>HOME</a>
-        <a id='linkClientes'>CLIENTES</a>
-        <a href='localhost/usuarios/usuarioread.html' id='linkUsuarios'>USUÁRIOS</a>
+        <a id="linkClientes">CLIENTES</a>
+        <a href="localhost/usuarios/usuarioread.html" id="linkUsuarios">USUÁRIOS</a>
     </nav>
 
     <main>
         <aside>
-            <a href='#' class='aSelecionado '>CREATE USUÁRIOS</a>
-            <a href='#'>READ USUÁRIOS</a>
-            <a href='#'>UPDATE USUÁRIOS</a>
-            <a href='#'>DELETE USUÁRIOS</a>
+            <a href="#" class="aSelecionado ">CREATE USUÁRIOS</a>
+            <a href="#">READ USUÁRIOS</a>
+            <a href="#">UPDATE USUÁRIOS</a>
+            <a href="#">DELETE USUÁRIOS</a>
 
         </aside>
 
         <article>
-            <form class=' formCadastraUsuario' method='POST' id='formRegisterUsers'>
+            <form class=" formCadastraUsuario" method="POST" id="formRegisterUsers">
                 <h2>CADASTRAR USUÁRIO</h2>
-                <label for=' nomeCadastraUsuario'>Nome</label>
-                <input type='text' name='nomeCadastraUsuario' id='nomeCadastraUsuario' style="text-transform:uppercase"
+                <label for=" nomeCadastraUsuario">Nome</label>
+                <input type="text" name="nomeCadastraUsuario" id="nomeCadastraUsuario" style="text-transform:uppercase"
                     required />
 
-                <label for='loginCadastraUsuario'>Login</label>
-                <input type='text' name='loginCadastraUsuario' id='loginCadastraUsuario'>
+                <label for="loginCadastraUsuario">Login</label>
+                <input type="text" name="loginCadastraUsuario" id="loginCadastraUsuario">
 
-                <label for='emailCadastraUsuario'>E-mail</label>
-                <input type='email' name='emailCadastraUsuario' id='emailCadastraUsuario'
+                <label for="emailCadastraUsuario">E-mail</label>
+                <input type="email" name="emailCadastraUsuario" id="emailCadastraUsuario"
                     style="text-transform:lowercase" required />
 
-                <label for=' senhaCadastraUsuario'>Senha</label>
-                <input type='password' name='senhaCadastraUsuario' id='senhaCadastraUsuario' required />
+                <label for=" senhaCadastraUsuario">Senha</label>
+                <input type="password" name="senhaCadastraUsuario" id="senhaCadastraUsuario" required />
 
-                <label for='confirmaSenhaCadastraUsuario'>Confirmar Senha</label>
-                <input type='password' name='confirmaSenhaCadastraUsuario' id='confSenhaCadastraUsuario' required />
+                <label for="confirmaSenhaCadastraUsuario">Confirmar Senha</label>
+                <input type="password" name="confirmaSenhaCadastraUsuario" id="confSenhaCadastraUsuario" required />
 
 
                 <div class="alertaVerde" id="alertaSucessoCadastraUsuario">
@@ -71,7 +71,7 @@
                     <p>ALGO DEU ERRADO !!!</p>
                 </div>
 
-                <button type='submit' class='botaoVerde' id='botaoCadastraUsuario'>CADASTRAR</button>
+                <button type="submit" class="botaoVerde" id="botaoCadastraUsuario">CADASTRAR</button>
             </form>
 
         </article>
@@ -79,9 +79,9 @@
     </main>
 
     <footer>
-        <a href='instagram.com.br'><img src='../img/icongmail.png'>paulo.kriger</a>
-        <a href='instagram.com.br'><img src='../img/iconinstagram.png'>paulomuzzy.dev</a>
-        <a href='instagram.com.br'><img src='../img/icongithub.png'>PauloKrigerMuzzy</a>
+        <a href="instagram.com.br"><img src="../img/icongmail.png">paulo.kriger</a>
+        <a href="instagram.com.br"><img src="../img/iconinstagram.png">paulomuzzy.dev</a>
+        <a href="instagram.com.br"><img src="../img/icongithub.png">PauloKrigerMuzzy</a>
     </footer>
 </body>
 

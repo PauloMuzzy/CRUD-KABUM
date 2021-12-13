@@ -19,14 +19,14 @@ $(function () {
         $("#formRegisterUsers").hide()
         $("#tableUsers").show()
         $("#formUpdateUsers").hide()
-        $('td:nth-child(10)').hide();
+        $("td:nth-child(10)").hide();
     })
 
     $("#btnShowFormUpdateDeleteUsers").click(function () {
         $("#formRegisterUsers").hide()
         $("#tableUsers").show()
         $("#formUpdateUsers").show()
-        $('td:nth-child(10)').show();
+        $("td:nth-child(10)").show();
     })
 
     $("#btnUpdateUser").click(function () {
@@ -131,7 +131,7 @@ $(function () {
 
             $(".btnUpdateDeleteUser").click(function () {
 
-                const idBtnUpdateDelete = $(this).attr('data-id')
+                const idBtnUpdateDelete = $(this).attr("data-id")
                 const urlIdBtnUpdate = "/api/usuarios.php?acao=updateUsuario&id=" + idBtnUpdateDelete
 
                 $.ajax({
