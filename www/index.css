@@ -176,11 +176,6 @@ button {
     margin: 1px;
 }
 
-
-form button:hover{
-    opacity: 50%;
-}
-
 .botaoLaranja{
     background-color: #FA6501;
     color: whitesmoke;
@@ -233,6 +228,21 @@ form button:hover{
     border: solid 1px #DC3545;
     background-color: whitesmoke;
     color: #DC3545;
+}
+
+.botaoLaranjaClaro{
+    background-color: whitesmoke;
+    border: 1px solid #FA6501;
+    color: #FA6501;
+    width: 100%;
+    height: 30px;
+}
+
+.botaoLaranjaClaro:hover{
+    background-color: #FA6501;
+    color: whitesmoke;
+    width: 100%;
+    height: 30px;
 }
 
 /* -----------------------------------------------------------------------------------------------------------IMAGENS */

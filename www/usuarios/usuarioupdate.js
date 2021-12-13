@@ -21,7 +21,7 @@ $(function () {
                 var actionsCell = document.createElement("td");
                 var botaoActionUpdateDelete = document.createElement("button")
                 botaoActionUpdateDelete.setAttribute("data-id", row.id_usuario)
-                botaoActionUpdateDelete.setAttribute("class", "botaoLaranja botaoUpdateDeleteUser")
+                botaoActionUpdateDelete.setAttribute("class", "botaoLaranjaClaro botaoUpdateDeleteUser")
                 botaoActionUpdateDelete.textContent = "SELECIONAR"
                 actionsCell.appendChild(botaoActionUpdateDelete)
                 newRow.appendChild(actionsCell)

@@ -13,10 +13,6 @@ thead {
     color: whitesmoke;
 }
 
-table button:hover{
-    opacity: 50%;
-}
-
 .botaoLaranja{
     width: 100%;
 }

@@ -171,10 +171,12 @@ if ($method === "PUT") {
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-    } else if ($action == "softDelete") {
+    }
 
-        $ativo = ($_PUT["ativo"]);
-        $id = intval($_PUT["id"]);
+    if ($_PUT["acao"] == "deletarUsuario") {
+
+        $id = ($_PUT["idUsuario"]);
+        $ativo = 0;
 
         try {
             $query = $pdo->prepare("UPDATE usuarios SET ativo=? WHERE id_usuario=?");
