@@ -91,7 +91,7 @@ aside a:hover {
     color: whitesmoke;
 }
 
-#linkAsideCadastraCLiente{
+#linkCadastraCLiente{
     height: 60px;
 }
 
@@ -117,23 +117,21 @@ form{
     background: white;
     margin: 5px;
     border: 1px solid grey;
-    border-radius: 3px;
     opacity: 95%;
     padding-bottom: 10px;
     width: 20%;
 }
     form h2{
+        text-align: center;
         font-size: 18px;
         background-color:#FA6501;
         width: 100%;
         color: whitesmoke;
-        border-radius: 3px;
     }
 
 input {
     font-size: 15px;
     border:solid 1px black;
-    border-radius: 3px;
     text-align: center;
     width: 50%;
     height: 30px;
@@ -168,7 +166,6 @@ footer a {
 /* -----------------------------------------------------------------------------------------------------------BOTÕES */
 button {
     border: 0px;
-    border-radius: 3px;
     font-weight: 600;
     transition: transform 200ms ease;
     will-change: transform;
@@ -241,8 +238,6 @@ button {
 .botaoLaranjaClaro:hover{
     background-color: #FA6501;
     color: whitesmoke;
-    width: 100%;
-    height: 30px;
 }
 
 /* -----------------------------------------------------------------------------------------------------------IMAGENS */

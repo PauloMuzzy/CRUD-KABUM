@@ -1,0 +1,42 @@
+#divEnderecos{
+    width: 100%;
+}
+
+.formularioEnderecos{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(220, 220, 220);
+    border: 1px solid grey;
+    border-radius: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table{
+    border: solid 1px black;
+}
+
+table td {
+    border: solid 1px black;
+    width: 150px;
+    text-align: center;
+}
+
+thead {
+    background-color:#FA6501 ;
+    color: whitesmoke;
+}
+
+.labelFomr{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.labelForm input {
+    width: 50%;
+}
