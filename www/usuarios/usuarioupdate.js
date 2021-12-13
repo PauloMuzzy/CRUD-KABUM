@@ -170,9 +170,9 @@ $(function () {
                                 })
 
                                 location.reload()
-
+                            } else {
+                                location.reload()
                             }
-
                         })
                     }
                 })
