@@ -1,21 +1,5 @@
 $(function () {
 
-    //Mascaras
-    $('.cpf').mask('999.999.999-99');
-    $('.telefone').mask('(99)99999-9999');
-    $('.telefone').mask('(99)99999-9999');
-    $('.cep').mask('99999-999')
-
-    var mascaraRg = {
-        'translation': {
-            A: {
-                pattern: /[A-Za-z0-9]/
-            }
-        }
-    };
-    $('.rg').mask('99.999.999-A' || '99.999.999-99', mascaraRg);
-
-
     // ------------------------------------- OK -----------------------------
     //ADICIONA FORMULÁRIO DE ENDEREÇO
     var clicks = 0;
@@ -197,6 +181,23 @@ $(function () {
             }
         }
     })
+
+    //Mascaras
+    $('.cpf').mask('999.999.999-99');
+    $('.telefone').mask('(99)99999-9999');
+    $('.telefone').mask('(99)99999-9999');
+    $('.cep').mask('99999-999')
+
+    var mascaraRg = {
+        'translation': {
+            A: {
+                pattern: /[A-Za-z0-9]/
+            }
+        }
+    };
+    $('.rg').mask('99.999.999-A' || '99.999.999-99', mascaraRg);
+
+
 })
 
 

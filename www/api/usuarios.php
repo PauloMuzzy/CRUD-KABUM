@@ -100,11 +100,12 @@ if ($_GET['acao'] == "loginLocalstorage") {
 if ($_GET['acao'] == "listaUsuarios") {
 
     try {
-        $query = $pdo->prepare('SELECT id_usuario,nome,login,usuario_tipo,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo FROM usuarios WHERE usuario_tipo="PADRAO" AND ativo =1');
+        $query = $pdo->prepare('SELECT id_usuario,nome,login,tipo_usuario,acesso_criar,acesso_ler,acesso_editar,acesso_deletar,ativo FROM usuarios WHERE tipo_usuario="PADRAO" AND ativo =1');
 
         $query->execute();
 
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result);
     } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
     }

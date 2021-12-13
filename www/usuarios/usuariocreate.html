@@ -46,13 +46,15 @@
             <form class=' formCadastraUsuario' method='POST' id='formRegisterUsers'>
                 <h2>CADASTRAR USUÁRIO</h2>
                 <label for=' nomeCadastraUsuario'>Nome</label>
-                <input type='text' name='nomeCadastraUsuario' id='nomeCadastraUsuario' required />
+                <input type='text' name='nomeCadastraUsuario' id='nomeCadastraUsuario' style="text-transform:uppercase"
+                    required />
 
                 <label for='loginCadastraUsuario'>Login</label>
-                <input type='text' name='loginCadastraUsuario' id='loginCadastraUsuario' required />
+                <input type='text' name='loginCadastraUsuario' id='loginCadastraUsuario'>
 
                 <label for='emailCadastraUsuario'>E-mail</label>
-                <input type='email' name='emailCadastraUsuario' id='emailCadastraUsuario' required />
+                <input type='email' name='emailCadastraUsuario' id='emailCadastraUsuario'
+                    style="text-transform:lowercase" required />
 
                 <label for=' senhaCadastraUsuario'>Senha</label>
                 <input type='password' name='senhaCadastraUsuario' id='senhaCadastraUsuario' required />
