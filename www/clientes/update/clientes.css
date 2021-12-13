@@ -1,0 +1,126 @@
+#adresses{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.divAddress{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mainAddress{
+    background-color: #1A8754;
+    color: whitesmoke;
+    opacity: 100%;
+}
+
+.btn-orange{
+    width: 50%;
+}
+
+
+.btn-red{
+    width: 50%;
+}
+
+.btn-lightGreen{
+    width: 50%;
+}
+
+.btn-lightGreen:hover{
+    background-color: #1A8754;
+    color: whitesmoke;
+    opacity: 100%;
+}
+
+.btn-lightRed:hover{
+    background-color: #DC3545;
+    color: whitesmoke;
+    opacity: 100%;
+}
+
+
+.divAddressBtns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#addresses{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+/* #addresses p{
+text-align: center;
+}
+
+#addresses input{
+    width: 100%;
+} */
+
+form{
+    width: 25%;
+}
+
+form input{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+form h3{
+    font-size: 18px;
+    width: 100%;
+    border-radius: 3px;
+    background-color:rgb(176, 176, 176);
+    border: solid #FA6501 1px;
+    color: #FA6501;
+}
+
+form button{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.formAddress{
+    width: 100%;
+    background-color:rgb(176, 176, 176);
+}
+
+.formAddress input{
+    background-color:rgb(222, 219, 219);
+    margin-bottom: 15px;
+}
+
+.btnSetAddress{
+    width: 100%;
+}
+
+table{
+    border: solid 1px black;
+}
+
+table td {
+    border: solid 1px black;
+    width: 150px;
+    text-align: center;
+}
+
+thead {
+    background-color:#FA6501 ;
+    color: whitesmoke;
+}
+
+table button:hover{
+    opacity: 50%;
+}
