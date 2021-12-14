@@ -19,15 +19,19 @@ $(function () {
             url: urlSetUsuario,
             success: function (res) {
                 const nome = res.nome
-                const acessoCriar = res.acesso_criar
-                const acessoLer = res.acesso_ler
-                const acessoEditar = res.acesso_editar
-                const acessoDeletar = res.acesso_deletar
+                // const acessoCriar = res.acesso_criar
+                // const acessoLer = res.acesso_ler
+                // const acessoEditar = res.acesso_editar
+                // const acessoDeletar = res.acesso_deletar
                 const tipoUsuario = res.tipo_usuario
 
-                const saudacao = "Ola, " + nome + "."
-                $("#saudacaoUsuario").html(saudacao);
-                $("#divLogado").show()
+                if (loginUsuario == undefined) {
+                    $("#divLogado").hide()
+                } else {
+                    const saudacao = "Ola, " + nome + "."
+                    $("#saudacaoUsuario").html(saudacao);
+                    $("#divLogado").show()
+                }
 
                 if (tipoUsuario == "MASTER") {
                     $("#linkClientes").show()
@@ -58,7 +62,14 @@ $(function () {
             url: "/api/usuarios.php",
             data: objLogar,
             success: function (res) {
-                localStorage.setItem("login", loginLogar)
+
+                if (res.status_logado == "1") {
+                    alert("USUÁRIO LOGADO")
+                    localStorage.setItem("login", loginLogar)
+                } else {
+                    alert("OPS! SENHA OU USUÁRIO INVALIDOS!")
+                }
+                location.reload()
             }
         })
     })

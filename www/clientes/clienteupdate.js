@@ -1,4 +1,23 @@
 $(function () {
+    $(".semAcesso").hide()
+    $(".conteudo").hide()
+
+    const loginUsuario = localStorage.getItem("login")
+    const urlSetUsuario = "/api/usuarios.php?acao=setUsuario&login=" + loginUsuario
+    $.ajax({
+        method: "GET",
+        url: urlSetUsuario,
+        success: function (res) {
+            const acessoEditar = res.acesso_editar
+            const tipoUsuario = res.tipo_usuario
+            if (acessoEditar == "HABILITADO" || tipoUsuario == "MASTER") {
+                $(".conteudo").show()
+
+            } else if (acessoEditar == "DESABILITADO") {
+                $(".semAcesso").show()
+            }
+        }
+    })
 
     $.ajax({
         method: "GET",

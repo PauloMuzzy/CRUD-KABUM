@@ -1,5 +1,25 @@
 $(function () {
 
+    $(".semAcesso").hide()
+    $(".conteudo").hide()
+
+    const loginUsuario = localStorage.getItem("login")
+    const urlSetUsuario = "/api/usuarios.php?acao=setUsuario&login=" + loginUsuario
+    $.ajax({
+        method: "GET",
+        url: urlSetUsuario,
+        success: function (res) {
+            const acessoDeletar = res.acesso_deletar
+            const tipoUsuario = res.tipo_usuario
+            if (acessoDeletar == "HABILITADO" || tipoUsuario == "MASTER") {
+                $(".conteudo").show()
+
+            } else if (acessoDeletar == "DESABILITADO") {
+                $(".semAcesso").show()
+            }
+        }
+    })
+
     $.ajax({
         method: "GET",
         url: "/api/clientes.php?acao=listarClientes",

@@ -1,4 +1,6 @@
 $(function () {
+    $(".semAcesso").hide()
+    $(".conteudo").hide()
 
     const loginUsuario = localStorage.getItem("login")
     const urlSetUsuario = "/api/usuarios.php?acao=setUsuario&login=" + loginUsuario
@@ -7,12 +9,11 @@ $(function () {
         url: urlSetUsuario,
         success: function (res) {
             const acessoCriar = res.acesso_criar
-            if (acessoCriar == "HABILITADO") {
-
+            const tipoUsuario = res.tipo_usuario
+            if (acessoCriar == "HABILITADO" || tipoUsuario == "MASTER") {
                 $(".conteudo").show()
 
             } else if (acessoCriar == "DESABILITADO") {
-                $(".conteudo").hide()
                 $(".semAcesso").show()
             }
         }
@@ -216,5 +217,15 @@ $(function () {
     };
     $(".rg").mask("99.999.999-A" || "99.999.999-99", mascaraRg);
 
+    $("#botaoSairLogado").click(function () {
+        const sairLogado = function () {
+            localStorage.clear()
+            location.reload()
+            window.location.href = '../index.html'
+        }
+        sairLogado()
+    })
 })
+
+
 
