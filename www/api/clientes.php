@@ -99,6 +99,24 @@ if ($_POST) {
             echo "Error: " . $e->getMessage();
         }
     }
+
+    if ($_POST["acao"] == "logDeleteCliente") {
+
+        $campo = $_POST["campo"];
+
+
+        try {
+            $query = $pdo->prepare("INSERT INTO log_clientes (campo,valor_antigo,valor_atual,id_usuario) 
+            VALUES (? ,? ,? ,? )");
+
+            $query->bindParam(1, $campo);
+            $query->bindParam(2, $valor_antigo);
+
+            $query->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }
 
 // ################################### GET ################################### 
@@ -118,6 +136,7 @@ if ($_GET) {
             echo "Error: " . $e->getMessage();
         }
     }
+
 
     if ($_GET["acao"] == "listarEnderecos") {
 
@@ -171,11 +190,32 @@ if ($_GET) {
             echo "Error: " . $e->getMessage();
         }
     }
+
+
+    if ($_GET["acao"] == "buscarUsuarioDelete") {
+
+        $id = $_GET["id"];
+
+        try {
+            $query = $pdo->prepare("SELECT id_usuario FROM clientes WHERE id_cliente =?");
+
+            $query->bindParam(1, $id);
+
+            $query->execute();
+
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+
+            echo json_encode($result);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }
 
 // ################################### PUT ################################### 
 
 if ($method === "PUT") {
+
     parse_str(file_get_contents("php://input"), $_PUT);
 
     if ($_PUT["acao"] == "updateCliente") {
@@ -207,5 +247,21 @@ if ($method === "PUT") {
         }
 
         echo json_encode($_PUT);
+    }
+
+    if ($_PUT["acao"] == "deletarCliente") {
+
+        $id_cliente = $_PUT["idCliente"];
+
+        try {
+            $query = $pdo->prepare("UPDATE clientes SET ativo=0 WHERE id_cliente=?");
+
+            $query->bindParam(1, $id_cliente);
+
+
+            $query->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 }

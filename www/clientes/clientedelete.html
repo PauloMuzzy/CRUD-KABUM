@@ -46,35 +46,7 @@
         </aside>
 
         <article>
-
-            <form class="formDeleteCustomer" method="PUT" id="formDeleteCustomer">
-                <h2>Delete CLIENTE</h2>
-                <label for="nameDeleteCustomer">Nome</label>
-                <input type="text" name="nameDeleteCustomer" id="nameDeleteCustomer" readonly />
-
-                <label for="cpfDeleteCustomer">CPF</label>
-                <input type="text" name="cpfDeleteCustomer" id="cpfDeleteCustomer" readonly />
-
-                <label for="rgDeleteCustomer">RG</label>
-                <input type="text" name="rgDeleteCustomer" id="rgDeleteCustomer" readonly />
-
-                <label for="emailDeleteCustomer">E-mail</label>
-                <input type="email" name="emailDeleteCustomer" id="emailDeleteCustomer" readonly />
-
-                <label for="tel01DeleteCustomer">Telefone 01</label>
-                <input type="tel" name="tel01DeleteCustomer" id="tel01DeleteCustomer" readonly />
-
-                <label for="tel02DeleteCustomer">Telefone 02</label>
-                <input type="tel" name="tel02DeleteCustomer" id="tel02DeleteCustomer" readonly />
-
-                <label for="dataNascDeleteCustomer">Data de Nascimento</label>
-                <input type="date" name="dataNascDeleteCustomer" id="dataNascRegisterCustomer" />
-
-                <button type="button" id="btnDeleteCustomer" class="botaoVerde">ALTERAR</button>
-                <button type="button" id="btnCancelDeleteCustomer" class="botaoVermelho">CANCELAR</button>
-            </form>
-
-            <table class="tableUpdateDeleteCustomers" id="tableUpdateDeleteCustomers">
+            <table class="tablaDeleteCliente" id="tablaDeleteCliente">
                 <thead>
                     <td id="tdIdCliente">ID</td>
                     <td id="tdNome">NOME</td>
@@ -84,11 +56,11 @@
                     <td id="tdTelefone1">TELEFONE 1</td>
                     <td id="tdTelefone2">TELEFONE 2</td>
                     <td id="tdDataNasc">DATA NASC.</td>
+                    <td id="tdIdUsuario">ID USUÁRIO</td>
                     <td id="tdAtivo">ATIVO</td>
-                    <td id="tdIdUsuario">ID USUARIO</td>
                     <td>AÇÕES</td>
                 </thead>
-                <tbody id="tbodyUpdateDeleteClientes">
+                <tbody id="tbodyDeleteCliente">
                 </tbody>
             </table>
 
@@ -103,5 +75,9 @@
     </footer>
 
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"
+    integrity="sha512-Y/GIYsd+LaQm6bGysIClyez2HGCIN1yrs94wUrHoRAD5RSURkqqVQEU6mM51O90hqS80ABFTGtiDpSXd2O05nw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </html>
