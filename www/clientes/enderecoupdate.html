@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIENTES</title>
+    <link rel="stylesheet" type="text/css" href="../index.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="clientes.css" media="screen" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../index.js"></script>
+    <script type="text/javascript" src="enderecoupdate.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img src="../img/logokabum.png" alt="logoKabum" class="logoKabum">
+        <div id="divLogado">
+            <p class="saudacaoUsuario" id="saudacaoUsuario"></p>
+            <button class="botaoVermelho" id="botaoSairLogado">SAIR</button>
+        </div>
+    </header>
+
+    <nav class="menu">
+        <a href="../index.html" id="linkHome">HOME</a>
+        <a href="clientecreate.html" id="linkClientes">CLIENTES</a>
+        <a href="../usuarios/usuariocreate.html" id="linkUsuarios">USUÁRIOS</a>
+    </nav>
+
+    <main>
+
+        <aside>
+            <a id="linkCadastraCLiente" href="clientecreate.html">CREATE CLIENTES/ENDEREÇOS</a>
+            <a href="clienteread.html">READ CLIENTES</a>
+            <a href="clienteupdate.html">UPDATE CLIENTES</a>
+            <a href="clientedelete.html">DELETE CLIENTES</a>
+            <a href="enderecoread.html">READ ENDEREÇOS</a>
+            <a href="enderecoupdate.html" class="aSelecionado">UPDATE ENDEREÇOS</a>
+            <a href="enderecodelete.html">DELETE ENDEREÇOS</a>
+        </aside>
+
+        <article>
+            <form class="formUpdateEndereco" method="PUT" id="formUpdateEndereco">
+                <h2>UPDATE ENDEREÇO</h2>
+
+                <label for="idUpdateEndereco">ID ENDEREÇO</label>
+                <input type="number" name="idUpdateEndereco" id="idUpdateEndereco" readonly />
+
+                <label for="cpfUpdateEndereco">CPF CLIENTE</label>
+                <input type="text" name="cpfUpdateEndereco" id="cpfUpdateEndereco" readonly />
+
+                <label for="ruaUpdateEndereco">RUA</label>
+                <input type="text" name="ruaUpdateEndereco" id="ruaUpdateEndereco" style="text-transform:uppercase" />
+
+                <label for="numeroUpdateEndereco">NÚMERO</label>
+                <input type="text" name="numeroUpdateEndereco" id="numeroUpdateEndereco"
+                    style="text-transform:uppercase" />
+
+                <label for="bairroUpdateEndereco">BAIRRO</label>
+                <input type="text" name="bairroUpdateEndereco" id="bairroUpdateEndereco"
+                    style="text-transform:uppercase" />
+
+                <label for="cepUpdateEndereco">CEP</label>
+                <input type="text" name="cepUpdateEndereco" id="cepUpdateEndereco" />
+
+                <label for="cidadeUpdateEndereco">CIDADE</label>
+                <input type="text" name="cidadeUpdateEndereco" id="cidadeUpdateEndereco"
+                    style="text-transform:uppercase" />
+
+                <label for="estadoUpdateEndereco">ESTADO</label>
+                <input type="text" name="estadoUpdateEndereco" id="estadoUpdateEndereco"
+                    style="text-transform:uppercase" />
+
+                <button type="button" id="botaoUpdateEndereco" class="botaoVerde">ALTERAR</button>
+            </form>
+
+            <table class="tabelaEnderecos" id="tabelaEnderecos">
+                <thead>
+                    <td id="">ID ENDEREÇO</td>
+                    <td id="">CPF CLIENTE</td>
+                    <td id="">RUA</td>
+                    <td id="">NÚMERO</td>
+                    <td id="">BAIRRO</td>
+                    <td id="">CEP</td>
+                    <td id="">CIDADE</td>
+                    <td id="">ESTADO</td>
+                    <td id="">PRINCIPAL</td>
+                    <td id="">ATIVO</td>
+                    <td id="">ID USUÁRIO</td>
+                </thead>
+                <tbody id="tbodyEnderecos">
+                </tbody>
+            </table>
+        </article>
+
+    </main>
+
+    <footer>
+        <a href="instagram.com.br"><img src="../img/icongmail.png">paulo.kriger</a>
+        <a href="instagram.com.br"><img src="../img/iconinstagram.png">paulomuzzy.dev</a>
+        <a href="instagram.com.br"><img src="../img/icongithub.png">PauloKrigerMuzzy</a>
+    </footer>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"
+    integrity="sha512-Y/GIYsd+LaQm6bGysIClyez2HGCIN1yrs94wUrHoRAD5RSURkqqVQEU6mM51O90hqS80ABFTGtiDpSXd2O05nw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</html>

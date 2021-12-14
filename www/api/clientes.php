@@ -99,24 +99,6 @@ if ($_POST) {
             echo "Error: " . $e->getMessage();
         }
     }
-
-    if ($_POST["acao"] == "logDeleteCliente") {
-
-        $campo = $_POST["campo"];
-
-
-        try {
-            $query = $pdo->prepare("INSERT INTO log_clientes (campo,valor_antigo,valor_atual,id_usuario) 
-            VALUES (? ,? ,? ,? )");
-
-            $query->bindParam(1, $campo);
-            $query->bindParam(2, $valor_antigo);
-
-            $query->execute();
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
 }
 
 // ################################### GET ################################### 
@@ -152,6 +134,27 @@ if ($_GET) {
             echo "Error: " . $e->getMessage();
         }
     }
+
+
+    if ($_GET["acao"] == "listarEnderecosUpdate") {
+
+        $id = $_GET["id"];
+
+        try {
+            $query = $pdo->prepare("SELECT id_endereco,cpf_cliente,rua,numero,bairro,cep,cidade,estado,principal FROM enderecos WHERE id_endereco=?");
+
+            $query->bindParam(1, $id);
+
+            $query->execute();
+
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+
+            echo json_encode($result);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
 
     if ($_GET["acao"] == "listarUpdateCliente") {
 
@@ -240,6 +243,36 @@ if ($method === "PUT") {
             $query->bindParam(6, $telefone2);
             $query->bindParam(7, $dataNasc);
             $query->bindParam(8, $idCliente);
+
+            $query->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+        echo json_encode($_PUT);
+    }
+
+
+    if ($_PUT["acao"] == "updateEndereco") {
+
+        $id_endereco = $_PUT['idEndereco'];
+        $rua = $_PUT['rua'];
+        $numero = $_PUT['numero'];
+        $bairro = $_PUT['bairro'];
+        $cep =  $_PUT['cep'];
+        $cidade = $_PUT['cidade'];
+        $estado = $_PUT['estado'];
+
+        try {
+            $query = $pdo->prepare("UPDATE enderecos SET rua=?,numero=?,bairro=?,cep=?,cidade=?,estado=? WHERE id_endereco=?");
+
+            $query->bindParam(1, $rua);
+            $query->bindParam(2, $numero);
+            $query->bindParam(3, $bairro);
+            $query->bindParam(4, $cep);
+            $query->bindParam(5, $cidade);
+            $query->bindParam(6, $estado);
+            $query->bindParam(7, $id_endereco);
 
             $query->execute();
         } catch (PDOException $e) {
