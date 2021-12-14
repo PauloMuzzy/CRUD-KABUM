@@ -14,7 +14,7 @@
         rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="../index.js"></script>
-    <script type="text/javascript" src="clienteread.js"></script>
+    <script type="text/javascript" src="enderecoread.js"></script>
 </head>
 
 <body>
@@ -37,30 +37,31 @@
 
         <aside>
             <a id="linkCadastraCLiente" href="clientecreate.html">CREATE CLIENTES/ENDEREÇOS</a>
-            <a href="clienteread.html" class="aSelecionado">READ CLIENTES</a>
+            <a href="clienteread.html">READ CLIENTES</a>
             <a href="clienteupdate.html">UPDATE CLIENTES</a>
             <a href="clientedelete.html">DELETE CLIENTES</a>
-            <a href="enderecoread.html">READ ENDEREÇOS</a>
+            <a href="enderecoread.html" class="aSelecionado">READ ENDEREÇOS</a>
             <a href="enderecoupdate.html">UPDATE ENDEREÇOS</a>
             <a href="enderecodelete.html">DELETE ENDEREÇOS</a>
         </aside>
 
         <article>
 
-            <table class="tableCustomers" id="tableCustomers">
+            <table class="tabelaEnderecos" id="tabelaEnderecos">
                 <thead>
-                    <td id="tdIdCliente">ID</td>
-                    <td id="tdNome">NOME</td>
-                    <td id="tdcpf">CPF</td>
-                    <td id="tdRg">RG</td>
-                    <td id="tdEmail">EMAIL</td>
-                    <td id="tdTelefone1">TELEFONE 1</td>
-                    <td id="tdTelefone2">TELEFONE 2</td>
-                    <td id="tdDataNasc">DATA NASC.</td>
-                    <td id="tdAtivo">ATIVO</td>
-                    <td id="tdIdUsuario">ID USUARIO</td>
+                    <td id="">ID ENDEREÇO</td>
+                    <td id="">CPF CLIENTE</td>
+                    <td id="">RUA</td>
+                    <td id="">NÚMERO</td>
+                    <td id="">BAIRRO</td>
+                    <td id="">CEP</td>
+                    <td id="">CIDADE</td>
+                    <td id="">ESTADO</td>
+                    <td id="">PRINCIPAL</td>
+                    <td id="">ATIVO</td>
+                    <td id="">ID USUÁRIO</td>
                 </thead>
-                <tbody id="tbodyClientes">
+                <tbody id="tbodyEnderecos">
                 </tbody>
             </table>
         </article>
