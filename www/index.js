@@ -8,37 +8,37 @@ $(function () {
 
     // ------------------------------------- OK -----------------------------
     //VERIFICAR LOCALSTORAGE
-    const verificaLogin = () => {
 
-        const logadoLocalstorage = localStorage.getItem("logado")
+    const setUsuario = function () {
 
-        if (logadoLocalstorage == "1") {
+        const loginUsuario = localStorage.getItem("login")
+        const urlSetUsuario = "/api/usuarios.php?acao=setUsuario&login=" + loginUsuario
 
-            const loginLocalstorage = localStorage.getItem("login")
-            const urlLoginLocalstorage = "/api/usuarios.php?acao=loginLocalstorage&login=" + loginLocalstorage
+        $.ajax({
+            method: "GET",
+            url: urlSetUsuario,
+            success: function (res) {
+                const nome = res.nome
+                const acessoCriar = res.acesso_criar
+                const acessoLer = res.acesso_ler
+                const acessoEditar = res.acesso_editar
+                const acessoDeletar = res.acesso_deletar
+                const tipoUsuario = res.tipo_usuario
 
-            $.ajax({
-                method: "GET",
-                url: urlLoginLocalstorage,
-                success: function (res) {
+                const saudacao = "Ola, " + nome + "."
+                $("#saudacaoUsuario").html(saudacao);
+                $("#divLogado").show()
 
-                    const saudacao = "Olá, " + res.nome + "."
-                    $("#saudacaoUsuario").html(saudacao)
-                    $("#divLogado").show()
-                    idUsuario = res.id_usuario
-                    tipoUsuario = res.tipo_usuario
-
-                    if (tipoUsuario == "MASTER") {
-                        $("#linkClientes").show()
-                        $("#linkUsuarios").show()
-                    } else if (tipoUsuario == "PADRAO") {
-                        $("#linkClientes").show()
-                    }
+                if (tipoUsuario == "MASTER") {
+                    $("#linkClientes").show()
+                    $("#linkUsuarios").show()
+                } else if (tipoUsuario == "PADRAO") {
+                    $("#linkClientes").show()
                 }
-            })
-        }
+            }
+        })
     }
-    verificaLogin()
+    setUsuario()
 
     // ------------------------------------- OK -----------------------------
     //LOGAR    
@@ -58,11 +58,7 @@ $(function () {
             url: "/api/usuarios.php",
             data: objLogar,
             success: function (res) {
-                localStorage.setItem("logado", "1")
                 localStorage.setItem("login", loginLogar)
-                localStorage.setItem("tipoUsuario", res.tipo_usuario)
-                $("#alertaSucessoLogin").show()
-                setTimeout(location.reload(), 150000)
             }
         })
     })

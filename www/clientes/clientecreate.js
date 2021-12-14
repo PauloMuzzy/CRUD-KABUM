@@ -1,5 +1,26 @@
 $(function () {
 
+    const loginUsuario = localStorage.getItem("login")
+    const urlSetUsuario = "/api/usuarios.php?acao=setUsuario&login=" + loginUsuario
+    $.ajax({
+        method: "GET",
+        url: urlSetUsuario,
+        success: function (res) {
+            const acessoCriar = res.acesso_criar
+            if (acessoCriar == "HABILITADO") {
+
+                $(".conteudo").show()
+
+            } else if (acessoCriar == "DESABILITADO") {
+                $(".conteudo").hide()
+                $(".semAcesso").show()
+            }
+        }
+    })
+
+    const loginLocalstorage = localStorage.getItem("login")
+    const urlLoginLocalstorage = "/api/usuarios.php?acao=loginLocalstorage&login=" + loginLocalstorage
+
     //ADICIONA FORMULÁRIO DE ENDEREÇO
     var clicks = 0;
     $("#botaoAdicionaEndereco").click(function (e) {

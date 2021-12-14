@@ -14,12 +14,13 @@ if ($_POST["acao"] == "logar") {
     $senha = $_POST["senha"];
 
     try {
-        $query = $pdo->prepare("SELECT nome,hash_senha,tipo_usuario FROM usuarios WHERE LOGIN= ?");
+        $query = $pdo->prepare("SELECT id_usuario,nome,hash_senha,tipo_usuario FROM usuarios WHERE LOGIN= ?");
         $query->bindParam(1, $login);
         $query->execute();
 
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
+        $result_id_usuario = $result["id_usuario"];
         $result_nome = $result["nome"];
         $result_tipo_usuario = $result["tipo_usuario"];
         $result_hash_senha = $result["hash_senha"];
@@ -28,6 +29,7 @@ if ($_POST["acao"] == "logar") {
 
             $login_verificado = array(
                 "status_logado" => "1",
+                "id_usuario" => "$result_id_usuario",
                 "nome" => "$result_nome",
                 "tipo_usuario" => "$result_tipo_usuario"
             );
@@ -79,13 +81,13 @@ if ($_POST["acao"] == "cadastrarUsuario") {
 
 // ################################### GET ################################### 
 
-// ------------------------ FAZ LOGIN COM LOCALSTORAGE -----------------------
-if ($_GET["acao"] == "loginLocalstorage") {
+// ------------------------ SET USUARIO -----------------------
+if ($_GET["acao"] == "setUsuario") {
 
     $login = $_GET["login"];
 
     try {
-        $query = $pdo->prepare("SELECT id_usuario,nome,tipo_usuario FROM usuarios WHERE login= ?");
+        $query = $pdo->prepare("SELECT nome,tipo_usuario,acesso_criar,acesso_ler,acesso_editar,acesso_deletar FROM usuarios WHERE login= ?");
         $query->bindParam(1, $login);
         $query->execute();
 
@@ -97,6 +99,7 @@ if ($_GET["acao"] == "loginLocalstorage") {
 }
 
 // // ------------------------- LISTA DE USUÁRIOS UPDATE----------------------------
+
 if ($_GET["acao"] == "listaUsuarios") {
 
     try {

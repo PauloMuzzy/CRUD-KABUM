@@ -7,7 +7,7 @@ $(function () {
 
             res.forEach(function (row) {
 
-                var tableBody = document.getElementById("tbody");
+                var tableBody = document.getElementById("tbodyUsuarios");
                 var newRow = document.createElement("tr");
                 tableBody.appendChild(newRow);
 
