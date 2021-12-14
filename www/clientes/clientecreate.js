@@ -136,14 +136,14 @@ $(function () {
 
             console.log(objCadastraCliente)
 
-            // $.ajax({
-            //     method: "POST",
-            //     url: "/api/clientes.php",
-            //     data: objCadastraCliente,
-            //     success: function (res) {
-            //         console.log(res)
-            //     }
-            // })
+            $.ajax({
+                method: "POST",
+                url: "/api/clientes.php",
+                data: objCadastraCliente,
+                success: function (res) {
+                    console.log(res)
+                }
+            })
 
             for (var i = 1; i <= clicks; i++) {
                 const ruaEndereco = document.getElementById("ruaEndereco" + i).value
@@ -168,15 +168,14 @@ $(function () {
 
                 console.log(objCadastraEndereco)
 
-                // $.ajax({
-                //     method: "POST",
-                //     url: "/api/clientes.php",
-                //     data: objFirstEndereco,
-                //     success: function (res) {
-                //         console.log(res)
-                //     }
-                // })
-
+                $.ajax({
+                    method: "POST",
+                    url: "/api/clientes.php",
+                    data: objFirstEndereco,
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
             }
         }
     })

@@ -1,113 +1,71 @@
 $(function () {
 
-    // ------------------------------------- OK-----------------------------
-    //     LISTA CLIENTES
-    $("#btnListaCliente").click(function () {
+    $.ajax({
+        method: "GET",
+        url: "/api/clientes.php?acao=listarClientes",
+        success: (res) => {
 
-        showListaCliente()
+            res.forEach(function (row) {
+                var tableBody = document.getElementById("tbodyUpdateClientes");
+                var newRow = document.createElement("tr");
+                tableBody.appendChild(newRow);
 
-        $.ajax({
-            method: "GET",
-            url: "/api/clientes.php?acao=listarClientes",
-            success: (res) => {
-                console.log(res)
-
-                res.forEach(function (row) {
-                    var tableBody = document.getElementById("tbodyClientes");
-                    var newRow = document.createElement("tr");
-                    tableBody.appendChild(newRow);
-
-                    Object.values(row).forEach(value => {
-                        var newCell = document.createElement("td");
-                        newCell.textContent = value;
-                        newRow.appendChild(newCell);
-                    })
-                });
-            }
-        })
-    })
-
-    // UPDATE CLIENTE
-    $("#btnAlteraCliente").click(function () {
-
-        showAlteraCliente()
-
-        $.ajax({
-            method: "GET",
-            url: "/api/clientes.php?acao=listarClientes",
-            success: (res) => {
-
-                res.forEach(function (row) {
-                    var tableBody = document.getElementById("tbodyUpdateDeleteClientes");
-                    var newRow = document.createElement("tr");
-                    tableBody.appendChild(newRow);
-
-                    Object.values(row).forEach(value => {
-                        var newCell = document.createElement("td");
-                        newCell.textContent = value;
-                        newRow.appendChild(newCell);
-                    })
-                    var actionsCell = document.createElement("td");
-                    var btnActionUpdateDelete = document.createElement("button")
-                    btnActionUpdateDelete.setAttribute("data-id", row.id_cliente)
-                    btnActionUpdateDelete.setAttribute("class", "btn-orange btnUpdateCliente")
-                    btnActionUpdateDelete.textContent = "SELECIONAR"
-                    actionsCell.appendChild(btnActionUpdateDelete)
-                    newRow.appendChild(actionsCell)
+                Object.values(row).forEach(value => {
+                    var newCell = document.createElement("td");
+                    newCell.textContent = value;
+                    newRow.appendChild(newCell);
                 })
+                var actionsCell = document.createElement("td");
+                var botaoUpdateCliente = document.createElement("button")
+                botaoUpdateCliente.setAttribute("data-id", row.id_cliente)
+                botaoUpdateCliente.setAttribute("class", "botaoLaranjaClaro botaoUpdateCliente")
+                botaoUpdateCliente.textContent = "SELECIONAR"
+                actionsCell.appendChild(botaoUpdateCliente)
+                newRow.appendChild(actionsCell)
+            })
 
-                $(".btnUpdateCliente").click(function () {
+            $(".botaoUpdateCliente").click(function () {
 
-                    $("#idUpdateCustomer").val("");
-                    $("#nameUpdateCustomer").val("")
-                    $("#cpfUpdateCustomer").val("")
-                    $("#rgUpdateCustomer").val("")
-                    $("#emailUpdateCustomer").val("")
-                    $("#tel01UpdateCustomer").val("")
-                    $("#tel02UpdateCustomer").val("")
-                    $("#dataNascRegisterCustomer").val("")
+                const idbotaoUpdateCliente = $(this).attr('data-id')
+                const urlIdbotaoUpdateCliente = "/api/clientes.php?acao=listarUpdateCliente&id=" + idbotaoUpdateCliente
 
-                    const idBtnUpdateCliente = $(this).attr('data-id')
-                    const urlIdBtnUpdateCliente = "/api/clientes.php?acao=listarUpdateCliente&id=" + idBtnUpdateCliente
+                $.ajax({
+                    method: "GET",
+                    url: urlIdbotaoUpdateCliente,
+                    success: (res) => {
 
-                    $.ajax({
-                        method: "GET",
-                        url: urlIdBtnUpdateCliente,
-                        success: (res) => {
+                        const idUpdateClienteRes = res[0].id_cliente
+                        const nomeUpdateClienteRes = res[0].nome
+                        const cpfUpdateClienteRes = res[0].cpf
+                        const rgUpdateClineteRes = res[0].rg
+                        const emailUpdateClineteRes = res[0].email
+                        const telefone1UpdateClienteRes = res[0].telefone1
+                        const telefone2UpdateClienteRes = res[0].telefone2
+                        const dataNascUpdateClienteRes = res[0].data_nasc
 
-                            const insereDadosInputUpdateCliente = () => {
+                        $("#idUpdateCliente").val(idUpdateClienteRes);
+                        $("#nameUpdateCliente").val(nomeUpdateClienteRes)
+                        $("#cpfUpdateCliente").val(cpfUpdateClienteRes)
+                        $("#rgUpdateCliente").val(rgUpdateClineteRes)
+                        $("#emailUpdateCliente").val(emailUpdateClineteRes)
+                        $("#tel01UpdateCliente").val(telefone1UpdateClienteRes)
+                        $("#tel02UpdateCliente").val(telefone2UpdateClienteRes)
+                        $("#dataNascRegisterCliente").val(dataNascUpdateClienteRes)
 
-                                const idUpdateClienteRes = res[0].id_cliente
-                                const nomeUpdateClienteRes = res[0].nome
-                                const cpfUpdateClienteRes = res[0].cpf
-                                const rgUpdateClineteRes = res[0].rg
-                                const emailUpdateClineteRes = res[0].email
-                                const telefone1UpdateClienteRes = res[0].telefone1
-                                const telefone2UpdateClienteRes = res[0].telefone2
-                                const dataNascUpdateClienteRes = res[0].data_nasc
+                        $("#botaoUpdateCliente").click(function () {
 
-                                $("#idUpdateCustomer").val(idUpdateClienteRes);
-                                $("#nameUpdateCustomer").val(nomeUpdateClienteRes)
-                                $("#cpfUpdateCustomer").val(cpfUpdateClienteRes)
-                                $("#rgUpdateCustomer").val(rgUpdateClineteRes)
-                                $("#emailUpdateCustomer").val(emailUpdateClineteRes)
-                                $("#tel01UpdateCustomer").val(telefone1UpdateClienteRes)
-                                $("#tel02UpdateCustomer").val(telefone2UpdateClienteRes)
-                                $("#dataNascRegisterCustomer").val(dataNascUpdateClienteRes)
+                            const updateCliente = confirm("CONFIRMA ALTERAÇÃO NO CLIENTE ?")
 
-                            }
-                            insereDadosInputUpdateCliente()
+                            if (updateCliente == true) {
 
-                            $("#btnUpdateCustomer").click(function () {
-
-                                const idUpdateCliente = document.getElementById("idUpdateCustomer").value
-                                const nomeUpdateCliente = document.getElementById("nameUpdateCustomer").value
-                                const cpfUpdateCliente = document.getElementById("cpfUpdateCustomer").value
-                                const rgUpdateCliente = document.getElementById("rgUpdateCustomer").value
-                                const emailUpdateCliente = document.getElementById("emailUpdateCustomer").value
-                                const telefone1UpdateCliente = document.getElementById("tel01UpdateCustomer").value
-                                const telefone2UpdateCliente = document.getElementById("tel02UpdateCustomer").value
-                                const dataNascUpdateCliente = document.getElementById("dataNascRegisterCustomer").value
+                                const idUpdateCliente = document.getElementById("idUpdateCliente").value
+                                const nomeUpdateCliente = document.getElementById("nameUpdateCliente").value
+                                const cpfUpdateCliente = document.getElementById("cpfUpdateCliente").value
+                                const rgUpdateCliente = document.getElementById("rgUpdateCliente").value
+                                const emailUpdateCliente = document.getElementById("emailUpdateCliente").value
+                                const telefone1UpdateCliente = document.getElementById("tel01UpdateCliente").value
+                                const telefone2UpdateCliente = document.getElementById("tel02UpdateCliente").value
+                                const dataNascUpdateCliente = document.getElementById("dataNascRegisterCliente").value
                                 const loginLocalstorage = localStorage.getItem("login")
 
                                 const objUpdateCliente = {
@@ -122,176 +80,170 @@ $(function () {
                                     dataNasc: dataNascUpdateCliente
                                 }
 
+                                console.log(objUpdateCliente)
+
                                 $.ajax({
                                     type: "PUT",
                                     url: "/api/clientes.php",
                                     data: objUpdateCliente,
-                                    success: (res) => {
-                                    }
-                                })
+                                    success: () => {
 
-
-
-
-                                $.ajax({
-                                    method: "GET",
-                                    url: urlIdBtnUpdateCliente,
-                                    success: (res) => {
-
+                                        // -------------------LOG DE NOME -----------------
                                         if (nomeUpdateClienteRes != nomeUpdateCliente) {
-
                                             const objNomeLogUpdateCliente = {
-                                                campo: "nome",
-                                                nomeAntigo: nomeUpdateClienteRes,
-                                                nomeAtual: nomeUpdateCliente,
-                                                idUsuario: idUpdateClienteRes,
-                                                login: loginLocalstorage
+                                                acao: "logUpdateCliente",
+                                                campo: "NOME",
+                                                valorAntigo: nomeUpdateClienteRes,
+                                                valorAtual: nomeUpdateCliente,
+                                                idUsuario: idUsuario,
                                             }
-
-                                            console.log(objNomeLogUpdateCliente)
-
-                                            // $.ajax({
-                                            //     method: "POST",
-                                            //     url: "/api/clientes.php",
-                                            //     data: objNomeLogUpdateCliente,
-                                            //     success: function (res) {
-                                            //         console.log(res)
-                                            //     }
-                                            // })
+                                            $.ajax({
+                                                method: "POST",
+                                                url: "/api/clientes.php",
+                                                data: objNomeLogUpdateCliente,
+                                                success: function (res) {
+                                                    console.log(res)
+                                                }
+                                            })
                                         }
 
-                                        // if (cpfUpdateClienteRes != cpfUpdateCliente) {
+                                        // -------------------LOG DE CPF -----------------
+                                        if (cpfUpdateClienteRes != cpfUpdateCliente) {
+                                            const objCpfLogUpdateCliente = {
+                                                acao: "logUpdateCliente",
+                                                campo: "CPF",
+                                                valorAntigo: cpfUpdateClienteRes,
+                                                valorAtual: cpfUpdateCliente,
+                                                idUsuario: idUsuario
+                                            }
+                                            $.ajax({
+                                                method: "POST",
+                                                url: "/api/clientes.php",
+                                                data: objCpfLogUpdateCliente,
+                                                success: function (res) {
+                                                    console.log(res)
+                                                }
+                                            })
+                                        }
 
-                                        //     const objCpfLogUpdateCliente = {
-                                        //         campo: "cpf",
-                                        //         nomeAntigo: cpfUpdateCliente,
-                                        //         nomeAtual: objUpdateCliente.cpf,
-                                        //         idUsuario: idUsuario
-                                        //     }
+                                        // -------------------LOG DE RG -----------------
+                                        if (rgUpdateClineteRes != rgUpdateCliente) {
+                                            const objRgLogUpdateCliente = {
+                                                acao: "logUpdateCliente",
+                                                campo: "RG",
+                                                valorAntigo: rgUpdateClineteRes,
+                                                valorAtual: rgUpdateCliente,
+                                                idUsuario: idUsuario
+                                            }
+                                            $.ajax({
+                                                method: "POST",
+                                                url: "/api/clientes.php",
+                                                data: objRgLogUpdateCliente,
+                                                success: function (res) {
+                                                    console.log(res)
+                                                }
+                                            })
+                                        }
 
-                                        //     console.log(objCpfLogUpdateCliente)
+                                        // ------------------- LOG DE EMAIL-----------------
+                                        if (emailUpdateClineteRes != emailUpdateCliente) {
+                                            const objEmailLogUpdateCliente = {
+                                                acao: "logUpdateCliente",
+                                                campo: "EMAIL",
+                                                valorAntigo: emailUpdateClineteRes,
+                                                valorAtual: emailUpdateCliente,
+                                                idUsuario: idUsuario
+                                            }
+                                            $.ajax({
+                                                method: "POST",
+                                                url: "/api/clientes.php",
+                                                data: objEmailLogUpdateCliente,
+                                                success: function (res) {
+                                                    console.log(res)
+                                                }
+                                            })
+                                        }
 
-                                        //     $.ajax({
-                                        //         method: "POST",
-                                        //         url: "/api/clientes.php",
-                                        //         data: objCpfLogUpdateCliente,
-                                        //         success: function (res) {
-                                        //             console.log(res)
-                                        //         }
-                                        //     })
-                                        // }
+                                        // ------------------- LOG DE TEL1-----------------
+                                        if (telefone1UpdateClienteRes != telefone1UpdateCliente) {
+                                            const objTelefone1LogUpdateCliente = {
+                                                acao: "logUpdateCliente",
+                                                campo: "TELEFONE1",
+                                                valorAntigo: telefone1UpdateClienteRes,
+                                                valorAtual: telefone1UpdateCliente,
+                                                idUsuario: idUsuario
+                                            }
+                                            $.ajax({
+                                                method: "POST",
+                                                url: "/api/clientes.php",
+                                                data: objTelefone1LogUpdateCliente,
+                                                success: function (res) {
+                                                    console.log(res)
+                                                }
+                                            })
+                                        }
 
-                                        // if (rgUpdateClineteRes != rgUpdateCliente) {
+                                        // ------------------- LOG DE TEL2-----------------
+                                        if (telefone2UpdateClienteRes != telefone2UpdateCliente) {
+                                            const objTelefone2LogUpdateCliente = {
+                                                acao: "logUpdateCliente",
+                                                campo: "TELEFONE2",
+                                                valorAntigo: telefone2UpdateClienteRes,
+                                                valorAtual: telefone2UpdateCliente,
+                                                idUsuario: idUsuario
+                                            }
+                                            $.ajax({
+                                                method: "POST",
+                                                url: "/api/clientes.php",
+                                                data: objTelefone2LogUpdateCliente,
+                                                success: function (res) {
+                                                    console.log(res)
+                                                }
+                                            })
+                                        }
 
-                                        //     const objRgLogUpdateCliente = {
-                                        //         campo: "cpf",
-                                        //         nomeAntigo: rgUpdateClineteRes,
-                                        //         nomeAtual: rgUpdateCliente,
-                                        //         idUsuario: idUsuario
-                                        //     }
-
-                                        //     console.log(objRgLogUpdateCliente)
-
-                                        //     $.ajax({
-                                        //         method: "POST",
-                                        //         url: "/api/clientes.php",
-                                        //         data: objRgLogUpdateCliente,
-                                        //         success: function (res) {
-                                        //             console.log(res)
-                                        //         }
-                                        //     })
-                                        // }
-
-                                        // if (emailUpdateClineteRes != emailUpdateCliente) {
-
-                                        //     const objEmailLogUpdateCliente = {
-                                        //         campo: "cpf",
-                                        //         nomeAntigo: emailUpdateClineteRes,
-                                        //         nomeAtual: emailUpdateCliente,
-                                        //         idUsuario: idUsuario
-                                        //     }
-
-                                        //     console.log(objEmailLogUpdateCliente)
-
-                                        //     $.ajax({
-                                        //         method: "POST",
-                                        //         url: "/api/clientes.php",
-                                        //         data: objEmailLogUpdateCliente,
-                                        //         success: function (res) {
-                                        //             console.log(res)
-                                        //         }
-                                        //     })
-                                        // }
-
-                                        // if (telefone1UpdateClienteRes != telefone1UpdateCliente) {
-
-                                        //     const objTelefone1LogUpdateCliente = {
-                                        //         campo: "cpf",
-                                        //         nomeAntigo: telefone1UpdateClienteRes,
-                                        //         nomeAtual: telefone1UpdateCliente,
-                                        //         idUsuario: idUsuario
-                                        //     }
-
-                                        //     console.log(objTelefone1LogUpdateCliente)
-
-                                        //     $.ajax({
-                                        //         method: "POST",
-                                        //         url: "/api/clientes.php",
-                                        //         data: objTelefone1LogUpdateCliente,
-                                        //         success: function (res) {
-                                        //             console.log(res)
-                                        //         }
-                                        //     })
-                                        // }
-
-                                        // if (telefone2UpdateClienteRes != telefone2UpdateCliente) {
-
-                                        //     const objTelefone2LogUpdateCliente = {
-                                        //         campo: "cpf",
-                                        //         nomeAntigo: telefone2UpdateClienteRes,
-                                        //         nomeAtual: telefone2UpdateCliente,
-                                        //         idUsuario: idUsuario
-                                        //     }
-
-                                        //     console.log(objTelefone2LogUpdateCliente)
-
-                                        //     $.ajax({
-                                        //         method: "POST",
-                                        //         url: "/api/clientes.php",
-                                        //         data: objTelefone2LogUpdateCliente,
-                                        //         success: function (res) {
-                                        //             console.log(res)
-                                        //         }
-                                        //     })
-                                        // }
-
-                                        // if (dataNascUpdateClienteRes != dataNascUpdateCliente) {
-
-                                        //     const objDataNascLogUpdateCliente = {
-                                        //         campo: "cpf",
-                                        //         nomeAntigo: dataNascUpdateClienteRes,
-                                        //         nomeAtual: dataNascUpdateCliente,
-                                        //         idUsuario: idUsuario
-                                        //     }
-
-                                        //     console.log(objDataNascLogUpdateCliente)
-
-                                        //     $.ajax({
-                                        //         method: "POST",
-                                        //         url: "/api/clientes.php",
-                                        //         data: objDataNascLogUpdateCliente,
-                                        //         success: function (res) {
-                                        //             console.log(res)
-                                        //         }
-                                        //     })
-                                        // }
-                                    } // tem que estar dentro desse evento de click
+                                        // ------------------- LOG DE DATA-NASC-----------------
+                                        if (dataNascUpdateClienteRes != dataNascUpdateCliente) {
+                                            const objDataNascLogUpdateCliente = {
+                                                acao: "logUpdateCliente",
+                                                campo: "DATA-NASC",
+                                                valorAntigo: dataNascUpdateClienteRes,
+                                                valorAtual: dataNascUpdateCliente,
+                                                idUsuario: idUsuario
+                                            }
+                                            $.ajax({
+                                                method: "POST",
+                                                url: "/api/clientes.php",
+                                                data: objDataNascLogUpdateCliente,
+                                                success: function (res) {
+                                                    console.log(res)
+                                                }
+                                            })
+                                        }
+                                    }
                                 })
-                            })
-                        }
-                    })
+                            }
+                            location.reload()
+                        })
+                    }
                 })
-            }
-        })
+            })
+        }
     })
+
+    //Mascaras
+    $(".cpf").mask("999.999.999-99");
+    $(".telefone").mask("(99)99999-9999");
+    $(".telefone").mask("(99)99999-9999");
+    $(".cep").mask("99999-999")
+
+    var mascaraRg = {
+        "translation": {
+            A: {
+                pattern: /[A-Za-z0-9]/
+            }
+        }
+    };
+    $(".rg").mask("99.999.999-A" || "99.999.999-99", mascaraRg);
 })
+

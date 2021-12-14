@@ -50,25 +50,25 @@
                 <h2>UPDATE CLIENTE</h2>
 
                 <label for="idUpdateCliente">ID Cliente</label>
-                <input type="text" name="idUpdateCliente" id="idUpdateCliente" />
+                <input type="text" name="idUpdateCliente" id="idUpdateCliente" readonly />
 
                 <label for="nameUpdateCliente">Nome</label>
                 <input type="text" name="nameUpdateCliente" id="nameUpdateCliente" />
 
                 <label for="cpfUpdateCliente">CPF</label>
-                <input type="text" name="cpfUpdateCliente" id="cpfUpdateCliente" />
+                <input type="text" name="cpfUpdateCliente" id="cpfUpdateCliente" class="cpf" />
 
                 <label for="rgUpdateCliente">RG</label>
-                <input type="text" name="rgUpdateCliente" id="rgUpdateCliente" />
+                <input type="text" name="rgUpdateCliente" id="rgUpdateCliente" class="rg" />
 
                 <label for="emailUpdateCliente">E-mail</label>
                 <input type="email" name="emailUpdateCliente" id="emailUpdateCliente" />
 
                 <label for="tel01UpdateCliente">Telefone 01</label>
-                <input type="tel" name="tel01UpdateCliente" id="tel01UpdateCliente" />
+                <input type="tel" name="tel01UpdateCliente" id="tel01UpdateCliente" class="telefone" />
 
                 <label for="tel02UpdateCliente">Telefone 02</label>
-                <input type="tel" name="tel02UpdateCliente" id="tel02UpdateCliente" />
+                <input type="tel" name="tel02UpdateCliente" id="tel02UpdateCliente" class="telefone" />
 
                 <label for="dataNascUpdateCliente">Data de Nascimento</label>
                 <input type="date" name="dataNascUpdateCliente" id="dataNascRegisterCliente" />
@@ -104,5 +104,9 @@
     </footer>
 
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.11.2/jquery.mask.min.js"
+    integrity="sha512-Y/GIYsd+LaQm6bGysIClyez2HGCIN1yrs94wUrHoRAD5RSURkqqVQEU6mM51O90hqS80ABFTGtiDpSXd2O05nw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </html>

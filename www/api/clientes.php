@@ -76,6 +76,29 @@ if ($_POST) {
             echo "Error: " . $e->getMessage();
         }
     }
+
+    if ($_POST["acao"] == "logUpdateCliente") {
+
+        $campo = $_POST["campo"];
+        $valor_antigo = $_POST["valorAntigo"];
+        $valor_atual = $_POST["valorAtual"];
+        $id_usuario = $_POST["idUsuario"];
+
+        try {
+            $query = $pdo->prepare("INSERT INTO log_clientes (campo,valor_antigo,valor_atual,id_usuario) 
+            VALUES (? ,? ,? ,? )");
+
+            $query->bindParam(1, $campo);
+            $query->bindParam(2, $valor_antigo);
+            $query->bindParam(3, $valor_atual);
+            $query->bindParam(4, $id_usuario);
+
+
+            $query->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }
 
 // ################################### GET ################################### 
@@ -117,6 +140,25 @@ if ($_GET) {
 
         try {
             $query = $pdo->prepare("SELECT id_cliente,nome,cpf,rg,email,telefone1,telefone2,data_nasc,id_usuario,ativo FROM clientes WHERE ativo =1 AND id_cliente =?");
+
+            $query->bindParam(1, $id);
+
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            echo json_encode($result);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    if ($_GET["acao"] == "listarUpdateClienteLog") {
+
+        $id = $_GET["id"];
+
+        try {
+            $query = $pdo->prepare("SELECT nome,cpf,rg,email,telefone1,telefone2,data_nasc FROM clientes WHERE id_cliente =?");
 
             $query->bindParam(1, $id);
 
