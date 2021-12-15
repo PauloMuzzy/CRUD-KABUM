@@ -192,6 +192,7 @@ if ($method === "PUT") {
     }
 
     if ($_PUT["acao"] == "deletarUsuario") {
+        parse_str(file_get_contents("php://input"), $_PUT);
 
         $id = ($_PUT["idUsuario"]);
         $ativo = 0;

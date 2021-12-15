@@ -89,7 +89,10 @@ if ($_GET["acao"] == "listarEnderecosUpdate") {
 
 // ################################### PUT ################################### 
 
+
 if ($method === "PUT") {
+
+    parse_str(file_get_contents("php://input"), $_PUT);
 
     if ($_PUT["acao"] == "updateEndereco") {
 
@@ -113,6 +116,23 @@ if ($method === "PUT") {
             $query->bindParam(7, $id_endereco);
 
             $query->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    if ($_PUT["acao"] == "enderecoDelete") {
+
+        $id_endereco = $_PUT['id'];
+
+        try {
+            $query = $pdo->prepare("UPDATE enderecos SET ativo=0 WHERE id_endereco=?");
+
+            $query->bindParam(1, $id_endereco);
+
+            $query->execute();
+
+            echo json_encode("deu bom!");
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

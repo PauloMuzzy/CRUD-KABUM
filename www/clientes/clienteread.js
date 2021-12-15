@@ -40,4 +40,13 @@ $(function () {
             })
         }
     })
+
+    $("#botaoSairLogado").click(function () {
+        const sairLogado = function () {
+            localStorage.clear()
+            location.reload()
+            window.location.href = "../index.html"
+        }
+        sairLogado()
+    })
 })

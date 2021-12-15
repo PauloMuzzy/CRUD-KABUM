@@ -264,5 +264,14 @@ $(function () {
         }
     };
     $(".rg").mask("99.999.999-A" || "99.999.999-99", mascaraRg);
+
+    $("#botaoSairLogado").click(function () {
+        const sairLogado = function () {
+            localStorage.clear()
+            location.reload()
+            window.location.href = "../index.html"
+        }
+        sairLogado()
+    })
 })
 

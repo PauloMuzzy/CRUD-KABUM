@@ -4,6 +4,7 @@ $(function () {
 
     const loginUsuario = localStorage.getItem("login")
     const urlSetUsuario = "/api/usuarios.php?acao=setUsuario&login=" + loginUsuario
+
     $.ajax({
         method: "GET",
         url: urlSetUsuario,
@@ -221,7 +222,7 @@ $(function () {
         const sairLogado = function () {
             localStorage.clear()
             location.reload()
-            window.location.href = '../index.html'
+            window.location.href = "../index.html"
         }
         sairLogado()
     })
