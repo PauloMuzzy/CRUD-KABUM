@@ -51,12 +51,14 @@ $(function () {
             $(".botaoUpdateEndereco").click(function () {
 
                 const idbotaoUpdateEndereco = $(this).attr('data-id')
-                const urlIdbotaoUpdateEndereco = "/api/clientes.php?acao=listarEnderecosUpdate&id=" + idbotaoUpdateEndereco
+                const urlIdbotaoUpdateEndereco = "/api/enderecos.php?acao=listarEnderecosUpdate&id=" + idbotaoUpdateEndereco
 
                 $.ajax({
                     method: "GET",
                     url: urlIdbotaoUpdateEndereco,
                     success: (res) => {
+
+                        console.log(res)
 
                         const idEnderecoRes = res.id_endereco
                         const cpfClienteRes = res.cpf_cliente

@@ -20,10 +20,15 @@ $(function () {
         }
     })
 
+    const idUsuario = localStorage.getItem("idUsuario")
+    const urlListarCliente = "/api/clientes.php?acao=listarClientes&idUsuario=" + idUsuario
+
+    console.log(urlListarCliente)
+
     //     LISTA CLIENTES
     $.ajax({
         method: "GET",
-        url: "/api/clientes.php?acao=listarClientes",
+        url: urlListarCliente,
         success: (res) => {
             console.log(res)
 

@@ -19,11 +19,13 @@ $(function () {
             url: urlSetUsuario,
             success: function (res) {
                 const nome = res.nome
-                // const acessoCriar = res.acesso_criar
-                // const acessoLer = res.acesso_ler
-                // const acessoEditar = res.acesso_editar
-                // const acessoDeletar = res.acesso_deletar
+                const acessoCriar = res.acesso_criar
+                const acessoLer = res.acesso_ler
+                const acessoEditar = res.acesso_editar
+                const acessoDeletar = res.acesso_deletar
                 const tipoUsuario = res.tipo_usuario
+                const idUsuario = res.id_usuario
+                localStorage.setItem("idUsuario", idUsuario)
 
                 if (loginUsuario == undefined) {
                     $("#divLogado").hide()

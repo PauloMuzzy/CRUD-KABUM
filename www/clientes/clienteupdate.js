@@ -19,9 +19,12 @@ $(function () {
         }
     })
 
+    const idUsuario = localStorage.getItem("idUsuario")
+    const urlListarCliente = "/api/clientes.php?acao=listarClientes&idUsuario=" + idUsuario
+
     $.ajax({
         method: "GET",
-        url: "/api/clientes.php?acao=listarClientes",
+        url: urlListarCliente,
         success: (res) => {
 
             res.forEach(function (row) {
@@ -99,13 +102,29 @@ $(function () {
                                     dataNasc: dataNascUpdateCliente
                                 }
 
-                                console.log(objUpdateCliente)
-
                                 $.ajax({
                                     type: "PUT",
                                     url: "/api/clientes.php",
                                     data: objUpdateCliente,
                                     success: () => {
+
+                                        // -------------------LOG DE CPF -----------------
+                                        if (cpfUpdateClienteRes != cpfUpdateCliente) {
+                                            const objCpfLogUpdateCliente = {
+                                                acao: "UpdateCpfClienteEndereco",
+                                                valorAntigo: cpfUpdateClienteRes,
+                                                valorAtual: cpfUpdateCliente,
+                                            }
+
+                                            $.ajax({
+                                                type: "PUT",
+                                                url: "/api/enderecos.php",
+                                                data: objCpfLogUpdateCliente,
+                                                success: (res) => {
+                                                    console.log(res)
+                                                }
+                                            })
+                                        }
 
                                         // // -------------------LOG DE NOME -----------------
                                         // if (nomeUpdateClienteRes != nomeUpdateCliente) {
@@ -126,22 +145,6 @@ $(function () {
                                         //     })
                                         // }
 
-                                        // -------------------LOG DE CPF -----------------
-                                        if (cpfUpdateClienteRes != cpfUpdateCliente) {
-                                            const objCpfLogUpdateCliente = {
-                                                acao: "UpdateCpfClienteEndereco",
-                                                valorAntigo: cpfUpdateClienteRes,
-                                                valorAtual: cpfUpdateCliente,
-                                                idUsuario: idUsuario
-                                            }
-                                            $.ajax({
-                                                type: "PUT",
-                                                url: "/api/clientes.php",
-                                                data: objUpdateCliente,
-                                                success: () => {
-                                                }
-                                            })
-                                        }
                                         // // -------------------LOG DE RG -----------------
                                         // if (rgUpdateClineteRes != rgUpdateCliente) {
                                         //     const objRgLogUpdateCliente = {

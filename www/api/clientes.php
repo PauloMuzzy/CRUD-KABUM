@@ -66,8 +66,12 @@ if ($_POST["acao"] == "logUpdateCliente") {
 
 if ($_GET["acao"] == "listarClientes") {
 
+    $id_usuario = $_GET["idUsuario"];
+
     try {
-        $query = $pdo->prepare("SELECT id_cliente,nome,cpf,rg,email,telefone1,telefone2,data_nasc,id_usuario,ativo FROM clientes WHERE ativo =1");
+        $query = $pdo->prepare("SELECT id_cliente,nome,cpf,rg,email,telefone1,telefone2,data_nasc,id_usuario,ativo FROM clientes WHERE id_usuario=?");
+
+        $query->bindParam(1, $id_usuario);
 
         $query->execute();
 

@@ -11,6 +11,8 @@ $(function () {
         success: function (res) {
             const acessoDeletar = res.acesso_deletar
             const tipoUsuario = res.tipo_usuario
+            const idUsuario = res.id_usuario
+            localStorage.setItem("idUsuario", idUsuario)
             if (acessoDeletar == "HABILITADO" || tipoUsuario == "MASTER") {
                 $(".conteudo").show()
 
@@ -20,9 +22,14 @@ $(function () {
         }
     })
 
+    const idUsuario = localStorage.getItem("idUsuario")
+    const urlListarCliente = "/api/clientes.php?acao=listarClientes&idUsuario=" + idUsuario
+
+    console.log(urlListarCliente)
+
     $.ajax({
         method: "GET",
-        url: "/api/clientes.php?acao=listarClientes",
+        url: urlListarCliente,
         success: (res) => {
 
             res.forEach(function (row) {
@@ -70,6 +77,10 @@ $(function () {
             })
         }
     })
+
+
+
+
 
     $("#botaoSairLogado").click(function () {
         const sairLogado = function () {

@@ -124,6 +124,7 @@ if ($method === "PUT") {
     }
 
     if ($_PUT["acao"] == "enderecoDelete") {
+        parse_str(file_get_contents("php://input"), $_PUT);
 
         $id_endereco = $_PUT['id'];
 
@@ -140,18 +141,20 @@ if ($method === "PUT") {
         }
     }
 
-    if ($_PUT["acao"] == "enderecoDelete") {
+    if ($_PUT["acao"] == "UpdateCpfClienteEndereco") {
+        parse_str(file_get_contents("php://input"), $_PUT);
 
-        $id_endereco = $_PUT['id'];
+        $cpfAntigo = $_PUT['valorAntigo'];
+        $cpfAtual = $_PUT['valorAtual'];
 
         try {
-            $query = $pdo->prepare("UPDATE enderecos SET ativo=0 WHERE id_endereco=?");
+            $query = $pdo->prepare("UPDATE enderecos SET cpf_cliente=? WHERE id_cliente=?");
 
-            $query->bindParam(1, $id_endereco);
+            $query->bindParam(1, $cpfAtual);
+            $query->bindParam(2, $cpfAntigo);
+
 
             $query->execute();
-
-            echo json_encode("deu bom!");
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
