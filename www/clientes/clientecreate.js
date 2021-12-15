@@ -11,6 +11,8 @@ $(function () {
         success: function (res) {
             const acessoCriar = res.acesso_criar
             const tipoUsuario = res.tipo_usuario
+            const idUsuario = res.id_usuario
+            localStorage.setItem("idUsuario", idUsuario)
             if (acessoCriar == "HABILITADO" || tipoUsuario == "MASTER") {
                 $(".conteudo").show()
 
@@ -144,6 +146,7 @@ $(function () {
             const tel1CadastraCliente = document.getElementById("tel01CadastraCliente").value
             const tel2CadastraCliente = document.getElementById("tel02CadastraCliente").value
             const dataNascCadastraCliente = document.getElementById("dataNascCadastraCliente").value
+            const idUsuario = localStorage.getItem("idUsuario")
 
             const objCadastraCliente = {
                 acao: "cadastraCliente",
@@ -164,7 +167,7 @@ $(function () {
                 url: "/api/clientes.php",
                 data: objCadastraCliente,
                 success: function (res) {
-                    console.log(res)
+                    alert("CLIENTE CADASTRADO!")
                 }
             })
 
@@ -175,6 +178,7 @@ $(function () {
                 const cepEndereco = document.getElementById("cepEndereco" + i).value
                 const cidadeEndereco = document.getElementById("cidadeEndereco" + i).value
                 const estadoEndereco = document.getElementById("estadoEndereco" + i).value
+                const idUsuario = localStorage.getItem("idUsuario")
 
                 const objCadastraEndereco = {
                     acao: "cadastraEndereco",
@@ -193,10 +197,11 @@ $(function () {
 
                 $.ajax({
                     method: "POST",
-                    url: "/api/clientes.php",
-                    data: objFirstEndereco,
+                    url: "/api/enderecos.php",
+                    data: objCadastraEndereco,
                     success: function (res) {
-                        console.log(res)
+                        alert("ENDEREÇO CAASTRADO!")
+                        Location.reload()
                     }
                 })
             }

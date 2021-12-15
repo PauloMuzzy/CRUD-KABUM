@@ -17,6 +17,7 @@ if ($_POST["acao"] == "cadastraCliente") {
     $tel2 = $_POST["tel2"];
     $dataNasc = $_POST["dataNasc"];
     $idUsuario = $_POST["idUsuario"];
+    $ativo = 1;
 
     try {
         $query = $pdo->prepare("INSERT INTO clientes (nome,cpf,rg,email,telefone1,telefone2,data_nasc,id_usuario,ativo) 
@@ -122,33 +123,35 @@ if ($method === "PUT") {
 
     parse_str(file_get_contents("php://input"), $_PUT);
 
-    if ($_PUT["acao"] == "updateEndereco") {
+    if ($_PUT["acao"] == "updateCliente") {
 
-        $id_endereco = $_PUT['idEndereco'];
-        $rua = $_PUT['rua'];
-        $numero = $_PUT['numero'];
-        $bairro = $_PUT['bairro'];
-        $cep =  $_PUT['cep'];
-        $cidade = $_PUT['cidade'];
-        $estado = $_PUT['estado'];
+        $id_cliente = $_PUT["idCliente"];
+        $nome = $_PUT["nome"];
+        $cpf = $_PUT["cpf"];
+        $rg = $_PUT["rg"];
+        $email = $_PUT["email"];
+        $telefone1 = $_PUT["telefone1"];
+        $telefone2 = $_PUT["telefone2"];
+        $data_nasc = $_PUT["dataNasc"];
+
 
         try {
-            $query = $pdo->prepare("UPDATE enderecos SET rua=?,numero=?,bairro=?,cep=?,cidade=?,estado=? WHERE id_endereco=?");
+            $query = $pdo->prepare("UPDATE clientes SET nome=?,cpf=?,rg=?,email=?,telefone1=?,telefone2=?,data_nasc=? WHERE id_cliente=?");
 
-            $query->bindParam(1, $rua);
-            $query->bindParam(2, $numero);
-            $query->bindParam(3, $bairro);
-            $query->bindParam(4, $cep);
-            $query->bindParam(5, $cidade);
-            $query->bindParam(6, $estado);
-            $query->bindParam(7, $id_endereco);
-
+            $query->bindParam(1, $nome);
+            $query->bindParam(2, $cpf);
+            $query->bindParam(3, $rg);
+            $query->bindParam(4, $email);
+            $query->bindParam(5, $telefone1);
+            $query->bindParam(6, $telefone2);
+            $query->bindParam(7, $data_nasc);
+            $query->bindParam(8, $id_cliente);
             $query->execute();
+
+            echo json_encode("Alterado!");
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-
-        echo json_encode($_PUT);
     }
 
     if ($_PUT["acao"] == "deletarCliente") {

@@ -87,7 +87,7 @@ if ($_GET["acao"] == "setUsuario") {
     $login = $_GET["login"];
 
     try {
-        $query = $pdo->prepare("SELECT nome,tipo_usuario,acesso_criar,acesso_ler,acesso_editar,acesso_deletar FROM usuarios WHERE login= ?");
+        $query = $pdo->prepare("SELECT id_usuario,nome,tipo_usuario,acesso_criar,acesso_ler,acesso_editar,acesso_deletar FROM usuarios WHERE login= ?");
         $query->bindParam(1, $login);
         $query->execute();
 

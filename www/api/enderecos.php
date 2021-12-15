@@ -46,6 +46,8 @@ if ($_POST["acao"] == "cadastraEndereco") {
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
+
+    echo json_encode($_POST);
 }
 
 // ################################### GET ################################### 
@@ -116,6 +118,23 @@ if ($method === "PUT") {
             $query->bindParam(7, $id_endereco);
 
             $query->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    if ($_PUT["acao"] == "enderecoDelete") {
+
+        $id_endereco = $_PUT['id'];
+
+        try {
+            $query = $pdo->prepare("UPDATE enderecos SET ativo=0 WHERE id_endereco=?");
+
+            $query->bindParam(1, $id_endereco);
+
+            $query->execute();
+
+            echo json_encode("deu bom!");
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
