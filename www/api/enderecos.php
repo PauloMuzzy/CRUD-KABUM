@@ -54,8 +54,12 @@ if ($_POST["acao"] == "cadastraEndereco") {
 
 if ($_GET["acao"] == "listarEnderecos") {
 
+    $id_usuario = $_GET["idUsuario"];
+
     try {
-        $query = $pdo->prepare("SELECT id_endereco,cpf_cliente,rua,numero,bairro,cep,cidade,estado,principal,ativo,id_usuario FROM enderecos WHERE ativo =1");
+        $query = $pdo->prepare("SELECT id_endereco,cpf_cliente,rua,numero,bairro,cep,cidade,estado,principal,ativo,id_usuario FROM enderecos WHERE ativo =1 AND id_usuario=?");
+
+        $query->bindParam(1, $id_usuario);
 
         $query->execute();
 
@@ -153,6 +157,21 @@ if ($method === "PUT") {
             $query->bindParam(1, $cpfAtual);
             $query->bindParam(2, $cpfAntigo);
 
+
+            $query->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    if ($_PUT["acao"] == "urlIdbotaoUpdateEnderecoPrincipal") {
+        parse_str(file_get_contents("php://input"), $_PUT);
+
+        $id_endereco = $_PUT['id'];
+        try {
+            $query = $pdo->prepare("UPDATE enderecos SET principal=0 WHERE cpf=?");
+
+            $query->bindParam(1, $id_endereco);
 
             $query->execute();
         } catch (PDOException $e) {

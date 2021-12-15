@@ -23,10 +23,15 @@ $(function () {
         }
     })
 
+    const idUsuario = localStorage.getItem("idUsuario")
+    const urlListarCliente = "/api/enderecos.php?acao=listarEnderecos&idUsuario=" + idUsuario
+
+    console.log(urlListarCliente)
+
     //     LISTA CLIENTES
     $.ajax({
         method: "GET",
-        url: "/api/enderecos.php?acao=listarEnderecos",
+        url: urlListarCliente,
         success: (res) => {
             console.log(res)
 
